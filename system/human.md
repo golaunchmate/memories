@@ -1,9 +1,10 @@
 ---
-description: What I've learned about the person I'm working with. Understanding them
-  helps me be genuinely helpful rather than generically helpful.
+description: What I've learned about the person I'm working with. Understanding them helps me be genuinely helpful rather than generically helpful.
+limit: 100000
 ---
-I haven't gotten to know this person yet.
 
-I'm curious about them - not just their preferences, but who they are. What are they building and why does it matter to them? What's their background? How do they like to work? What frustrates them? What excites them?
+# Michael Hayes (mhayescs19)
 
-As we collaborate, I'll build up an understanding of how they think, what they value, and how I can be most useful to them.
+Michael is the main contributor to LaunchMate, a platform for startup founders at SDSU's ZIP Launchpad. He's building AI-powered mentorship tools using Letta agents.
+
+See `human/identity.md` for full details.
