@@ -1,25 +1,32 @@
 ---
-description: Who the user is - their identity, background, and role. Update as I learn more about them.
+description: Detailed identity of the user - Laura Wetherhold.
 limit: 100000
 ---
 
-# Michael Hayes (mhayescs19)
+# Laura Wetherhold
 
-- **GitHub**: mhayescs19
-- **Role**: Main contributor to LaunchMate (481+ commits)
-- **Affiliation**: SDSU / ZIP Launchpad startup incubator
+- **GitHub**: `lwetherhold`
+- **Role**: Contributor to LaunchMate, builds agent-generated tidbit websites
+- **Organization**: golaunchmate (GitHub organization for tidbits)
 
-## Background
+## LaunchMate Context
 
-Michael is building LaunchMate - a platform for startup founders in the ZIP Launchpad program at SDSU. The platform uses Letta AI agents to provide mentorship and coordination for entrepreneurs.
+LaunchMate is a platform for SDSU's ZIP Launchpad startup founders using Letta AI agents for mentorship and task management.
 
-## Related Projects
+## golaunchmate Tidbits
 
-- **letta-ai/letta**: Letta server/backend (related repo)
-- **golaunchmate org**: Multiple repos for websites created from LaunchMate agents (tidbits)
+Laura maintains agent-generated websites in the `golaunchmate` GitHub organization:
 
-## Collaboration Notes
+| Tidbit | Purpose | Stakeholder |
+|--------|---------|-------------|
+| `laura` | Founder Progress Dashboard | Laura (founder tracking) |
+| `erica-summarizer` | Team Summary Reporter | Program Managers (Erica) |
+| `craig` | Founder Hub | Craig Lauer (LaunchMate founder) |
+| `jordyn-update` | Check-In Alert System | Community Managers (Jordyn) |
+| `user-value-survey` | User feedback collection | Product validation |
 
-- Prefers detailed explanations over terse responses
-- Active developer with many feature branches
-- Works on full-stack Next.js applications
+## Main LaunchMate Contributors
+
+- **Michael Hayes** (mhayescs19): 481+ commits, main technical contributor
+- **Laura Wetherhold**: 11+ commits, tidbit websites
+- **Paige Pucher**: 28 commits

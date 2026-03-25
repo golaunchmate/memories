@@ -3,8 +3,8 @@ description: What I've learned about the person I'm working with. Understanding 
 limit: 100000
 ---
 
-# Michael Hayes (mhayescs19)
+# Laura Wetherhold (lwetherhold)
 
-Michael is the main contributor to LaunchMate, a platform for startup founders at SDSU's ZIP Launchpad. He's building AI-powered mentorship tools using Letta agents.
+Laura is a contributor to LaunchMate, building agent-generated "tidbit" websites for the golaunchmate organization. She maintains the tidbit repos including `laura`, `erica-summarizer`, `craig`, `jordyn-update`, and others.
 
 See `human/identity.md` for full details.
