@@ -32,11 +32,11 @@ From Cameron's suggestions and Letta documentation:
 - [ ] Research: Deploy `<agent-id>` as explore subagent for code review
 - [ ] Example: "Deploy agent-xxx as an explore subagent to review authentication code"
 
-#### Repos to Explore
-- [ ] https://github.com/cpfiffer/note (for Laura's personal use)
-- [ ] https://github.com/letta-ai/letta (official Letta repo)
+#### Repos to Explore - FROM "EXTRAS" LIST
+- [ ] https://github.com/cpfiffer/note (for Laura's personal use - not for founders)
+- [ ] https://github.com/letta-ai/letta (official Letta repo - search for installable tools)
 - [ ] Cameron's personal repos for additional tools
-- [ ] Taurean's cloudseeding repo for Bluesky integration
+- [ ] Taurean's cloudseeding repo for Bluesky integration (for Laura specifically)
 
 #### GitHub Actions
 - [ ] Add GitHub Actions for automated workflows
@@ -47,6 +47,28 @@ From Cameron's suggestions and Letta documentation:
 - [ ] iMessage integration possibilities
 - [ ] Webhook configurations for real-time updates
 - [ ] Letta Bot + Letta Code local setup for founders
+
+### Memory Site Enhancements - FORGOTTEN ITEMS
+- [ ] Add **Progressive Memory** display to memories dashboard
+- [ ] Add **Recall (Conversations)** - conversation history from Letta server
+- [ ] Add **Archival Memory** display
+- [ ] Add **Core Memory** display (block-based storage from Letta server)
+- [ ] Create comprehensive memory type visualization showing all 5 types
+
+### Infrastructure Fixes - FORGOTTEN ITEMS
+- [ ] Fix scheduled task script - `DontStopOnIdleApplication` parameter error
+- [ ] Create manual sync option for memories (as backup to scheduled task)
+- [ ] GitHub API automation for tidbits (without GitHub Desktop)
+
+### Visual Iteration - DEFERRED BUT TRACKED
+- [ ] Iterate on tidbits dashboard visuals (enhance beyond current stunning version)
+- [ ] Iterate on memories dashboard visuals (agent view styling)
+- [ ] Iterate on desktop app preview (further polish)
+
+### Architecture Research - LOCAL AGENTS
+- [ ] Research: Webapp interface with agents running locally on founders' machines
+- [ ] How to have Letta Code + Letta Bot run locally while webapp is remote
+- [ ] Explore "extras" for local agent deployment (Docker, Tauri, etc.)
 
 ### Future Ideas
 - [ ] Add real-time dashboard updates via webhooks
