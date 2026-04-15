@@ -25,7 +25,7 @@ description: Active todos and tasks for current work - tracking what needs to be
 - [x] Organize all repos into golaunchmate/ folder
 - [x] Create Tauri skeleton in laura repo
 
-### Research Tasks - Letta Ecosystem
+### Research Tasks - Letta Ecosystem ✅ RESEARCH COMPLETE
 From Cameron's suggestions and Letta documentation:
 
 #### Subagents for Task Delegation
@@ -33,10 +33,26 @@ From Cameron's suggestions and Letta documentation:
 - [ ] Example: "Deploy agent-xxx as an explore subagent to review authentication code"
 
 #### Repos to Explore - FROM "EXTRAS" LIST
-- [ ] https://github.com/cpfiffer/note (for Laura's personal use - not for founders)
-- [ ] https://github.com/letta-ai/letta (official Letta repo - search for installable tools)
-- [ ] Cameron's personal repos for additional tools
-- [ ] Taurean's cloudseeding repo for Bluesky integration (for Laura specifically)
+- [x] https://github.com/cpfiffer/note (14 stars, Go) - External storage for Letta agents to manage persistent notes
+- [x] https://github.com/letta-ai/letta (22k stars, Python) - Official Letta repo with installable tools
+- [x] Cameron's personal repos: central (Bluesky AI), self-expansion (knowledge graphs), comind (cognitive layer)
+- [x] Taurean's cloudseeding (TypeScript/Python) - Bridge between Bluesky and Letta agents via AT Protocol
+
+#### Official Letta Repositories Discovered
+| Repo | Stars | Purpose | Use For |
+|------|-------|---------|---------|
+| **letta** | 22,000+ | Core platform | Foundation |
+| **letta-code** | 2,100+ | CLI coding agent | Founders |
+| **lettabot** | 291 | Cross-platform messaging | Founders |
+| **vercel-ai-sdk-provider** | - | Vercel integration | Founders |
+| **n8n-nodes-letta** | 18 | n8n workflows | Automation |
+| **note** (cpfiffer) | 14 | External note storage | Laura |
+| **cloudseeding** | - | Bluesky integration | Laura |
+
+#### Key Findings
+- **Memory Types**: Core Memory (blocks), Recall (conversation history), Archival (semantic search), Progressive, Scratchpad
+- **For Founders**: letta-code, lettabot, vercel-ai-sdk-provider
+- **For Laura**: note (persistent notes), cloudseeding (Bluesky), central (autonomous AI)
 
 #### GitHub Actions
 - [ ] Add GitHub Actions for automated workflows
