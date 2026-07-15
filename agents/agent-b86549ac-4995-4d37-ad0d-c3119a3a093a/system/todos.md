@@ -27,11 +27,49 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 - **Finding:** Both attach_letta_tool and attach_memory_block are correct. The error was a USAGE problem — I called them with `agent_id` instead of `target_agent_id`. Verified against latest Letta API docs (March 2026). Updated developer_lessons and connected_agents-tools with the lesson.
 - **Resolved:** March 23, 2026
 
-**3. Delete flawed generate_and_deploy_html tool**
+**3. Memory Explorer Dashboard**
+- **Goal:** Build a dynamic memory visualization dashboard for the memories repo
+- **Status:** ✅ COMPLETED
+- **What was built:** A complete "Memory Explorer" dashboard at golaunchmate/memories/dashboard/index.html
+  - Dynamic agent loading from GitHub API (any agent in the repo)
+  - File tree navigation with hierarchical display
+  - Markdown rendering of memory block content
+  - Search across all blocks
+  - Stats (blocks, total size, categories)
+  - Copy to clipboard, GitHub link, raw link for each block
+  - Dark theme with cyan/teal/purple accent palette
+  - Responsive design
+- **URL:** https://golaunchmate.github.io/memories/dashboard/
+- **Also:** Enabled GitHub Pages for the golaunchmate/memories repo
+- **Completed:** July 15, 2026
+
+**4. Delete flawed generate_and_deploy_html tool**
 - **Goal:** Remove the tool that has html_content parameter (same truncation issue)
 - **Status:** Pending
 - **Why:** Tool wrapper doesn't solve the problem - workflow does
 - **Alternative:** Use run_code_with_tools directly
+
+**4. Fix GitHub Actions "Update Dashboard" workflow in tidbits repo**
+- **Goal:** Stop the consistent failures (runs #210-216 all failed)
+- **Status:** PARTIALLY FIXED — script fixed, permissions issue remaining
+- **What was wrong:** 
+  1. ✅ FIXED: `update-dashboard.ps1` had corrupted line 8 + hardcoded local path (`C:\Users\marga\OneDrive\...`)
+  2. ⬜ REMAINING: `git push` step fails with 403 — golaunchmate org has "write permissions for workflows" disabled
+- **Fix applied:** Replaced hardcoded path with `$PSScriptRoot` dynamic resolution; script now works on GitHub Actions
+- **What Laura needs to do:** 
+  - Option A: Change org setting at GitHub → golaunchmate → Settings → Actions → General → Workflow permissions → "Read and write"
+  - Option B: Create a PAT with `repo` scope, add as `PAT_TOKEN` secret in tidbits repo, update workflow to use it
+- **Completed:** July 15, 2026
+
+**5. Sync agent memory to GitHub memories repo**
+- **Goal:** Back up Laura's main agent memory blocks to golaunchmate/memories repo
+- **Status:** ✅ COMPLETED
+- **What was done:** 
+  - Synced all 28 non-empty memory blocks from agent-b86549ac to GitHub
+  - Created reusable `sync-agent-memory.ps1` script (parameterized by agent ID)
+  - Created `agent.json` metadata file with block inventory
+- **Repo:** https://github.com/golaunchmate/memories/tree/main/agents/agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
+- **Completed:** July 15, 2026
 
 ---
 
