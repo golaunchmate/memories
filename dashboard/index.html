@@ -204,6 +204,9 @@
         .meta-tag.size { background: rgba(6, 182, 212, 0.1); color: var(--accent-cyan); border: 1px solid rgba(6, 182, 212, 0.2); }
         .meta-tag.type { background: rgba(167, 139, 250, 0.1); color: var(--accent-purple); border: 1px solid rgba(167, 139, 250, 0.2); }
         .meta-tag.desc { background: rgba(20, 184, 166, 0.1); color: var(--accent-teal); border: 1px solid rgba(20, 184, 166, 0.2); }
+        .meta-tag.updated { background: rgba(245, 158, 11, 0.1); color: var(--accent-amber); border: 1px solid rgba(245, 158, 11, 0.2); }
+        .meta-tag.updated.loading-meta { opacity: 0.5; }
+        .tree-item .tree-date { font-size: 0.6rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; margin-left: 0.3rem; }
 
         /* === MARKDOWN CONTENT === */
         .markdown-body {
@@ -580,6 +583,41 @@
             treeEl.innerHTML = html;
         }
 
+        // === FETCH LAST UPDATED ===
+        async function fetchLastUpdated(path) {
+            try {
+                const resp = await fetch(`${API_BASE}/commits?path=${encodeURIComponent(path)}&per_page=1`);
+                const commits = await resp.json();
+                if (commits && commits.length > 0) {
+                    const dateStr = commits[0].commit.committer.date;
+                    const date = new Date(dateStr);
+                    // Format in viewer's local timezone
+                    const now = new Date();
+                    const diffMs = now - date;
+                    const diffMin = Math.floor(diffMs / 60000);
+                    const diffHr = Math.floor(diffMin / 60);
+                    const diffDay = Math.floor(diffHr / 24);
+
+                    let relative;
+                    if (diffMin < 1) relative = 'just now';
+                    else if (diffMin < 60) relative = `${diffMin}m ago`;
+                    else if (diffHr < 24) relative = `${diffHr}h ago`;
+                    else if (diffDay < 7) relative = `${diffDay}d ago`;
+                    else relative = date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: date.getFullYear() === now.getFullYear() ? undefined : 'numeric' });
+
+                    const fullDate = date.toLocaleString(undefined, {
+                        weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+                        hour: '2-digit', minute: '2-digit'
+                    });
+
+                    return { relative, fullDate, iso: dateStr };
+                }
+            } catch (e) {
+                console.error('Failed to fetch commit date:', e);
+            }
+            return null;
+        }
+
         // === LOAD BLOCK CONTENT ===
         async function loadBlock(path, url, name, size) {
             // Update active state
@@ -635,9 +673,22 @@
                         <span class="meta-tag size">📊 ${formatSize(size)}</span>
                         <span class="meta-tag type">📝 ${name}</span>
                         ${description ? `<span class="meta-tag desc">💡 ${description}</span>` : ''}
+                        <span class="meta-tag updated loading-meta" id="updatedTag">⏳ Loading...</span>
                     </div>
                     <div class="markdown-body" id="markdownBody">${rendered}</div>
                 `;
+
+                // Fetch last updated date (async, non-blocking)
+                fetchLastUpdated(path).then(updated => {
+                    const tag = document.getElementById('updatedTag');
+                    if (tag && updated) {
+                        tag.classList.remove('loading-meta');
+                        tag.textContent = `🕐 ${updated.relative}`;
+                        tag.title = updated.fullDate;
+                    } else if (tag) {
+                        tag.style.display = 'none';
+                    }
+                });
 
                 // Store raw content for copy
                 window._rawContent = text;
