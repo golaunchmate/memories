@@ -63,6 +63,14 @@ description: Stores GitHub credentials and repository information for automated 
 - Folders: `/` (root)
 - HTML: team-jan21-tidbits-infrastructure.html, team-meeting-2026-01-21.html
 
+### **14. memories** (memory sync + visualization)
+- Folders: `/agents/agent-b86549ac-*/system/`, `/dashboard/`
+- Synced memory blocks for agent-b86549ac (28 non-empty blocks as markdown files)
+- Memory Explorer Dashboard at `/dashboard/index.html` — dynamic visualization of any agent's memory blocks
+- URL: https://golaunchmate.github.io/memories/dashboard/
+- Sync script: `sync-agent-memory.ps1` (reusable, syncs ANY agent via Letta API)
+- agent.json metadata file with block inventory per agent
+
 **Default Branch:** main
 
 **Usage Notes:**

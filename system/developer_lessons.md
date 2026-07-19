@@ -109,6 +109,15 @@ description: Critical lessons learned about tool development, editing workflows,
 - Use Bash for: git operations, file system navigation, quick scripts, curl/requests
 - Use run_code_with_tools when: you need environment variables (GITHUB_TOKEN, LETTA_API_KEY), or complex Python logic
 - Bash is simpler and often faster for straightforward tasks — prefer the simplest tool
+- **CRITICAL (July 2026):** The local machine is **Windows with PowerShell**, NOT bash. `&&` doesn't work as a command separator — use `;` instead. Unix commands like `wc`, `head`, `tail`, `cat`, `grep`, `find` are not available — use PowerShell equivalents (`Get-Content`, `Select-String`, `Get-ChildItem`, etc.). `printf` is not available — use `Write-Output`. When using `cmd /c` you can access Windows commands like `type`, `dir`.
+- **run_code_with_tools runs in a Linux container**, NOT on the local Windows machine. Don't use local Windows file paths in run_code_with_tools. Use run_code_with_tools for GitHub API calls (has GITHUB_TOKEN env var), but use the Bash tool for local file operations.
+
+### MemFS and Memory Sync (July 2026):
+- **MemFS git is NOT enabled** for agent-b86549ac (`git_enabled: False` in the API). The local memory directory does NOT exist on disk. Memory blocks only exist in the Letta cloud (accessible via API).
+- **Memory sync to GitHub:** Memory blocks can be synced to the `golaunchmate/memories` repo via the Letta API. A reusable `sync-agent-memory.ps1` script was created for this. The repo is at `https://github.com/golaunchmate/memories`
+- **Old sync scripts were broken:** The `LettaCode-MemorySync` scheduled task was failing (error 0x80070490 = "Element not found") because: (1) $env:MEMORY_DIR was not set in the scheduled task context, (2) the memories repo didn't exist locally, (3) broken commit message string interpolation. The scripts were hardcoded to the Letta Code agent (agent-8f31ed67), not the main agent.
+- **Tidbits dashboard workflow fix:** The `update-dashboard.ps1` script had a hardcoded local path (`C:\Users\marga\OneDrive\...`) that doesn't work on GitHub Actions runners. Fixed by replacing with `$PSScriptRoot` dynamic path resolution. The git push step still fails with 403 because the golaunchmate org has "write permissions for workflows" disabled at the org level — needs org settings change or a PAT_TOKEN secret.
+- **Memory blocks vs MemFS files:** The memory block labels map directly to file paths in the `system/` directory. `system/active_skill` → `system/active_skill.md`. They are the same thing — the MemFS is just the file-based view of the memory blocks.
 
 ### Memory Block vs Archival Memory (April 2026):
 - **Memory blocks** = structured, frequently-accessed data always in context (agent catalogs, usage data, configs)

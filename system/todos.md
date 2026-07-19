@@ -30,6 +30,39 @@ description: Active to-dos, current tasks, and things currently working on
 - **Why:** Tool wrapper doesn't solve the problem - workflow does
 - **Alternative:** Use run_code_with_tools directly
 
+**4. Memory Explorer Dashboard**
+- **Goal:** Build a dynamic memory visualization dashboard for the memories repo
+- **Status:** ✅ COMPLETED (July 15, 2026)
+- **What was built:** A complete "Memory Explorer" dashboard at golaunchmate/memories/dashboard/index.html
+  - Dynamic agent loading from the GitHub repo
+  - File tree + markdown rendering
+  - Last-updated timestamps via GitHub API
+  - URL: https://golaunchmate.github.io/memories/dashboard/
+
+**5. Tidbits Dashboard Workflow Fix**
+- **Goal:** Fix failing GitHub Actions "Update Dashboard" workflow in golaunchmate/tidbits repo
+- **Status:** Partially fixed (July 15, 2026)
+- **Script fix done:** Replaced hardcoded local path with $PSScriptRoot dynamic resolution
+- **Remaining:** git push step fails with 403 — golaunchmate org has "write permissions for workflows" disabled. Need org settings change or PAT_TOKEN secret.
+
+**6. Memory Sync to GitHub**
+- **Goal:** Sync agent memory blocks to golaunchmate/memories repo
+- **Status:** ✅ COMPLETED (July 15, 2026)
+- **What was done:** Synced all 28 non-empty memory blocks, created agent.json metadata, created reusable sync-agent-memory.ps1 script
+- **Note:** MemFS git is NOT enabled for this agent. Sync must be done via Letta API.
+- **Next step:** Set up GitHub Action with cron + LETTA_API_KEY for automatic periodic sync
+
+**7. Discord Route Consolidator**
+- **Goal:** Consolidate all Discord routes into one conversation to prevent conversation sprawl
+- **Status:** ✅ COMPLETED (July 2026)
+- **What was built:** Script with file watcher, auto-deletion of stale conversations, message preservation, self-restart wrapper, VBS wrapper in Windows Startup folder
+- **Unified conversation:** conv-f49b5024-95c2-4469-b7eb-919b0ecd9260
+
+**8. Discord Routing — Exclude agent-300f6e26**
+- **Goal:** Exclude AIC Agent (agent-300f6e26) from this agent's Discord conversation
+- **Status:** Pending (July 19, 2026)
+- **Plan:** Disable Route 2 in routing.yaml (set enabled: false), later set up separate Discord conversation for agent-300f6e26
+
 ---
 
 ### 📋 BACKLOG:
