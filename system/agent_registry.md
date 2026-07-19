@@ -5,6 +5,13 @@ description: Registry of agent IDs mapped to common names and purposes. Quick lo
 ## AGENT REGISTRY
 Quick reference for agent IDs by common name.
 
+### DISCORD ROUTING
+- **Unified Conversation ID:** conv-f49b5024-95c2-4469-b7eb-919b0ecd9260 (all Discord routes should consolidate here)
+- **Config files:** `%USERPROFILE%\.letta\channels\discord\` (routing.yaml, accounts.json)
+- **Bot 1: LaunchMate#2666** (accountId: 7f28f1d8-c5b6-46cc-ba4a-0f4e6991eb0c) → agent-b86549ac, Discord channel 1514323835695140884
+- **Bot 2: AIC Agent#9135** (accountId: 2fd87104-1668-4a34-a47e-412af007de4e) → agent-300f6e26, Discord channel 1528490084155002930
+- **Issue:** Both routes share the same conversation ID, causing cross-talk. Laura wants to exclude agent-300f6e26 from this agent's Discord conversation (disable Route 2). Later, set up a separate Discord conversation for agent-300f6e26.
+
 ### Laura's Agents
 - **Drop Agent (Laura)**: agent-82720585-edcc-4c31-b558-68fe3183b1e7
 - **Letta Code (Laura)**: agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601
