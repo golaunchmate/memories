@@ -16,4 +16,4 @@ See [[system/launchmate/gotchas]] for full gotchas list. Key rules:
 9. **Memory management**: Never let blocks compact due to size — use `memory_update_size` or move to reference/.
 10. **Bash vs code**: Use Bash for simple tasks, `run_code_with_tools` when you need env vars or complex Python.
 11. **Windows/PowerShell**: Local machine is Windows. `&&` doesn't work — use `;`. Unix commands unavailable — use PowerShell cmdlets. `run_code_with_tools` runs in Linux container, not local.
-12. **MemFS**: Memory blocks = MemFS files in `system/` directory. MemFS git is NOT enabled for this agent — blocks exist in Letta cloud only.
+12. **MemFS**: Memory blocks = MemFS files in `system/` directory. MemFS git IS enabled — changes are committed to the MemFS git repo. Files in `system/` are in-context; files in `reference/` are progressive disclosure (loaded on demand via `[[path]]` links). Some memory blocks (e.g., `shared_leaderboard`) are read-only and managed by the Letta server — they cannot be moved or deleted via filesystem operations.
