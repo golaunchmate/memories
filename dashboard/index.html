@@ -45,6 +45,66 @@
         .bg-glow::before { content: ''; position: absolute; top: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%); border-radius: 50%; }
         .bg-glow::after { content: ''; position: absolute; bottom: -10%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(167, 139, 250, 0.06) 0%, transparent 70%); border-radius: 50%; }
 
+        /* === AIC AGENT WARNING BANNER === */
+        .aic-warning-banner {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(244, 63, 94, 0.08));
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            border-radius: var(--radius-sm);
+            padding: 0.75rem 1rem;
+            margin: 0 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent-rose);
+        }
+        .aic-warning-banner .warning-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .aic-warning-banner strong {
+            color: var(--accent-rose);
+        }
+        .aic-warning-banner .warning-text {
+            color: var(--text-secondary);
+        }
+        /* Red-themed content area for AIC agent */
+        .content.aic-theme {
+            background: linear-gradient(180deg, rgba(244, 63, 94, 0.03) 0%, transparent 30%);
+        }
+        .content.aic-theme .content-header {
+            border-bottom-color: rgba(244, 63, 94, 0.15);
+        }
+        .content.aic-theme .block-meta .meta-tag.size {
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--accent-rose);
+            border-color: rgba(244, 63, 94, 0.2);
+        }
+        /* Red-themed sidebar for AIC agent */
+        .sidebar.aic-theme {
+            border-right-color: rgba(244, 63, 94, 0.15);
+        }
+        .sidebar.aic-theme .sidebar-header {
+            border-bottom-color: rgba(244, 63, 94, 0.15);
+        }
+        .sidebar.aic-theme .stat-pill-value {
+            color: var(--accent-rose);
+        }
+        .sidebar.aic-theme .tree-item.active {
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--accent-rose);
+        }
+        /* AIC badge in dropdown */
+        .agent-option.aic-agent {
+            border-left: 3px solid var(--accent-rose);
+        }
+        .agent-option.aic-agent .agent-option-name::after {
+            content: ' ⚠️ External';
+            font-size: 0.65rem;
+            color: var(--accent-rose);
+            font-weight: 400;
+        }
+
         /* === HEADER === */
         .header {
             position: relative; z-index: 100;
@@ -371,6 +431,7 @@
         const API_BASE = 'https://api.github.com/repos/golaunchmate/memories';
         const RAW_BASE = 'https://raw.githubusercontent.com/golaunchmate/memories/main';
 
+        const AIC_AGENT_ID = 'agent-300f6e26-ce14-4baa-b116-a333f335de43';
         let currentAgent = null;
         let agentData = {};
         let allBlocks = [];
@@ -417,12 +478,14 @@
                             }
                         } catch (e) {}
 
+                        const isAIC = agentId === AIC_AGENT_ID;
                         agents.push({
                             id: agentId,
                             name: agentName,
                             description: agentDesc,
                             fileCount: agentFiles.length,
-                            files: agentFiles
+                            files: agentFiles,
+                            isAIC: isAIC
                         });
                     }
                 }
@@ -433,10 +496,10 @@
                 // Render dropdown
                 const dropdown = document.getElementById('agentDropdown');
                 dropdown.innerHTML = agents.map(a => `
-                    <div class="agent-option" onclick="selectAgent('${a.id}')">
+                    <div class="agent-option${a.isAIC ? ' aic-agent' : ''}" onclick="selectAgent('${a.id}')">
                         <div class="agent-option-name">${a.name}</div>
                         <div class="agent-option-id">${a.id}</div>
-                        <div class="agent-option-stats">${a.fileCount} memory blocks</div>
+                        <div class="agent-option-stats">${a.fileCount} memory blocks${a.isAIC ? ' · SDSU AI Club' : ''}</div>
                     </div>
                 `).join('');
 
@@ -468,6 +531,18 @@
 
         async function selectAgent(agentId) {
             currentAgent = agentId;
+            const isAIC = agentId === AIC_AGENT_ID;
+
+            // Toggle AIC red theme
+            const sidebar = document.querySelector('.sidebar');
+            const contentArea = document.querySelector('.content');
+            if (isAIC) {
+                sidebar.classList.add('aic-theme');
+                contentArea.classList.add('aic-theme');
+            } else {
+                sidebar.classList.remove('aic-theme');
+                contentArea.classList.remove('aic-theme');
+            }
 
             // Update UI
             document.getElementById('agentBtn').classList.remove('open');
@@ -493,7 +568,8 @@
         // === LOAD AGENT TREE ===
         async function loadAgentTree(agentId) {
             const treeEl = document.getElementById('fileTree');
-            treeEl.innerHTML = '<div class="loading"><div class="spinner"></div>Loading memory blocks...</div>';
+            const isAIC = agentId === AIC_AGENT_ID;
+            treeEl.innerHTML = (isAIC ? `<div class="aic-warning-banner"><span class="warning-icon">⚠️</span><span><strong>External Agent</strong> <span class="warning-text">— This agent serves the SDSU AI Club, not the LaunchMate ecosystem.</span></span></div>` : '') + '<div class="loading"><div class="spinner"></div>Loading memory blocks...</div>';
 
             try {
                 const response = await fetch(`${API_BASE}/git/trees/main?recursive=1`);
