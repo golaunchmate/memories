@@ -1,25 +1,11 @@
 {
-  "agent_id": "agent-82720585-edcc-4c31-b558-68fe3183b1e7",
-  "agent_name": "Drop Agent (Laura)",
-  "synced_at": "2026-07-22T17:50:33Z",
-  "block_count": 3,
-  "blocks": [
-    {
-      "label": "system/persona",
-      "limit": 5000,
-      "used": 2000
-    },
-    {
-      "label": "system/human",
-      "limit": 5000,
-      "used": 1306
-    },
-    {
-      "label": "system/agent_registry",
-      "limit": 100000,
-      "used": 3277
-    }
-  ],
-  "archival_passage_count": 7,
-  "memfs_note": "MemFS files API is deprecated. MemFS sync requires local filesystem walk via sync script."
+    "block_count":  0,
+    "synced_at":  "2026-07-22T19:58:58Z",
+    "archival_passage_count":  0,
+    "blocks":  [
+
+               ],
+    "agent_name":  "Drop Agent",
+    "memfs_file_count":  4,
+    "agent_id":  "agent-82720585-edcc-4c31-b558-68fe3183b1e7"
 }
