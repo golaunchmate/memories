@@ -1,6 +1,9 @@
 ---
 description: Cohort dates, milestones, Demo Day, weekly curriculum, frameworks/vocabulary for the Launchpad program
+limit: 10000
+agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 ---
+
 ## LAUNCHPAD PROGRAM CONTEXT
 
 **Cohort Information:**
