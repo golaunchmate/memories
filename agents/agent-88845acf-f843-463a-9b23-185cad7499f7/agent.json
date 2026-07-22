@@ -1,0 +1,38 @@
+{
+  "agent_id": "agent-88845acf-f843-463a-9b23-185cad7499f7",
+  "agent_name": "lens-Transcribe-one-on-one ",
+  "synced_at": "2026-07-22T17:37:41Z",
+  "block_count": 6,
+  "blocks": [
+    {
+      "label": "mentor_profiles",
+      "limit": 15000,
+      "used": 3282
+    },
+    {
+      "label": "founder_context",
+      "limit": 30000,
+      "used": 22479
+    },
+    {
+      "label": "persona",
+      "limit": 5000,
+      "used": 3431
+    },
+    {
+      "label": "human",
+      "limit": 5000,
+      "used": 69
+    },
+    {
+      "label": "launchpad_program",
+      "limit": 10000,
+      "used": 685
+    },
+    {
+      "label": "drop_agent_routing",
+      "limit": 15000,
+      "used": 1924
+    }
+  ]
+}
