@@ -448,6 +448,7 @@
                     <div class="welcome" style="padding: 1rem;">
                         <div class="welcome-icon" style="font-size: 1.5rem;">👈</div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">Select an agent to browse memory</div>
+                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.1</div>
                     </div>
                 </div>
             </aside>
@@ -487,6 +488,7 @@
 
     <script>
         // === CONFIG ===
+        const DASHBOARD_VERSION = 'v2.1'; // Change to bust cache
         const REPO_OWNER = 'golaunchmate';
         const REPO_NAME = 'memories';
         const API_BASE = 'https://api.github.com/repos/golaunchmate/memories';
@@ -1024,7 +1026,17 @@
             return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
         }
 
+        // === GLOBAL ERROR HANDLER ===
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e.error || e.message);
+            const treeEl = document.getElementById('fileTree');
+            if (treeEl && treeEl.querySelector('.spinner')) {
+                treeEl.innerHTML = `<div class="error"><div class="error-icon">⚠️</div>JavaScript error: ${e.message || 'Unknown error'}<br><span style="font-size:0.7rem;color:var(--text-muted);margin-top:0.5rem;display:block;">Dashboard ${DASHBOARD_VERSION} — check console for details</span></div>`;
+            }
+        });
+
         // === START ===
+        console.log(`Dashboard ${DASHBOARD_VERSION} starting...`);
         init();
     </script>
 </body>
