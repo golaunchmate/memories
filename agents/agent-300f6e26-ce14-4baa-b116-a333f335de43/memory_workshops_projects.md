@@ -1,6 +1,9 @@
 ---
 description: Workshop and project ideas for SDSU AI Club - brainstorming, planned events, past events, and feedback.
+limit: 20000
+agent_id: agent-300f6e26-ce14-4baa-b116-a333f335de43
 ---
+
 SDSU AI Club Workshops & Projects
 
 === IDEAS (Brainstorming) ===
