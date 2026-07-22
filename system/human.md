@@ -17,14 +17,14 @@ The user's user_id is: user_2x8sTMg0Rq6MPmtxpONLBRwOPYX
 
 **LaunchMate team**: Craig Lauer (founder/mentor), Michael Hayes (main technical contributor), Laura Wetherhold (agent infrastructure), Paige Pucher (UI/design). Stakeholders: Erica (program manager), Jordyn (community manager).
 
-**Current focus areas** (July 2026):
-1. Erica-summarizer improvements (19 specific teams, one section per team)
-2. Drops architecture (transcript → drop agent → artifact delivery pipeline)
-3. Dashboard improvements (tidbits visualization)
-4. Memory sync automation (agent memory ↔ GitHub)
-5. AIC Club Discord integration — AIC agent (`agent-300f6e26`) has its own Discord bot account with 4 routes. Consolidation is disabled; using strict channel gating instead.
-
-**Erica-summarizer**: Erica wants one section per team (not individual breakouts) for 19 specific teams: Fit Me, kelpii (Nourish), Second Course, Redtrieve, Academic Advisor.AI, Her Health AI, Wayvlo, Preferred Valet Parking, ReadyPlan, The T-Squeeze, TransferTrack, ASAICHI, CRAM, Foot Kinetics, Protocol Grip Trainer, UniExchange, SipSecure, Her Sports San Diego, Connect Alt.
+**Current focus areas** (as of July 22, 2026):
+1. **MemFS + memory sync** — MemFS is now fully working (git-backed memory filesystem). Sync script updated to push all 3 layers (core blocks, archival memory, MemFS files) to `golaunchmate/memories` GitHub repo. Conversation history excluded as overkill.
+2. **Drops architecture** — Pipeline validated twice (May 26 & 27, 2026). Drop Agent (`agent-82720585`) dispatches drops, founder agent delivers conversationationally. #drops Discord channel (`1506865147501871275`) is managed by the Drop Agent via webhook. Laura is setting up MemFS on the Drop Agent (July 22).
+3. **Discord channel gating** — Consolidator script abandoned. Agent now lives in open channel `1514323670628040835` permanently (not thread-based). Strict channel gating approach adopted.
+4. **Chatter concept** — Auto-creating group chats from transcripts with automatic syncing. Still in exploration phase.
+5. **LaunchMate Next.js app** — Architecture explored (July 2026). Tech stack: Next.js 15, Letta AI, Clerk auth, Supabase, Tailwind v4, MUI, Shadcn UI, QStash.
+6. **AIC Club Discord integration** — AIC agent (`agent-300f6e26`) has its own Discord bot account. Consolidation disabled; using strict channel gating instead.
+7. **Erica-summarizer** — Erica wants one section per team (not individual breakouts) for 19 specific teams: Fit Me, kelpii (Nourish), Second Course, Redtrieve, Academic Advisor.AI, Her Health AI, Wayvlo, Preferred Valet Parking, ReadyPlan, The T-Squeeze, TransferTrack, ASAICHI, CRAM, Foot Kinetics, Protocol Grip Trainer, UniExchange, SipSecure, Her Sports San Diego, Connect Alt.
 
 ## Communication Preferences
 

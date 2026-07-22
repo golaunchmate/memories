@@ -32,6 +32,7 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - **Routing config**: `routing.yaml` and `accounts.json` in `.letta` directory manage Discord-to-agent routing. Letta Code has a built-in file watcher that picks up changes automatically.
 - **Two Discord bot accounts**: LaunchMate#2666 (this agent, `agent-b86549ac`) and AIC Club bot (`agent-300f6e26`). Each has separate routes.
 - **Strict channel gating** (adopted July 2026): Instead of consolidator scripts, control conversation sprawl by limiting open channels and disabling auto_thread_on_mention. Currently only channel `1514323670628040835` is open for this agent.
+- **#drops channel** (`1506865147501871275`): Managed by the Drop Agent (`agent-82720585`), NOT the founder agent. Drop Agent posts drop notifications here via webhook. Founder agent delivers drops conversationally to the user.
 - **Consolidator script ABANDONED**: `discord-route-consolidator-v2.py` was killed and VBS startup wrapper removed. Critical flaw: it deleted conversations mid-response, causing "convo doesn't exist" errors. Do NOT revive this approach.
 - **Before claiming something doesn't exist**: Search conversation history first. Laura had to remind the agent about the consolidator script it had previously built.
 
@@ -51,3 +52,8 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - Prefers concise messages in Discord contexts
 - Gives direct, actionable feedback — implement corrections immediately
 - Gets frustrated when features disappear during redesigns
+
+### Sharing "Current" Work Status
+- **Before telling others what Laura is working on**: Search conversation history first with `conversation_search` — the "Current focus areas" in memory can be stale/outdated
+- Laura corrected the agent on July 22, 2026 when it shared outdated focus areas with Craig on Discord ("this is old!!")
+- The `human.md` focus areas list is a snapshot, not a live feed — always verify with recent conversation history before sharing

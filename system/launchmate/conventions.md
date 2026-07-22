@@ -37,8 +37,22 @@ description: Key LaunchMate conventions and patterns for quick reference
 - **Consolidator script abandoned**: Had critical flaw — deleted conversations mid-response. Do NOT revive.
 - **Current open channel**: `1514323670628040835` only (as of July 2026)
 
+### Memory Sync to GitHub
+- **Repo**: `golaunchmate/memories` (single repo for all agent memory layers)
+- **Script**: `sync-agent-memory.ps1` (local, on Laura's machine)
+- **Three layers synced**: (1) Core memory blocks via Letta API `/v1/agents/{id}/core-memory`, (2) Archival memory via `/v1/agents/{id}/archival-memory`, (3) MemFS files walked from local `$MEMORY_DIR` directory
+- **Not synced**: Conversation history (4986+ messages — overkill, already distilled via compaction)
+- **Letta memory types** (5 total): core blocks, archival/passages, files (deprecated), conversation history, external RAG (not used)
+
+### Drops Discord Channel
+- **#drops channel ID**: `1506865147501871275`
+- **Managed by**: Drop Agent (`agent-82720585-edcc-4c31-b558-68fe3183b1e7`) via webhook
+- **Architecture**: Drop Agent dispatches + posts to #drops channel; founder agent delivers drops conversationally to user
+- **Drop Agent MemFS**: Being set up (July 22, 2026) — Laura ran `/init` on it
+
 ### Memory Management
 - **system/** = always in context (durable knowledge, identity, conventions)
 - **reference/** = progressive disclosure (read on demand via [[path]] links)
 - **Archival memory** = long-term searchable (meeting notes, historical patterns, insights)
 - Never let memory blocks get compacted due to size limits — use `memory_update_size` or move to reference/
+- **Before sharing "current" work status**: Search conversation history first — the "Current focus areas" in memory can be stale
