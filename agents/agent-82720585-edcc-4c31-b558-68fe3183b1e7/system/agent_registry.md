@@ -1,6 +1,9 @@
 ---
 description: Registry of agent IDs mapped to common names and purposes. Quick lookup for referencing agents by name instead of ID.
+limit: 100000
+agent_id: agent-82720585-edcc-4c31-b558-68fe3183b1e7
 ---
+
 ## AGENT REGISTRY
 Quick reference for agent IDs by common name.
 
