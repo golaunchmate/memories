@@ -1,6 +1,9 @@
 ---
 description: Business summary, stage, blockers, experiments, goals pulled from Founder Agent for context-aware processing
+limit: 30000
+agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 ---
+
 ### Think Tank Team - Sports Recruiting Platform (LITF Track)
 - Business Summary: AI-powered soccer recruiting - "LinkedIn for sports" with FIFA-style player attributes
 - Stage: Validation/Building (MVP mockup in Lovable, testing Gemini for video analysis)
