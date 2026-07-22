@@ -1,0 +1,23 @@
+{
+  "agent_id": "agent-82720585-edcc-4c31-b558-68fe3183b1e7",
+  "agent_name": "Drop Agent (Laura)",
+  "synced_at": "2026-07-22T17:37:24Z",
+  "block_count": 3,
+  "blocks": [
+    {
+      "label": "system/persona",
+      "limit": 5000,
+      "used": 2000
+    },
+    {
+      "label": "system/human",
+      "limit": 5000,
+      "used": 1306
+    },
+    {
+      "label": "system/agent_registry",
+      "limit": 100000,
+      "used": 3277
+    }
+  ]
+}
