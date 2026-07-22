@@ -283,6 +283,7 @@
         .tree-folder-icon { color: var(--accent-amber); }
         .tree-children { margin-left: 1.2rem; overflow: hidden; }
         .tree-children.collapsed { display: none; }
+        .tree-item.tree-folder .tree-folder-icon[style*="🗄️"], .tree-item.tree-folder:has(.tree-label:contains("archival")) { color: var(--accent-purple); }
 
         /* === CONTENT AREA === */
         .content { flex: 1; overflow-y: auto; padding: 0; }
@@ -633,15 +634,26 @@
 
             try {
                 const response = await fetch(`${API_BASE}/git/trees/main?recursive=1`);
+                if (!response.ok) {
+                    throw new Error(`GitHub API returned ${response.status}: ${response.statusText}`);
+                }
                 const data = await response.json();
                 const tree = data.tree || [];
 
-                // Filter to this agent's .md files (legacy core-memory blocks)
+                // Filter to this agent's .md files (legacy core-memory blocks, excluding memfs and archival-memory)
                 const agentFiles = tree.filter(item =>
                     item.path.startsWith(`agents/${agentId}/`) &&
                     item.type === 'blob' &&
                     item.path.endsWith('.md') &&
-                    !item.path.includes('/memfs/')
+                    !item.path.includes('/memfs/') &&
+                    !item.path.includes('/archival-memory/')
+                );
+
+                // Filter archival-memory files
+                const archivalFiles = tree.filter(item =>
+                    item.path.startsWith(`agents/${agentId}/archival-memory/`) &&
+                    item.type === 'blob' &&
+                    item.path.endsWith('.md')
                 );
 
                 // Filter MemFS files (under agents/{agentId}/memfs/)
@@ -670,6 +682,29 @@
                     };
                 });
 
+                // Build archival memory blocks
+                const archivalBlocks = archivalFiles.map(f => {
+                    const relPath = f.path.replace(`agents/${agentId}/`, '');
+                    const parts = relPath.split('/');
+                    const fileName = parts[parts.length - 1];
+                    const blockName = fileName.replace('.md', '');
+                    return {
+                        path: f.path,
+                        relPath: relPath,
+                        name: blockName,
+                        fileName: fileName,
+                        size: f.size || 0,
+                        sizeStr: formatSize(f.size || 0),
+                        parts: parts,
+                        url: `${RAW_BASE}/${f.path}`,
+                        githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`,
+                        isMemFS: false
+                    };
+                });
+
+                // Combine legacy + archival blocks
+                const allLegacyBlocks = [...blocks, ...archivalBlocks];
+
                 // Build MemFS file list
                 const memfsBlocks = memfsFiles.map(f => {
                     const relPath = f.path.replace(`agents/${agentId}/memfs/`, '');
@@ -690,26 +725,44 @@
                     };
                 });
 
-                allBlocks = [...blocks, ...memfsBlocks];
+                allBlocks = [...allLegacyBlocks, ...memfsBlocks];
 
                 // Update stats
                 const totalSize = allBlocks.reduce((sum, b) => sum + b.size, 0);
-                const categories = new Set(blocks.map(b => b.parts[0]));
-                document.getElementById('statBlocks').textContent = blocks.length;
+                document.getElementById('statBlocks').textContent = allLegacyBlocks.length;
                 document.getElementById('statSize').textContent = formatSize(totalSize);
                 document.getElementById('statMemFS').textContent = memfsBlocks.length;
 
+                // Fetch agent.json for last-synced timestamp
+                let syncedAt = null;
+                try {
+                    const jsonResp = await fetch(`${RAW_BASE}/agents/${agentId}/agent.json`);
+                    if (jsonResp.ok) {
+                        const json = await jsonResp.json();
+                        syncedAt = json.synced_at;
+                    }
+                } catch (e) {}
+
                 // Render tree with legacy warning + MemFS section
-                renderFileTree(blocks, memfsBlocks);
+                renderFileTree(allLegacyBlocks, memfsBlocks, syncedAt);
             } catch (err) {
                 console.error('Failed to load agent tree:', err);
-                treeEl.innerHTML = '<div class="error"><div class="error-icon">⚠️</div>Failed to load memory blocks</div>';
+                treeEl.innerHTML = `<div class="error"><div class="error-icon">⚠️</div>Failed to load memory blocks<br><span style="font-size:0.7rem;color:var(--text-muted);margin-top:0.5rem;display:block;">${err.message || err}</span></div>`;
             }
         }
 
         // === RENDER FILE TREE ===
-        function renderFileTree(blocks, memfsBlocks) {
+        function renderFileTree(blocks, memfsBlocks, syncedAt) {
             const treeEl = document.getElementById('fileTree');
+
+            // Format synced timestamp
+            let syncedDisplay = '';
+            if (syncedAt) {
+                try {
+                    const d = new Date(syncedAt);
+                    syncedDisplay = d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                } catch (e) { syncedDisplay = syncedAt; }
+            }
 
             // Legacy warning banner
             let html = `<div class="legacy-warning">
@@ -726,7 +779,7 @@
             });
 
             for (const [category, items] of Object.entries(grouped).sort()) {
-                const icon = category === 'system' ? '⚙️' : '📁';
+                const icon = category === 'system' ? '⚙️' : category === 'archival-memory' ? '🗄️' : '📁';
                 html += `<div class="tree-item tree-folder" onclick="this.nextElementSibling.classList.toggle('collapsed')">
                     <span class="tree-icon tree-folder-icon">${icon}</span>
                     <span class="tree-label">${category}/</span>
@@ -754,6 +807,11 @@
                 html += `<div class="memfs-header">
                     <span>🌱 MemFS Files</span>
                     <span class="memfs-badge">${memfsBlocks.length} files</span>
+                </div>`;
+                // Local sync warning
+                html += `<div class="legacy-warning" style="margin:0 0.5rem 0.5rem;">
+                    <span class="warn-icon" style="color:var(--accent-green)">ℹ️</span>
+                    <span class="warn-text" style="font-size:0.68rem">MemFS files are synced from local disk via <code style="font-size:0.65rem">sync-agent-memory.ps1 -SyncMemFS</code>. ${syncedDisplay ? `Last synced: <strong style="color:var(--accent-green)">${syncedDisplay}</strong>` : ''} — may not reflect real-time agent state.</span>
                 </div>`;
 
                 // Group MemFS files by directory
