@@ -512,7 +512,7 @@
                     <div class="welcome" style="padding: 1rem;">
                         <div class="welcome-icon" style="font-size: 1.5rem;">👈</div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">Select an agent to browse memory</div>
-                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.3</div>
+                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.4</div>
                     </div>
                 </div>
             </aside>
@@ -552,7 +552,7 @@
 
     <script>
         // === CONFIG ===
-        const DASHBOARD_VERSION = 'v2.3'; // Change to bust cache
+        const DASHBOARD_VERSION = 'v2.4'; // Change to bust cache
         const REPO_OWNER = 'golaunchmate';
         const REPO_NAME = 'memories';
         const API_BASE = 'https://api.github.com/repos/golaunchmate/memories';
@@ -849,6 +849,8 @@
                     syncedDisplay = d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
                 } catch (e) { syncedDisplay = syncedAt; }
             }
+
+            let html = '';
 
             // MemFS section (shown first — current memory system)
             if (memfsBlocks && memfsBlocks.length > 0) {
