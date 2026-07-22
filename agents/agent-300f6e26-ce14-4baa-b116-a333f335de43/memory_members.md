@@ -1,6 +1,9 @@
 ---
 description: SDSU AI Club member roster and data - names, majors, grade levels, interests, attendance records, and project preferences for group formation.
+limit: 20000
+agent_id: agent-300f6e26-ce14-4baa-b116-a333f335de43
 ---
+
 SDSU AI Club Member Data
 
 [Awaiting member roster data from officers]
