@@ -32,14 +32,19 @@ description: Key LaunchMate conventions and patterns for quick reference
 
 ### Discord Routing
 - **Config files**: `routing.yaml` and `accounts.json` in `.letta` directory (Letta Code has built-in file watcher)
-- **Three bot accounts**: LaunchMate#2666 (this agent, accountId `7f28f1d8`), AIC Club bot (`agent-300f6e26`, accountId `2fd87104`), Drop Agent (accountId `72c97142`), Transcript Agent (accountId `99a4f059`)
+- **Five Discord accounts** (as of July 22, 2026): LaunchMate#2666 main (this agent), LaunchMate#2666 chatter (this agent, separate account for chatter channel), AIC Club bot (`agent-300f6e26`), Drop Agent (`agent-82720585`), Transcript Agent (`agent-88845acf`)
+- **Account IDs are ephemeral**: They change when Letta Code restarts and regenerates accounts. Don't rely on specific account IDs being stable across restarts. Channel IDs are stable.
+- **Shared bot tokens**: Multiple agents can share the same Discord bot token with channel allowlisting (no `*` wildcard). Both adapters receive every Discord event, but the non-matching adapter drops messages immediately — no agent interaction, no token cost.
+- **Routes are auto-generated**: Letta Code auto-generates routes in `routing.yaml` when channels are configured through the app. Do NOT manually create routes — let the app handle it.
 - **Strict channel gating**: Limit open channels + disable auto_thread_on_mention to prevent conversation sprawl
 - **Consolidator script abandoned**: Had critical flaw — deleted conversations mid-response. Do NOT revive.
 - **Open channels** (as of July 22, 2026):
-  - My agent: `1514323670628040835` (main) + `1529527246266695922` (chatter)
+  - My agent (main): `1514323670628040835`
+  - My agent (chatter): `1529527246266695922`
   - Transcript Agent: `1529527179304763565` (transcripts)
-  - Drop Agent: none (enabled but functionally dormant — webhook only)
+  - Drop Agent: none (enabled but functionally dormant — webhook only for #drops)
   - AIC Agent: `1528473565148479651`
+- **Memories repo** (`golaunchmate/memories`): Now synced for 4 agents — founder agent, Drop Agent, AIC Agent, Transcript Agent. Each has `agent.json`, `archival-memory/`, `memfs/`, `system/` structure.
 
 ### Memory Sync to GitHub
 - **Repo**: `golaunchmate/memories` (single repo for all agent memory layers)
