@@ -32,10 +32,14 @@ description: Key LaunchMate conventions and patterns for quick reference
 
 ### Discord Routing
 - **Config files**: `routing.yaml` and `accounts.json` in `.letta` directory (Letta Code has built-in file watcher)
-- **Two bot accounts**: LaunchMate#2666 (this agent) and AIC Club bot (`agent-300f6e26`)
+- **Three bot accounts**: LaunchMate#2666 (this agent, accountId `7f28f1d8`), AIC Club bot (`agent-300f6e26`, accountId `2fd87104`), Drop Agent (accountId `72c97142`), Transcript Agent (accountId `99a4f059`)
 - **Strict channel gating**: Limit open channels + disable auto_thread_on_mention to prevent conversation sprawl
 - **Consolidator script abandoned**: Had critical flaw — deleted conversations mid-response. Do NOT revive.
-- **Current open channel**: `1514323670628040835` only (as of July 2026)
+- **Open channels** (as of July 22, 2026):
+  - My agent: `1514323670628040835` (main) + `1529527246266695922` (chatter)
+  - Transcript Agent: `1529527179304763565` (transcripts)
+  - Drop Agent: none (enabled but functionally dormant — webhook only)
+  - AIC Agent: `1528473565148479651`
 
 ### Memory Sync to GitHub
 - **Repo**: `golaunchmate/memories` (single repo for all agent memory layers)
