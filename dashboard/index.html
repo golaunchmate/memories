@@ -140,6 +140,11 @@
             color: var(--accent-rose);
             border-color: rgba(244, 63, 94, 0.2);
         }
+        .content.aic-theme .block-meta .meta-tag.type {
+            background: rgba(244, 63, 94, 0.08);
+            color: var(--accent-rose);
+            border-color: rgba(244, 63, 94, 0.15);
+        }
         /* Red-themed sidebar for AIC agent */
         .sidebar.aic-theme {
             border-right-color: rgba(244, 63, 94, 0.15);
@@ -153,6 +158,59 @@
         .sidebar.aic-theme .tree-item.active {
             background: rgba(244, 63, 94, 0.1);
             color: var(--accent-rose);
+        }
+        .sidebar.aic-theme .tree-folder-icon {
+            color: var(--accent-rose) !important;
+        }
+        .sidebar.aic-theme .memfs-header {
+            color: var(--accent-rose);
+        }
+        .sidebar.aic-theme .memfs-badge {
+            background: rgba(244, 63, 94, 0.1);
+            border-color: rgba(244, 63, 94, 0.2);
+            color: var(--accent-rose);
+        }
+        .sidebar.aic-theme .memfs-item .tree-icon {
+            color: var(--accent-rose);
+        }
+        /* Red-themed header for AIC agent */
+        .header.aic-theme {
+            border-bottom-color: rgba(244, 63, 94, 0.2);
+        }
+        .header.aic-theme .agent-dot {
+            background: var(--accent-rose);
+        }
+        .header.aic-theme .agent-select-btn {
+            border-color: rgba(244, 63, 94, 0.2);
+        }
+        .header.aic-theme .agent-select-btn:hover {
+            border-color: rgba(244, 63, 94, 0.4);
+        }
+        .header.aic-theme .agent-option.active {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+        /* AIC page-wide banner */
+        .aic-page-banner {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(244, 63, 94, 0.06));
+            border-bottom: 1px solid rgba(244, 63, 94, 0.2);
+            padding: 0.5rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.78rem;
+            color: var(--accent-rose);
+            flex-shrink: 0;
+        }
+        .aic-page-banner .warning-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .aic-page-banner strong {
+            color: var(--accent-rose);
+        }
+        .aic-page-banner .warning-text {
+            color: var(--text-secondary);
         }
         /* AIC badge in dropdown */
         .agent-option.aic-agent {
@@ -423,6 +481,12 @@
             </div>
         </header>
 
+        <!-- AIC PAGE BANNER (hidden by default, shown for AIC agent) -->
+        <div class="aic-page-banner" id="aicPageBanner" style="display:none;">
+            <span class="warning-icon">⚠️</span>
+            <span><strong>External Agent</strong> <span class="warning-text">— This agent serves the SDSU AI Club, not the LaunchMate ecosystem.</span></span>
+        </div>
+
         <!-- MAIN -->
         <div class="main">
             <!-- SIDEBAR -->
@@ -448,7 +512,7 @@
                     <div class="welcome" style="padding: 1rem;">
                         <div class="welcome-icon" style="font-size: 1.5rem;">👈</div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">Select an agent to browse memory</div>
-                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.2</div>
+                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.3</div>
                     </div>
                 </div>
             </aside>
@@ -488,7 +552,7 @@
 
     <script>
         // === CONFIG ===
-        const DASHBOARD_VERSION = 'v2.2'; // Change to bust cache
+        const DASHBOARD_VERSION = 'v2.3'; // Change to bust cache
         const REPO_OWNER = 'golaunchmate';
         const REPO_NAME = 'memories';
         const API_BASE = 'https://api.github.com/repos/golaunchmate/memories';
@@ -568,8 +632,12 @@
                     }
                 }
 
-                // Sort by name
-                agents.sort((a, b) => a.name.localeCompare(b.name));
+                // Sort by name, but always put AIC agent last
+                agents.sort((a, b) => {
+                    if (a.isAIC && !b.isAIC) return 1;
+                    if (!a.isAIC && b.isAIC) return -1;
+                    return a.name.localeCompare(b.name);
+                });
 
                 // Render dropdown
                 const dropdown = document.getElementById('agentDropdown');
@@ -611,15 +679,21 @@
             currentAgent = agentId;
             const isAIC = agentId === AIC_AGENT_ID;
 
-            // Toggle AIC red theme
+            // Toggle AIC red theme on all elements
             const sidebar = document.querySelector('.sidebar');
             const contentArea = document.querySelector('.content');
+            const header = document.querySelector('.header');
+            const aicBanner = document.getElementById('aicPageBanner');
             if (isAIC) {
                 sidebar.classList.add('aic-theme');
                 contentArea.classList.add('aic-theme');
+                header.classList.add('aic-theme');
+                aicBanner.style.display = 'flex';
             } else {
                 sidebar.classList.remove('aic-theme');
                 contentArea.classList.remove('aic-theme');
+                header.classList.remove('aic-theme');
+                aicBanner.style.display = 'none';
             }
 
             // Update UI
@@ -647,7 +721,7 @@
         async function loadAgentTree(agentId) {
             const treeEl = document.getElementById('fileTree');
             const isAIC = agentId === AIC_AGENT_ID;
-            treeEl.innerHTML = (isAIC ? `<div class="aic-warning-banner"><span class="warning-icon">⚠️</span><span><strong>External Agent</strong> <span class="warning-text">— This agent serves the SDSU AI Club, not the LaunchMate ecosystem.</span></span></div>` : '') + '<div class="loading"><div class="spinner"></div>Loading memory blocks...</div>';
+            treeEl.innerHTML = '<div class="loading"><div class="spinner"></div>Loading memory blocks...</div>';
 
             try {
                 const tree = await fetchTree();
@@ -776,46 +850,9 @@
                 } catch (e) { syncedDisplay = syncedAt; }
             }
 
-            // Legacy warning banner
-            let html = `<div class="legacy-warning">
-                <span class="warn-icon">⚠️</span>
-                <span class="warn-text"><strong>Legacy Memory Blocks</strong> — Core memory blocks are Letta's legacy memory system. <strong>MemFS</strong> (below) is the current git-backed filesystem for agent memory.</span>
-            </div>`;
-
-            // Group legacy blocks by first-level directory
-            const grouped = {};
-            blocks.forEach(b => {
-                const category = b.parts[0];
-                if (!grouped[category]) grouped[category] = [];
-                grouped[category].push(b);
-            });
-
-            for (const [category, items] of Object.entries(grouped).sort()) {
-                const icon = category === 'system' ? '⚙️' : category === 'archival-memory' ? '🗄️' : '📁';
-                html += `<div class="tree-item tree-folder" onclick="this.nextElementSibling.classList.toggle('collapsed')">
-                    <span class="tree-icon tree-folder-icon">${icon}</span>
-                    <span class="tree-label">${category}/</span>
-                    <span class="tree-size">${items.length}</span>
-                </div>`;
-                html += '<div class="tree-children">';
-
-                items.forEach(b => {
-                    const displayPath = b.relPath.replace(category + '/', '');
-                    const depth = b.parts.length - 1;
-                    const indent = '  '.repeat(Math.max(0, depth - 1));
-                    html += `<div class="tree-item" data-path="${b.path}" data-url="${b.url}" onclick="loadBlock('${b.path}', '${b.url}', '${b.name}', ${b.size})">
-                        <span class="tree-icon">📄</span>
-                        <span class="tree-label">${displayPath}</span>
-                        <span class="tree-size">${b.sizeStr}</span>
-                    </div>`;
-                });
-
-                html += '</div>';
-            }
-
-            // MemFS section
+            // MemFS section (shown first — current memory system)
             if (memfsBlocks && memfsBlocks.length > 0) {
-                html += '<div class="memfs-section">';
+                html += '<div class="memfs-section" style="border-top:none; padding-top:0; margin-top:0;">';
                 html += `<div class="memfs-header">
                     <span>🌱 MemFS Files</span>
                     <span class="memfs-badge">${memfsBlocks.length} files</span>
@@ -855,6 +892,43 @@
 
                     if (dir !== '.') html += '</div>';
                 }
+
+                html += '</div>';
+            }
+
+            // Legacy warning banner (shown after MemFS — deprecated system)
+            html += `<div class="legacy-warning" style="margin-top:0.75rem; border-top:1px solid var(--border); padding-top:0.75rem;">
+                <span class="warn-icon">⚠️</span>
+                <span class="warn-text"><strong>Legacy Memory Blocks</strong> — Core memory blocks are Letta's legacy memory system. <strong>MemFS</strong> (above) is the current git-backed filesystem for agent memory.</span>
+            </div>`;
+
+            // Group legacy blocks by first-level directory
+            const grouped = {};
+            blocks.forEach(b => {
+                const category = b.parts[0];
+                if (!grouped[category]) grouped[category] = [];
+                grouped[category].push(b);
+            });
+
+            for (const [category, items] of Object.entries(grouped).sort()) {
+                const icon = category === 'system' ? '⚙️' : category === 'archival-memory' ? '🗄️' : '📁';
+                html += `<div class="tree-item tree-folder" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                    <span class="tree-icon tree-folder-icon">${icon}</span>
+                    <span class="tree-label">${category}/</span>
+                    <span class="tree-size">${items.length}</span>
+                </div>`;
+                html += '<div class="tree-children">';
+
+                items.forEach(b => {
+                    const displayPath = b.relPath.replace(category + '/', '');
+                    const depth = b.parts.length - 1;
+                    const indent = '  '.repeat(Math.max(0, depth - 1));
+                    html += `<div class="tree-item" data-path="${b.path}" data-url="${b.url}" onclick="loadBlock('${b.path}', '${b.url}', '${b.name}', ${b.size})">
+                        <span class="tree-icon">📄</span>
+                        <span class="tree-label">${displayPath}</span>
+                        <span class="tree-size">${b.sizeStr}</span>
+                    </div>`;
+                });
 
                 html += '</div>';
             }
