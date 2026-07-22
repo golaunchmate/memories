@@ -51,6 +51,11 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - `run_code_with_tools` has GITHUB_TOKEN env var available
 - Always base64 encode content for GitHub API uploads
 
+### Memory Dashboard Rate Limiting
+- **The memory dashboard makes unauthenticated GitHub API calls** (60/hour limit from browser). If the dashboard fetches the full repo tree multiple times per page load, it quickly exhausts the rate limit, producing cryptic errors like "invalid count value: -1".
+- **Fix**: Cache the tree response from `loadAgents()` and reuse it in `loadAgentTree()` — never fetch the tree twice. Always check `response.ok` and handle 403 rate limit responses explicitly.
+- **Core-memory sync workaround**: `LETTA_API_KEY` is not available in local PowerShell, so `sync-agent-memory.ps1` can't sync core-memory blocks locally. Use `run_code_with_tools` from within the agent environment (which has `LETTA_API_KEY`) to fetch blocks via the Letta API and upload to GitHub.
+
 ### Laura's Work Style
 - She moves on from features when burnt out, even if imperfect — don't over-polish
 - Prefers detailed explanations with visible reasoning in coding contexts

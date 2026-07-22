@@ -54,9 +54,10 @@ description: Key LaunchMate conventions and patterns for quick reference
 - **Three layers synced**: (1) Core memory blocks via Letta API `/v1/agents/{id}/core-memory`, (2) Archival memory via `/v1/agents/{id}/archival-memory`, (3) MemFS files walked from local `$MEMORY_DIR` directory
 - **Not synced**: Conversation history (4986+ messages — overkill, already distilled via compaction)
 - **Letta memory types** (5 total): core blocks, archival/passages, files (deprecated), conversation history, external RAG (not used)
-- **Dashboard URL**: https://golaunchmate.github.io/memories/
-- **Dashboard features**: Legacy warning banner for core memory blocks (deprecated system), MemFS file tree section (green-themed), searchable MemFS files alongside legacy blocks
-- **LETTA_API_KEY limitation**: Not available in local PowerShell — only in the Letta agent runtime. Core-memory blocks can't be synced from local PowerShell without setting the key locally first.
+- **Dashboard URL**: https://golaunchmate.github.io/memories/dashboard/ (note: must include `/dashboard/` at the end)
+- **Dashboard features**: Legacy warning banner for core memory blocks (deprecated system), MemFS file tree section (green-themed) with last-synced timestamp and local sync warning, searchable MemFS files alongside legacy blocks, archival-memory files in separate ðŸ—"ï¸ category, tree response caching to avoid GitHub API rate limiting
+- **LETTA_API_KEY limitation**: Not available in local PowerShell — only in the Letta agent runtime. Core-memory blocks can't be synced from local PowerShell without setting the key locally first. **Workaround**: Use `run_code_with_tools` from within the agent environment to sync core-memory blocks and archival memory (it has `LETTA_API_KEY` available). Successfully used on July 22, 2026 to sync blocks for Drop Agent (3 blocks + 7 archival passages), AIC Agent (5 blocks), and Transcript Agent (6 blocks + 100 archival passages).
+- **Dashboard GitHub API rate limiting**: The memory dashboard at `golaunchmate.github.io/memories/dashboard/` makes **unauthenticated** GitHub API calls (60/hour limit from browser). Must cache the tree response — do NOT fetch the full repo tree multiple times per page load. The dashboard fetches the tree once in `loadAgents()` and reuses it for `loadAgentTree()`. Rate limit errors from GitHub produce cryptic messages like "invalid count value: -1" — always check `response.ok` and handle rate limit status explicitly.
 
 ### Drops Discord Channel
 - **#drops channel ID**: `1506865147501871275`
