@@ -1,0 +1,38 @@
+{
+  "agent_id": "agent-300f6e26-ce14-4baa-b116-a333f335de43",
+  "agent_name": "aic-agent (Laura)",
+  "synced_at": "2026-07-22T17:37:30Z",
+  "block_count": 6,
+  "blocks": [
+    {
+      "label": "assistant",
+      "limit": 5000,
+      "used": 0
+    },
+    {
+      "label": "memory_members",
+      "limit": 20000,
+      "used": 414
+    },
+    {
+      "label": "memory_workshops_projects",
+      "limit": 20000,
+      "used": 946
+    },
+    {
+      "label": "memory_persona",
+      "limit": 5000,
+      "used": 2316
+    },
+    {
+      "label": "memory_officers",
+      "limit": 20000,
+      "used": 1482
+    },
+    {
+      "label": "human",
+      "limit": 5000,
+      "used": 482
+    }
+  ]
+}
