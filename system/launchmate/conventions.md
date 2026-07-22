@@ -42,22 +42,27 @@ description: Key LaunchMate conventions and patterns for quick reference
   - My agent (main): `1514323670628040835`
   - My agent (chatter): `1529527246266695922`
   - Transcript Agent: `1529527179304763565` (transcripts)
-  - Drop Agent: none (enabled but functionally dormant — webhook only for #drops)
+  - Drop Agent: `1529546013998583966` (added July 22, 2026 — previously dormant with webhook only)
   - AIC Agent: `1528473565148479651`
 - **Memories repo** (`golaunchmate/memories`): Now synced for 4 agents — founder agent, Drop Agent, AIC Agent, Transcript Agent. Each has `agent.json`, `archival-memory/`, `memfs/`, `system/` structure.
 
 ### Memory Sync to GitHub
 - **Repo**: `golaunchmate/memories` (single repo for all agent memory layers)
+- **Local clone path**: `C:\Users\marga\OneDrive\Documents\GitHub\golaunchmate\memories`
 - **Script**: `sync-agent-memory.ps1` (local, on Laura's machine)
+- **Script flags**: `-AllAgents` (sync all 4 known agents in one run), `-SyncMemFS` (walk local MemFS dirs and upload to GitHub under `agents/{id}/memfs/`)
 - **Three layers synced**: (1) Core memory blocks via Letta API `/v1/agents/{id}/core-memory`, (2) Archival memory via `/v1/agents/{id}/archival-memory`, (3) MemFS files walked from local `$MEMORY_DIR` directory
 - **Not synced**: Conversation history (4986+ messages — overkill, already distilled via compaction)
 - **Letta memory types** (5 total): core blocks, archival/passages, files (deprecated), conversation history, external RAG (not used)
+- **Dashboard URL**: https://golaunchmate.github.io/memories/
+- **Dashboard features**: Legacy warning banner for core memory blocks (deprecated system), MemFS file tree section (green-themed), searchable MemFS files alongside legacy blocks
+- **LETTA_API_KEY limitation**: Not available in local PowerShell — only in the Letta agent runtime. Core-memory blocks can't be synced from local PowerShell without setting the key locally first.
 
 ### Drops Discord Channel
 - **#drops channel ID**: `1506865147501871275`
 - **Managed by**: Drop Agent (`agent-82720585-edcc-4c31-b558-68fe3183b1e7`) via webhook
 - **Architecture**: Drop Agent dispatches + posts to #drops channel; founder agent delivers drops conversationally to user
-- **Drop Agent MemFS**: Being set up (July 22, 2026) — Laura ran `/init` on it
+- **Drop Agent MemFS**: Set up (July 22, 2026) — `/init` successful, 4 MemFS files synced to GitHub
 
 ### Memory Management
 - **system/** = always in context (durable knowledge, identity, conventions)

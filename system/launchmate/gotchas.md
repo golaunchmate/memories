@@ -24,6 +24,7 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 
 ### Discord Communication
 - **Laura's #1 frustration**: Internal reasoning leaking to Discord as assistant messages
+- **#1 recurring failure (July 22, 2026)**: Agent produces plain assistant text instead of using MessageChannel to reply on Discord. Laura had to say "you didn't respond to my message in discord!" AGAIN. This happens especially after long work sessions. ALWAYS check: if the message came as `channel-notification source="discord"`, the FIRST action must be to reply via `MessageChannel(action="send", channel="discord", chat_id=...)`. Never respond with plain assistant text when Laura is on Discord.
 - Keep Discord messages concise, significant-only, one update per session
 - Don't post every small change — wait until tasks are complete
 - Internal monologue should stay internal, not appear as messages
@@ -43,6 +44,7 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - `&&` doesn't work in PowerShell — use `;` or separate commands
 - `2>/dev/null` doesn't work — use PowerShell equivalents
 - Unix commands (grep, find, cat) unavailable — use PowerShell cmdlets
+- **LETTA_API_KEY not in local PowerShell**: The API key is only available in the Letta agent runtime (via `run_code_with_tools`), NOT in local PowerShell sessions. Core-memory block sync via `sync-agent-memory.ps1` will skip blocks if run locally without setting the key. To sync core blocks, run from within the agent environment or set `LETTA_API_KEY` locally.
 
 ### GitHub Deployment
 - Tool parameters have ~50k char limit — use `run_code_with_tools` for large content
