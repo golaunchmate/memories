@@ -1,7 +1,7 @@
 {
   "agent_id": "agent-300f6e26-ce14-4baa-b116-a333f335de43",
   "agent_name": "aic-agent (Laura)",
-  "synced_at": "2026-07-22T17:37:30Z",
+  "synced_at": "2026-07-22T17:50:36Z",
   "block_count": 6,
   "blocks": [
     {
@@ -34,5 +34,7 @@
       "limit": 5000,
       "used": 482
     }
-  ]
+  ],
+  "archival_passage_count": 0,
+  "memfs_note": "MemFS files API is deprecated. MemFS sync requires local filesystem walk via sync script."
 }
