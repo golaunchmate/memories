@@ -1,6 +1,9 @@
 ---
 description: Information about SDSU AI Club officers - their names, roles, responsibilities, and relevant details.
+limit: 20000
+agent_id: agent-300f6e26-ce14-4baa-b116-a333f335de43
 ---
+
 SDSU AI Club Officers
 
 - Prefers to be referred to by name (Laura), not username (FluffShady)
