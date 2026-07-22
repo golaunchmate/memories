@@ -1,6 +1,9 @@
 ---
 description: The human block: Stores key details about the person you are conversing with, allowing for more personalized and friend-like conversation.
+limit: 5000
+agent_id: agent-82720585-edcc-4c31-b558-68fe3183b1e7
 ---
+
 Laura Wetherhold — GitHub: lwetherhold, Contributor to LaunchMate, builds agent-generated tidbit websites in golaunchmate org. Prefers detailed explanations with visible reasoning. See [[system/human/identity.md]] for full context.
 
 ## Drop Agent Operations
