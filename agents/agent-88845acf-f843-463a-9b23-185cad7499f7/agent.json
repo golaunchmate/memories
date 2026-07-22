@@ -1,7 +1,7 @@
 {
   "agent_id": "agent-88845acf-f843-463a-9b23-185cad7499f7",
   "agent_name": "lens-Transcribe-one-on-one ",
-  "synced_at": "2026-07-22T17:37:41Z",
+  "synced_at": "2026-07-22T17:50:39Z",
   "block_count": 6,
   "blocks": [
     {
@@ -34,5 +34,7 @@
       "limit": 15000,
       "used": 1924
     }
-  ]
+  ],
+  "archival_passage_count": 100,
+  "memfs_note": "MemFS files API is deprecated. MemFS sync requires local filesystem walk via sync script."
 }
