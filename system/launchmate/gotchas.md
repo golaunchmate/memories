@@ -28,6 +28,13 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - Don't post every small change — wait until tasks are complete
 - Internal monologue should stay internal, not appear as messages
 
+### Discord Routing & Channel Management
+- **Routing config**: `routing.yaml` and `accounts.json` in `.letta` directory manage Discord-to-agent routing. Letta Code has a built-in file watcher that picks up changes automatically.
+- **Two Discord bot accounts**: LaunchMate#2666 (this agent, `agent-b86549ac`) and AIC Club bot (`agent-300f6e26`). Each has separate routes.
+- **Strict channel gating** (adopted July 2026): Instead of consolidator scripts, control conversation sprawl by limiting open channels and disabling auto_thread_on_mention. Currently only channel `1514323670628040835` is open for this agent.
+- **Consolidator script ABANDONED**: `discord-route-consolidator-v2.py` was killed and VBS startup wrapper removed. Critical flaw: it deleted conversations mid-response, causing "convo doesn't exist" errors. Do NOT revive this approach.
+- **Before claiming something doesn't exist**: Search conversation history first. Laura had to remind the agent about the consolidator script it had previously built.
+
 ### Windows/PowerShell Environment
 - `&&` doesn't work in PowerShell — use `;` or separate commands
 - `2>/dev/null` doesn't work — use PowerShell equivalents

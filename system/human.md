@@ -22,7 +22,7 @@ The user's user_id is: user_2x8sTMg0Rq6MPmtxpONLBRwOPYX
 2. Drops architecture (transcript → drop agent → artifact delivery pipeline)
 3. Dashboard improvements (tidbits visualization)
 4. Memory sync automation (agent memory ↔ GitHub)
-5. AIC Club Discord integration
+5. AIC Club Discord integration — AIC agent (`agent-300f6e26`) has its own Discord bot account with 4 routes. Consolidation is disabled; using strict channel gating instead.
 
 **Erica-summarizer**: Erica wants one section per team (not individual breakouts) for 19 specific teams: Fit Me, kelpii (Nourish), Second Course, Redtrieve, Academic Advisor.AI, Her Health AI, Wayvlo, Preferred Valet Parking, ReadyPlan, The T-Squeeze, TransferTrack, ASAICHI, CRAM, Foot Kinetics, Protocol Grip Trainer, UniExchange, SipSecure, Her Sports San Diego, Connect Alt.
 

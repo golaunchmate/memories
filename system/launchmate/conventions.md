@@ -30,6 +30,13 @@ description: Key LaunchMate conventions and patterns for quick reference
 - **MANDATORY**: Send Discord notification after check-ins, milestones, roadblocks, deployments
 - Use `send_discord_notification` tool immediately after significant events
 
+### Discord Routing
+- **Config files**: `routing.yaml` and `accounts.json` in `.letta` directory (Letta Code has built-in file watcher)
+- **Two bot accounts**: LaunchMate#2666 (this agent) and AIC Club bot (`agent-300f6e26`)
+- **Strict channel gating**: Limit open channels + disable auto_thread_on_mention to prevent conversation sprawl
+- **Consolidator script abandoned**: Had critical flaw — deleted conversations mid-response. Do NOT revive.
+- **Current open channel**: `1514323670628040835` only (as of July 2026)
+
 ### Memory Management
 - **system/** = always in context (durable knowledge, identity, conventions)
 - **reference/** = progressive disclosure (read on demand via [[path]] links)

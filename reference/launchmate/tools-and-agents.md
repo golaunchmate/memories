@@ -98,6 +98,7 @@ Quick reference for agent IDs by common name.
 - **Drop Agent (Laura)**: agent-82720585-edcc-4c31-b558-68fe3183b1e7
 - **Letta Code (Laura)**: agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601
 - **validation-pipeline-agent**: agent-49c5c157-dd3a-45af-bafa-267dc0ceb52f
+- **AIC Agent**: agent-300f6e26 (AIC Club Discord bot, separate account from LaunchMate bot, has 4 routes across different channels)
 
 ### LaunchMate Team Agents
 - **Craig**: agent-78814a34-363c-4f29-9eb3-ee6cacafaebb
