@@ -45,6 +45,66 @@
         .bg-glow::before { content: ''; position: absolute; top: -10%; left: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%); border-radius: 50%; }
         .bg-glow::after { content: ''; position: absolute; bottom: -10%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(167, 139, 250, 0.06) 0%, transparent 70%); border-radius: 50%; }
 
+        /* === LEGACY WARNING BANNER === */
+        .legacy-warning {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.06));
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: var(--radius-sm);
+            padding: 0.6rem 0.8rem;
+            margin: 0 0.5rem 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            line-height: 1.5;
+        }
+        .legacy-warning .warn-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+        .legacy-warning .warn-text { color: var(--text-secondary); }
+        .legacy-warning .warn-text strong { color: var(--accent-amber); }
+
+        /* === MEMFS SECTION === */
+        .memfs-section {
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .memfs-header {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent-green);
+        }
+        .memfs-badge {
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 4px;
+            font-size: 0.6rem;
+            color: var(--accent-green);
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+        .memfs-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.5rem;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            font-size: 0.8rem;
+        }
+        .memfs-item:hover { background: var(--bg-hover); }
+        .memfs-item.active { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
+        .memfs-item .tree-icon { color: var(--accent-green); }
+
         /* === AIC AGENT WARNING BANNER === */
         .aic-warning-banner {
             background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(244, 63, 94, 0.08));
@@ -367,7 +427,7 @@
             <!-- SIDEBAR -->
             <aside class="sidebar">
                 <div class="sidebar-header">
-                    <div class="sidebar-title">Memory Blocks</div>
+                    <div class="sidebar-title">Memory Blocks <span style="font-size:0.6rem; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:4px; padding:0.1rem 0.35rem; color:var(--accent-amber); text-transform:none; letter-spacing:0; font-weight:500;">legacy</span></div>
                     <div class="stats-row">
                         <div class="stat-pill">
                             <div class="stat-pill-value" id="statBlocks">—</div>
@@ -378,8 +438,8 @@
                             <div class="stat-pill-label">Total Size</div>
                         </div>
                         <div class="stat-pill">
-                            <div class="stat-pill-value" id="statCategories">—</div>
-                            <div class="stat-pill-label">Categories</div>
+                            <div class="stat-pill-value" id="statMemFS" style="color:var(--accent-green)">—</div>
+                            <div class="stat-pill-label">MemFS</div>
                         </div>
                     </div>
                 </div>
@@ -576,14 +636,21 @@
                 const data = await response.json();
                 const tree = data.tree || [];
 
-                // Filter to this agent's files
+                // Filter to this agent's .md files (legacy core-memory blocks)
                 const agentFiles = tree.filter(item =>
                     item.path.startsWith(`agents/${agentId}/`) &&
                     item.type === 'blob' &&
-                    item.path.endsWith('.md')
+                    item.path.endsWith('.md') &&
+                    !item.path.includes('/memfs/')
                 );
 
-                // Build hierarchical structure
+                // Filter MemFS files (under agents/{agentId}/memfs/)
+                const memfsFiles = tree.filter(item =>
+                    item.path.startsWith(`agents/${agentId}/memfs/`) &&
+                    item.type === 'blob'
+                );
+
+                // Build hierarchical structure for legacy blocks
                 const blocks = agentFiles.map(f => {
                     const relPath = f.path.replace(`agents/${agentId}/`, '');
                     const parts = relPath.split('/');
@@ -598,21 +665,42 @@
                         sizeStr: formatSize(f.size || 0),
                         parts: parts,
                         url: `${RAW_BASE}/${f.path}`,
-                        githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`
+                        githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`,
+                        isMemFS: false
                     };
                 });
 
-                allBlocks = blocks;
+                // Build MemFS file list
+                const memfsBlocks = memfsFiles.map(f => {
+                    const relPath = f.path.replace(`agents/${agentId}/memfs/`, '');
+                    const parts = relPath.split('/');
+                    const fileName = parts[parts.length - 1];
+                    const blockName = fileName.replace(/\.(md|json|txt|yaml|yml)$/, '');
+                    return {
+                        path: f.path,
+                        relPath: 'memfs/' + relPath,
+                        name: blockName,
+                        fileName: fileName,
+                        size: f.size || 0,
+                        sizeStr: formatSize(f.size || 0),
+                        parts: parts,
+                        url: `${RAW_BASE}/${f.path}`,
+                        githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`,
+                        isMemFS: true
+                    };
+                });
+
+                allBlocks = [...blocks, ...memfsBlocks];
 
                 // Update stats
-                const totalSize = blocks.reduce((sum, b) => sum + b.size, 0);
+                const totalSize = allBlocks.reduce((sum, b) => sum + b.size, 0);
                 const categories = new Set(blocks.map(b => b.parts[0]));
                 document.getElementById('statBlocks').textContent = blocks.length;
                 document.getElementById('statSize').textContent = formatSize(totalSize);
-                document.getElementById('statCategories').textContent = categories.size;
+                document.getElementById('statMemFS').textContent = memfsBlocks.length;
 
-                // Render tree
-                renderFileTree(blocks);
+                // Render tree with legacy warning + MemFS section
+                renderFileTree(blocks, memfsBlocks);
             } catch (err) {
                 console.error('Failed to load agent tree:', err);
                 treeEl.innerHTML = '<div class="error"><div class="error-icon">⚠️</div>Failed to load memory blocks</div>';
@@ -620,18 +708,23 @@
         }
 
         // === RENDER FILE TREE ===
-        function renderFileTree(blocks) {
+        function renderFileTree(blocks, memfsBlocks) {
             const treeEl = document.getElementById('fileTree');
 
-            // Group by first-level directory
+            // Legacy warning banner
+            let html = `<div class="legacy-warning">
+                <span class="warn-icon">⚠️</span>
+                <span class="warn-text"><strong>Legacy Memory Blocks</strong> — Core memory blocks are Letta's legacy memory system. <strong>MemFS</strong> (below) is the current git-backed filesystem for agent memory.</span>
+            </div>`;
+
+            // Group legacy blocks by first-level directory
             const grouped = {};
             blocks.forEach(b => {
-                const category = b.parts[0]; // e.g., "system"
+                const category = b.parts[0];
                 if (!grouped[category]) grouped[category] = [];
                 grouped[category].push(b);
             });
 
-            let html = '';
             for (const [category, items] of Object.entries(grouped).sort()) {
                 const icon = category === 'system' ? '⚙️' : '📁';
                 html += `<div class="tree-item tree-folder" onclick="this.nextElementSibling.classList.toggle('collapsed')">
@@ -641,7 +734,6 @@
                 </div>`;
                 html += '<div class="tree-children">';
 
-                // Build sub-tree
                 items.forEach(b => {
                     const displayPath = b.relPath.replace(category + '/', '');
                     const depth = b.parts.length - 1;
@@ -652,6 +744,47 @@
                         <span class="tree-size">${b.sizeStr}</span>
                     </div>`;
                 });
+
+                html += '</div>';
+            }
+
+            // MemFS section
+            if (memfsBlocks && memfsBlocks.length > 0) {
+                html += '<div class="memfs-section">';
+                html += `<div class="memfs-header">
+                    <span>🌱 MemFS Files</span>
+                    <span class="memfs-badge">${memfsBlocks.length} files</span>
+                </div>`;
+
+                // Group MemFS files by directory
+                const memfsGrouped = {};
+                memfsBlocks.forEach(b => {
+                    const dir = b.parts.length > 1 ? b.parts.slice(0, -1).join('/') : '.';
+                    if (!memfsGrouped[dir]) memfsGrouped[dir] = [];
+                    memfsGrouped[dir].push(b);
+                });
+
+                for (const [dir, items] of Object.entries(memfsGrouped).sort()) {
+                    if (dir !== '.') {
+                        html += `<div class="tree-item tree-folder" onclick="this.nextElementSibling.classList.toggle('collapsed')">
+                            <span class="tree-icon tree-folder-icon" style="color:var(--accent-green)">📂</span>
+                            <span class="tree-label" style="color:var(--accent-green)">${dir}/</span>
+                            <span class="tree-size">${items.length}</span>
+                        </div>`;
+                        html += '<div class="tree-children">';
+                    }
+
+                    items.forEach(b => {
+                        const displayPath = b.parts.length > 1 ? b.parts[b.parts.length - 1] : b.name;
+                        html += `<div class="tree-item memfs-item" data-path="${b.path}" data-url="${b.url}" onclick="loadBlock('${b.path}', '${b.url}', '${b.name}', ${b.size})">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-label">${displayPath}</span>
+                            <span class="tree-size">${b.sizeStr}</span>
+                        </div>`;
+                    });
+
+                    if (dir !== '.') html += '</div>';
+                }
 
                 html += '</div>';
             }
