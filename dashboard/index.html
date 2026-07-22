@@ -497,6 +497,23 @@
         let agentData = {};
         let allBlocks = [];
         let currentBlock = null;
+        let cachedTree = null; // Cache tree to avoid duplicate API calls
+
+        // === FETCH TREE (cached) ===
+        async function fetchTree() {
+            if (cachedTree) return cachedTree;
+            const response = await fetch(`${API_BASE}/git/trees/main?recursive=1`);
+            if (!response.ok) {
+                const rateLimit = response.headers.get('X-RateLimit-Remaining');
+                if (response.status === 403 && rateLimit === '0') {
+                    throw new Error('GitHub API rate limit exceeded (60/hour for unauthenticated). Please wait and try again.');
+                }
+                throw new Error(`GitHub API returned ${response.status}: ${response.statusText}`);
+            }
+            const data = await response.json();
+            cachedTree = data.tree || [];
+            return cachedTree;
+        }
 
         // === INIT ===
         async function init() {
@@ -506,9 +523,7 @@
         // === LOAD AGENTS ===
         async function loadAgents() {
             try {
-                const response = await fetch(`${API_BASE}/git/trees/main?recursive=1`);
-                const data = await response.json();
-                const tree = data.tree || [];
+                const tree = await fetchTree();
 
                 // Find agent directories
                 const agentDirs = new Set();
@@ -534,7 +549,7 @@
                             const jsonResp = await fetch(`${RAW_BASE}/agents/${agentId}/agent.json`);
                             if (jsonResp.ok) {
                                 const json = await jsonResp.json();
-                                agentName = json.name || json.agent_name || agentId;
+                                agentName = json.agent_name || json.name || agentId;
                                 agentDesc = json.description || '';
                             }
                         } catch (e) {}
@@ -570,7 +585,7 @@
                 }
             } catch (err) {
                 console.error('Failed to load agents:', err);
-                document.getElementById('agentDropdown').innerHTML = '<div class="error"><div class="error-icon">⚠️</div>Failed to load agents</div>';
+                document.getElementById('agentDropdown').innerHTML = `<div class="error"><div class="error-icon">⚠️</div>Failed to load agents<br><span style="font-size:0.7rem;color:var(--text-muted);margin-top:0.5rem;display:block;">${err.message || err}</span></div>`;
             }
         }
 
@@ -633,12 +648,7 @@
             treeEl.innerHTML = (isAIC ? `<div class="aic-warning-banner"><span class="warning-icon">⚠️</span><span><strong>External Agent</strong> <span class="warning-text">— This agent serves the SDSU AI Club, not the LaunchMate ecosystem.</span></span></div>` : '') + '<div class="loading"><div class="spinner"></div>Loading memory blocks...</div>';
 
             try {
-                const response = await fetch(`${API_BASE}/git/trees/main?recursive=1`);
-                if (!response.ok) {
-                    throw new Error(`GitHub API returned ${response.status}: ${response.statusText}`);
-                }
-                const data = await response.json();
-                const tree = data.tree || [];
+                const tree = await fetchTree();
 
                 // Filter to this agent's .md files (legacy core-memory blocks, excluding memfs and archival-memory)
                 const agentFiles = tree.filter(item =>
@@ -673,8 +683,8 @@
                         relPath: relPath,
                         name: blockName,
                         fileName: fileName,
-                        size: f.size || 0,
-                        sizeStr: formatSize(f.size || 0),
+                        size: (f.size != null && f.size >= 0) ? f.size : 0,
+                        sizeStr: formatSize((f.size != null && f.size >= 0) ? f.size : 0),
                         parts: parts,
                         url: `${RAW_BASE}/${f.path}`,
                         githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`,
@@ -693,8 +703,8 @@
                         relPath: relPath,
                         name: blockName,
                         fileName: fileName,
-                        size: f.size || 0,
-                        sizeStr: formatSize(f.size || 0),
+                        size: (f.size != null && f.size >= 0) ? f.size : 0,
+                        sizeStr: formatSize((f.size != null && f.size >= 0) ? f.size : 0),
                         parts: parts,
                         url: `${RAW_BASE}/${f.path}`,
                         githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`,
@@ -716,8 +726,8 @@
                         relPath: 'memfs/' + relPath,
                         name: blockName,
                         fileName: fileName,
-                        size: f.size || 0,
-                        sizeStr: formatSize(f.size || 0),
+                        size: (f.size != null && f.size >= 0) ? f.size : 0,
+                        sizeStr: formatSize((f.size != null && f.size >= 0) ? f.size : 0),
                         parts: parts,
                         url: `${RAW_BASE}/${f.path}`,
                         githubUrl: `https://github.com/${REPO_OWNER}/${REPO_NAME}/blob/main/${f.path}`,
@@ -854,8 +864,9 @@
         async function fetchLastUpdated(path) {
             try {
                 const resp = await fetch(`${API_BASE}/commits?path=${encodeURIComponent(path)}&per_page=1`);
+                if (!resp.ok) return null;
                 const commits = await resp.json();
-                if (commits && commits.length > 0) {
+                if (Array.isArray(commits) && commits.length > 0) {
                     const dateStr = commits[0].commit.committer.date;
                     const date = new Date(dateStr);
                     // Format in viewer's local timezone
@@ -1007,6 +1018,7 @@
 
         // === UTILS ===
         function formatSize(bytes) {
+            if (bytes == null || isNaN(bytes) || bytes < 0) return '—';
             if (bytes < 1024) return bytes + 'B';
             if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + 'KB';
             return (bytes / (1024 * 1024)).toFixed(1) + 'MB';
