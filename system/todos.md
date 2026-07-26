@@ -23,6 +23,7 @@ description: Active to-dos, current tasks, and things currently working on
 - See [[reference/launchmate/forward-momentum-tasks]] for details
 
 ## RECENTLY COMPLETED
+- Activepieces → Discord notification flow (July 26, 2026) — polls Letta API every 1 min for new agent messages, posts to Discord. Key bugs fixed: variable reference, query params, cursor overwrite. Still pending: content filtering for "no response needed" messages.
 - Memory Explorer Dashboard MemFS upgrade (July 22, 2026) — legacy warnings + MemFS section + 60 files synced across 4 agents
 - MemFS fully working (July 22, 2026) — git-backed memory filesystem operational
 - Memory sync script upgraded to 3 layers (July 22, 2026) — core blocks + archival memory + MemFS files pushed to golaunchmate/memories

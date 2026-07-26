@@ -64,6 +64,15 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - Gives direct, actionable feedback Ã¢â‚¬â€ implement corrections immediately
 - Gets frustrated when features disappear during redesigns
 
+### Activepieces Gotchas
+- **Variable reference trap**: The #1 bug in Laura's Activepieces flow was referencing the Store Get step's key NAME instead of its OUTPUT value. The `after` cursor parameter was getting garbage, causing the Letta API to return all messages every run. Always reference `{{steps.step_slug.output.value}}`, not the key name.
+- **Query params vs URL string**: Variables baked into URL strings don't interpolate reliably. Use the `queryParams` field in the HTTP step for any parameter that references a variable.
+- **Router is the flow control**: Activepieces uses "Router" for conditional branching. There is no "Filter" or "Only Continue If" step (those are Zapier terms).
+- **Publish before enabling**: Changes to a flow are draft-only until you hit Publish. Enabling without publishing runs the last published version (with old bugs).
+- **Store Put + Router interaction**: If you gate Store Put behind a Router branch (e.g., `has_messages = true`), the cursor won't advance when there are no messages. Either move Store Put outside the Router, or split into two branches (one for "has messages" → Discord + Store Put, one for "no messages" → just Store Put).
+- **Cursor must advance past filtered messages**: When filtering message content (e.g., skipping "no response needed" messages), compute `last_message_id` from ALL messages, not just the filtered set. Otherwise filtered messages get re-fetched every poll.
+- **Letta connector "failed to load agents"**: The native Activepieces Letta connector's agent dropdown calls `client.agents.list()` with no limit parameter and auto-paginates through all 509 agents, causing a timeout. Use HTTP Request step with the Letta API directly instead.
+
 ### Sharing "Current" Work Status
 - **Before telling others what Laura is working on**: Search conversation history first with `conversation_search` Ã¢â‚¬â€ the "Current focus areas" in memory can be stale/outdated
 - Laura corrected the agent on July 22, 2026 when it shared outdated focus areas with Craig on Discord ("this is old!!")

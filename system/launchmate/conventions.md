@@ -24,7 +24,21 @@ description: Key LaunchMate conventions and patterns for quick reference
 ### Letta API
 - Uses **cursor-based pagination** (`after`/`before` params), NOT offset-based
 - Production endpoint: `https://api.letta.com` (not app.letta.com)
-- Messages API uses `message_type` field (not `role`): `user_message`, `assistant_message`, etc.
+- Messages API uses `message_type` field (not `role`): `user_message`, `assistant_message`, `reasoning_message`, `tool_call_message`, `tool_return_message`, `system_message`, `summary_message`, `event_message`, `approval_request_message`, `approval_response_message`, `hidden_reasoning_message`
+- **`include_return_message_types` query param**: Filters messages at the API level (e.g., `?include_return_message_types=assistant_message` returns only assistant messages). Supported on `/v1/agents/{id}/messages` endpoint.
+- **`after` cursor caveat**: The `after` parameter only works with message IDs from the SAME agent's result set. Using a cursor from a different agent/conversation causes the API to silently ignore it and return all messages.
+- **No webhook support on Letta Cloud**: `STEP_COMPLETE_WEBHOOK` requires server-level env vars (not available on Cloud). PR #2646 for event streaming webhooks was closed/never merged. Polling is the only option for Cloud users.
+- **`app.letta.com` proxies to `api.letta.com`**: The agent runtime's `LETTA_BASE_URL` is `app.letta.com`, which middleware-rewrites to `api.letta.com`. For external integrations, use `api.letta.com` directly.
+
+### Activepieces Integration
+- **Purpose**: Automation platform (like Zapier) used to poll Letta agent messages and post to Discord
+- **Flow architecture**: Schedule (1 min) → Store Get (last_msg_id) → HTTP Request (Letta API with `after` cursor + `include_return_message_types=assistant_message`) → Code step (parse, extract last ID, filter content) → Router (`has_messages` check) → Loop → Discord Send → Store Put (save new cursor)
+- **Persistent Storage (Store)**: `FLOW` scope persists across runs of the same flow; `PROJECT` scope is shared across all flows. Both persist between runs.
+- **Flow control**: Called "Router" (not "Filter" or "Only Continue If"). Creates conditional branches.
+- **Variable references**: Must reference step OUTPUT (e.g., `{{steps.store_get.output.value}}`), not the variable/key name itself. Referencing the key name passes garbage.
+- **Query params**: Use the `queryParams` field in HTTP step, NOT baked into URL string — variable interpolation doesn't work reliably in URL strings.
+- **Publishing**: Must hit Publish for changes to take effect. Enabling without publishing runs the old version.
+- **Letta connector bug**: The native Letta connector's "New Message" trigger dropdown calls `client.agents.list()` with no limit, trying to paginate through all 509 agents — causes "failed to load agents" timeout. Workaround: use HTTP Request step instead of native connector.
 
 ### Team Transparency
 - **MANDATORY**: Send Discord notification after check-ins, milestones, roadblocks, deployments
