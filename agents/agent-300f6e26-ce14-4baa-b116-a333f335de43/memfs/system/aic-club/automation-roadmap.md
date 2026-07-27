@@ -10,8 +10,8 @@ Source: Laura's plan from July 18, 2026 (officer-general channel)
 - Letta → Discord `agent` (#1463362044727267521): hourly cron (workaround for broken Activepieces Letta integration) ✅
 - Limitation: Replies not pushed in real-time; awaiting Activepieces fix or Letta webhook feature
 
-## Phase 2: Email Flow (IN PROGRESS)
-- Gmail → Letta: receive all club emails in Letta
+## Phase 2: Email Flow (WORKING — confirmed July 20, 2026)
+- Gmail → Letta: receive all club emails in Letta ✅ (not fully integrated, but all emails arrive as automated messages)
 - Email digest in `email` channel (#1464343247328641167)
 - Email digest bot set up by Aadi (July 19, 2026) — https://github.com/aiclub-sdsu/club-digest
 - Replies still won't push to Discord in real-time (same cron limitation)
