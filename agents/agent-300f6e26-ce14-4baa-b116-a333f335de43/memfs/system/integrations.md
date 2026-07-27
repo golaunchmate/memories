@@ -33,3 +33,11 @@ Last updated: July 26, 2026
 - Activepieces doesn't detect Discord threads, only main channel messages
 - Letta Code channels integration creates a persistent conversation for live Discord chat
 - Email digest bot (by Aadi, July 19, 2026) forked from https://github.com/aiclub-sdsu/club-digest
+
+## GitHub Memory Sync (set up July 27, 2026)
+- Repo: https://github.com/golaunchmate/memories
+- Local clone: `C:\Users\marga\OneDrive\Documents\GitHub\golaunchmate\memories`
+- Sync script: `sync-agent-memory.ps1` — uses GitHub API to upload MemFS files to `agents/{agentId}/memfs/`
+- Scheduled task: `LettaCode-MemorySync-AIC` — runs every 4 hours, syncs our agent's MemFS to GitHub
+- Existing task: `LettaCode-MemorySync` — syncs LaunchMate agent (agent-8f31ed67) every 4 hours
+- **TODO**: Configure cloud runs to pull FROM GitHub on startup (not yet set up — needs Letta Cloud config or startup hook)
