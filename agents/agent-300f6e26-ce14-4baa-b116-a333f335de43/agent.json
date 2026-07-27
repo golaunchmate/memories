@@ -1,40 +1,11 @@
 {
-  "agent_id": "agent-300f6e26-ce14-4baa-b116-a333f335de43",
-  "agent_name": "AIC Agent",
-  "synced_at": "2026-07-22T18:59:41Z",
-  "block_count": 6,
-  "archival_passage_count": 0,
-  "memfs_file_count": 13,
-  "blocks": [
-    {
-      "label": "assistant",
-      "limit": 5000,
-      "used": 0
-    },
-    {
-      "label": "human",
-      "limit": 5000,
-      "used": 482
-    },
-    {
-      "label": "memory_members",
-      "limit": 20000,
-      "used": 414
-    },
-    {
-      "label": "memory_officers",
-      "limit": 20000,
-      "used": 1482
-    },
-    {
-      "label": "memory_persona",
-      "limit": 5000,
-      "used": 2316
-    },
-    {
-      "label": "memory_workshops_projects",
-      "limit": 20000,
-      "used": 946
-    }
-  ]
+    "block_count":  0,
+    "synced_at":  "2026-07-27T17:28:35Z",
+    "archival_passage_count":  0,
+    "blocks":  [
+
+               ],
+    "agent_name":  "AIC Agent",
+    "memfs_file_count":  13,
+    "agent_id":  "agent-300f6e26-ce14-4baa-b116-a333f335de43"
 }
