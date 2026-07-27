@@ -43,4 +43,5 @@ description: SDSU AI Club officer roster — names, roles, responsibilities, and
 
 ## Other notes
 - Username "kis" appeared in July 2026 — not yet identified, likely a new officer or member
+- Username "Patrick" appeared in July 2026 — not yet identified as an officer. Casual chat about Cursor's UI.
 - Proactively ask officers for real names when unfamiliar usernames appear
