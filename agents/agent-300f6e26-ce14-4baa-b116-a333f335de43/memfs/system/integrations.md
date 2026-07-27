@@ -40,4 +40,14 @@ Last updated: July 26, 2026
 - Sync script: `sync-agent-memory.ps1` — uses GitHub API to upload MemFS files to `agents/{agentId}/memfs/`
 - Scheduled task: `LettaCode-MemorySync-AIC` — runs every 4 hours, syncs our agent's MemFS to GitHub
 - Existing task: `LettaCode-MemorySync` — syncs LaunchMate agent (agent-8f31ed67) every 4 hours
-- **TODO**: Configure cloud runs to pull FROM GitHub on startup (not yet set up — needs Letta Cloud config or startup hook)
+- GitHub repo is a **backup/visibility layer only** — the real sync happens through Letta Cloud's git infrastructure
+
+## Letta Cloud Memory Sync (built-in, no config needed)
+- Agent has `git-memory-enabled` tag — memory is stored in git repo in cloud object storage (GCS)
+- Git is the source of truth; PostgreSQL is a cache for fast reads
+- **Remote agents auto-pull** memfs repo on first message (PR #1546)
+- **Post-turn auto-sync** — harness commits and pushes memory changes after every turn (PR #2677)
+- Handles dirty repos, merge conflicts, and push failures gracefully
+- Memfs URL defaults to `https://api.letta.com` regardless of LETTA_BASE_URL (PR #1918)
+- When laptop is off: cloud runs pull latest from GCS, make changes, push back automatically
+- When laptop comes back on: local Letta Code pulls latest from cloud, getting offline changes
