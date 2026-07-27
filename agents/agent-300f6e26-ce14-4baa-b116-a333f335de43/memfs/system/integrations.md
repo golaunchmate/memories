@@ -3,7 +3,7 @@ description: Integration architecture: how messages flow between Discord, Gmail,
 ---
 # Integration Architecture
 
-Last updated: July 20, 2026
+Last updated: July 26, 2026
 
 ## Inbound routes (→ Letta)
 1. **agent-feedback channel → Letta** — Separate route for user feedback to the agent
@@ -12,7 +12,7 @@ Last updated: July 20, 2026
 4. **agent-live (#1528473565148479651) → Letta** — Live chat channel via Letta Code channels (set up July 19, 2026). Configured with `allowed_channels` open mode, `auto_thread_on_mention: false`. Requires Laura's laptop to be open.
 
 ## Outbound routes (Letta →)
-5. **Letta → Discord cron** — Runs on hourly schedule. As of July 20, 2026, Laura updated this to ONLY push messages from the main conversation, not niche conversations or Discord-targeted ones (to avoid double-posting/replication).
+5. **Letta → Discord cron** — Runs on hourly schedule. As of July 20, 2026, Laura updated this to ONLY push messages from the main conversation, not niche conversations or Discord-targeted ones (to avoid double-posting/replication). As of July 26, 2026, Laura added a keyword filter: messages containing "no response needed" or "no action needed" are NOT sent to the agent channel.
 
 ## Activepieces limitations (research July 20, 2026)
 - Free tier: now 10 active flows (up from 2), unlimited runs
