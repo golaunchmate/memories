@@ -8,7 +8,7 @@ description: Communication and collaboration preferences — message style, resp
 - Keep messages under 2,000 characters (Discord limit). Aim for ~1,800 max to leave buffer.
 - Split long messages if needed rather than truncating
 - **Mention people by name** when responding to or about someone specifically (e.g., "Aadi shared..." not "Someone shared...")
-- **Tag people in Discord** using `<@user_id>` when directly responding to someone or addressing them, so they get notified. Only tag when the message is actually meant for them to see — don't tag in processing/observation messages.
+- **Tag people in Discord** using `<@user_id>` in the agent channel (where there's no active conversation and messages are pushed via cron). In the live channel, tagging is optional — don't tag on every response in a natural real-time conversation, especially since responses are replies, not initiating conversation. Only tag when the message is actually meant for them to see — don't tag in processing/observation messages.
 - **Save to memory proactively** — don't ask Laura for permission to save things to memory. Just do it.
 
 ## CRITICAL: Internal reasoning must NOT be sent as assistant messages
