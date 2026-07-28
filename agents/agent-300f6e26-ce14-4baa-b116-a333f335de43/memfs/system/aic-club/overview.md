@@ -3,7 +3,7 @@ description: SDSU AI Club overview — purpose, structure, and index of related 
 ---
 # SDSU AI Club — Overview
 
-The AI Club at San Diego State University. Officers use a Discord server for communication. The agent was initialized January 21, 2026 to support club operations.
+The AI Club at San Diego State University. Founded in 2017. Officers use a Discord server for communication. The agent was initialized January 21, 2026 to support club operations.
 
 ## Club structure
 - **Officers** communicate in `officer-general` Discord channel (#976908028739723314)
