@@ -20,15 +20,6 @@ description: Active to-dos, current tasks, and things currently working on
 - [ ] Test full v2 lifecycle with real dispatch
 - [ ] Explore Chatter/ChitChat -- meeting intelligence tool using Recall.ai
 - [ ] Evaluate Granola free tier -- are summaries sufficient for agent context?
-- See [[reference/launchmate/forward-momentum-tasks]] for full project details — remaining steps**
-- [x] Drop Agent created (agent-82720585, April 29 2026)
-- [x] Drops repo created on GitHub (golaunchmate/drops)
-- [x] Pipeline validated twice (May 26 & 27 — reminder drop + briefing drop)
-- [x] #drops Discord channel created (1506865147501871275)
-- [ ] Set up Drop Agent MemFS (Laura running /init, July 22 2026)
-- [ ] Wire up #drops channel webhook to Drop Agent
-- [ ] Configure Transcript Agent to send data to Drop Agent
-- [ ] Implement scheduling logic in Drop Agent
 - See [[reference/launchmate/forward-momentum-tasks]] for full project details
 
 **3. GitHub Actions tidbits dashboard — permissions fix**
