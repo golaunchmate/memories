@@ -1,0 +1,5 @@
+﻿# Nested Letta Code agent MemFS repos (have their own .git pointing to localhost)
+agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601/
+
+# Letta internal
+.letta/
