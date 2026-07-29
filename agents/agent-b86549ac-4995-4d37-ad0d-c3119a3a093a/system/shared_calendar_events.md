@@ -1,11 +1,7 @@
 ---
-description: Shared calendar events tracker for founder tasks/deadlines with Google Calendar integration
----
----
-description: Shared calendar events tracker for founder tasks/deadlines with Google Calendar integration
-metadata:
-  last_updated: 2025-10-09
-  tracked_tasks: 0
+description: Shared memory block for tracking founder tasks/deadlines with one-click Google Calendar integration. Stores task name, deadline, and auto-generated calendar links for easy addition to founder calendars.
+limit: 20000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
 
 ## SHARED CALENDAR EVENTS TRACKER

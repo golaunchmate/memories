@@ -1,11 +1,7 @@
 ---
-description: Morsel creation instructions - horizontal presentation decks distinct from tidbits, with visual style, slide types, and deployment specs
----
----
-description: Morsel creation instructions - horizontal presentation decks distinct from tidbits, with visual style, slide types, and deployment specs
-metadata:
-  skill_type: presentation-content
-  last_updated: 2026-03-12
+description: Instructions for creating morsels - horizontal presentation decks distinct from tidbits. Includes format, content guidelines, features, and technical specs.
+limit: 20000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
 
 ## MORSELS: Horizontal Presentation Decks
@@ -123,6 +119,7 @@ Example: golaunchmate/laura/morsels/what-is-launchmate.html
 7. Impact (gradient) - Why it matters
 8. Close (gradient) - Questions/CTA
 ```
+
 
 ### CORE TECHNOLOGIES
 - **HTML/CSS/JavaScript** - Morsels are standalone HTML files with embedded styles and scripts for elegant presentations

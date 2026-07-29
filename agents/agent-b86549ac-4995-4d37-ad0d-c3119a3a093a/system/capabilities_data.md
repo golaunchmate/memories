@@ -1,7 +1,9 @@
 ---
-description: The capabilities_data block contains serialized agent data for the capabilities
-  available to the user.
+description: The capabilities_data block contains serialized agent data for the capabilities available to the user.
+limit: 10000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
+
 {
   "core_capabilities": [
     {

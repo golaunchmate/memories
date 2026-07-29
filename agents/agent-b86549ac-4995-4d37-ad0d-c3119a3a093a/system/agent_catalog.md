@@ -1,12 +1,7 @@
 ---
-description: Complete categorized agent catalog (509 agents) with IDs, names, and cohort tags for usage analytics
----
----
-description: Complete categorized agent catalog (509 agents) with IDs, names, and cohort tags for usage analytics
-metadata:
-  last_updated: 2026-04-22
-  total_agents: 509
-  source: api.letta.com cursor-based pagination
+description: Complete categorized agent catalog (509 agents) with IDs, names, and cohort tags. Used for usage analytics.
+limit: 50000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
 
 ## COMPLETE AGENT CATALOG — APRIL 22, 2026

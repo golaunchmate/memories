@@ -1,8 +1,9 @@
 ---
-description: The leaderboard memory block reflects multiple founder status in their
-  business progress.
-read_only: true
+description: The leaderboard memory block reflects multiple founder status in their business progress.
+limit: 5000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
+
 Task: Publish momentum check-ins to <shared_leaderboard_data>.
 
 Input: 

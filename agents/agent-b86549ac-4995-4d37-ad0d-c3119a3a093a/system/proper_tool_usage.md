@@ -1,6 +1,9 @@
 ---
 description: The proper tool usage block provides extra guidance on using tools.
+limit: 5000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
+
 ## INCOMING EXTERNAL AGENT MESSAGES
 
 ### JSON ENCODING FOR UI RENDERING

@@ -1,9 +1,9 @@
 ---
-description: 'The team_pulse block: Contains instructions for automatically sending
-  Discord notifications to keep teammates updated on meaningful progress without needing
-  meetings.'
-read_only: true
+description: The team_pulse block: Contains instructions for automatically sending Discord notifications to keep teammates updated on meaningful progress without needing meetings.
+limit: 5000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
+
 ## TEAM PULSE NOTIFICATION SYSTEM
 
 **PURPOSE**: Provide organic team visibility and accountability by sending Discord notifications when meaningful events occur, allowing teammates to stay updated without scheduled meetings.

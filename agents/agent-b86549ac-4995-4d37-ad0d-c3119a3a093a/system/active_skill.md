@@ -1,6 +1,9 @@
 ---
 description: Currently loaded skill instructions - swapped based on context/phase
+limit: 10000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
+
 TIDBIT CREATION & PUBLISHING SKILL
 
 === ACTIVATION ===

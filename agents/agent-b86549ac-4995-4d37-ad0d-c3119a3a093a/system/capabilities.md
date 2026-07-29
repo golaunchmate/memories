@@ -1,8 +1,9 @@
 ---
-description: The capabilities block defines what capabilities are, how they should
-  evolve them over time based on a user's usage, and the available icons for the capability
-  and description guidance for UI affordance.
+description: The capabilities block defines what capabilities are, how they should evolve them over time based on a user's usage, and the available icons for the capability and description guidance for UI affordance.
+limit: 10000
+agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
+
 ## CAPABILITY OVERVIEW
 Capabilities are what an agent can DO to create value for a user. Unique to the user and curated based on how they use their agent. Your role is to define capabilities that get periodically updated in <capabilities_data>.
 
