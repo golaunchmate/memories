@@ -87,35 +87,6 @@ Forward motion recommendation: The survey gave you a clear roadmap - users love 
 
 ---
 
-DROPS ARCHITECTURE PROJECT - April 29, 2026
-
-ARCHITECTURE OVERVIEW:
-- Surface Layer: Transcript Agent (per-person conversation in LaunchMate tab)
-- Hidden Layer: Drop Agent (orchestrates scheduling, storage, routing)
-- Storage: Separate drops repo (similar naming conventions to tidbits)
-
-COMPONENTS STATUS:
-✅ Drop Agent Created - ID: agent-82720585-edcc-4c31-b558-68fe3183b1e7
-⬜ Transcript Agent - Needs training update
-⬜ Drops Repo - Need to create on GitHub
-⬜ Integration Logic - Need to implement
-
-KEY DECISIONS NEEDED:
-1. Is scheduling done via system prompt to founder agents OR can Drop Agent handle it directly?
-2. Who creates the asset, stores it in GitHub, and notifies user? (Founder agent vs Drop agent)
-3. How to train Transcript Agent about this architecture (memory block vs MemFS)
-
-NAMING CONVENTIONS (from tidbits):
-- Structure: {cohort}/{user}/{drop-type}-{date}.{ext}
-- Example: inflight-spring-26/laura-wetherhold/briefing-2026-04-29.html
-
-NEXT STEPS:
-1. Create drops repo on GitHub
-2. Set up folder structure
-3. Create mock/sample drops
-4. Send system message to Drop Agent with architecture details
-
-
 ## DROPS ARCHITECTURE PROJECT - April 29, 2026
 
 ### ARCHITECTURE OVERVIEW
