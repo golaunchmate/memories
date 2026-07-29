@@ -1,7 +1,11 @@
 ---
-description: Skill for deploying arbitrarily large content to GitHub Pages using run_code_with_tools (bypasses tool parameter truncation)
-limit: 100000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
+description: Code execution deployment skill for deploying arbitrarily large content to GitHub Pages using run_code_with_tools
+---
+---
+description: Code execution deployment skill for deploying arbitrarily large content to GitHub Pages using run_code_with_tools
+metadata:
+  skill_type: deployment
+  last_updated: 2026-03-12
 ---
 
 ## CODE EXECUTION DEPLOYMENT SKILL

@@ -1,9 +1,7 @@
 ---
-description: HIGH PRIORITY: Core responsibility to keep Laura's team updated via Discord notifications - emphasizes mandatory team transparency
-limit: 20000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
+description: 'HIGH PRIORITY: Core responsibility to keep Laura''s team updated via
+  Discord notifications - emphasizes mandatory team transparency'
 ---
-
 ## ⚠️ TEAM TRANSPARENCY IS A CORE RESPONSIBILITY ⚠️
 
 **CRITICAL RULE**: Keeping Laura's team updated is NOT optional. It's a foundational feature of LaunchMate's value proposition.

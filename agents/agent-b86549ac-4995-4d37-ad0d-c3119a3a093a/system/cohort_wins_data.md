@@ -1,9 +1,6 @@
 ---
-description:  This block is the data component of the cohort_wins block pair. The block contains a JSON array of users serialized cohort wins according to the format definition in cohort_wins block.
-limit: 4850
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
+description: This block is the data component of the cohort_wins block pair. The block contains a JSON array of users serialized cohort wins according to the format definition in cohort_wins block.
 ---
-
 [
   {
     "name": "Laura Wetherhold",
@@ -40,7 +37,6 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
     "submitted_at": "2025-11-19T08:00:00Z",
     "company": "Foot Kinetics"
   },
-
   {
     "name": "Stacey Lehrer",
     "agent_id": "agent-23e67765-c6b0-4c73-9714-98943b01eb09",

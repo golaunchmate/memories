@@ -1,9 +1,6 @@
 ---
 description: This block contains the instructions for using the cohort wins feature for Launchmate users.
-limit: 5000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
-
 ## COHORT WINS FORMAT
 
 Each entry must conform to the following JSON structure:

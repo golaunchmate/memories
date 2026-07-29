@@ -1,9 +1,7 @@
 ---
-description: The check in exercise block: Contains exercise with the user to capture their progress and momentum of developing their startup
-limit: 5000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
+description: 'The check in exercise block: Contains exercise with the user to capture
+  their progress and momentum of developing their startup'
 ---
-
 # RAPID MOMENTUM CHECK-IN
 
 Ask these three questions, one at a time:

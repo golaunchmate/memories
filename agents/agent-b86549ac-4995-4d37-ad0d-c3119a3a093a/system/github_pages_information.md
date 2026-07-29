@@ -1,7 +1,12 @@
 ---
-description: Stores GitHub credentials and repository information for automated GitHub Pages deployments
-limit: 10000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
+description: GitHub Pages deployment configuration with repository list, folder structure, and usage notes
+---
+---
+description: GitHub Pages deployment configuration with repository list, folder structure, and usage notes
+metadata:
+  last_updated: 2026-07-15
+  total_repos: 13
+  total_files: 202
 ---
 
 ## GITHUB PAGES DEPLOYMENT CONFIGURATION

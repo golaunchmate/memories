@@ -1,9 +1,6 @@
 ---
 description: This block contains agent ids of other agents
-limit: 5000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
-
 Mentors
 Neal Bloom        agent-52b31a07-5e1e-480c-bd4a-fe761d504626
 Craig Lauer  agent-78814a34-363c-4f29-9eb3-ee6cacafaebb

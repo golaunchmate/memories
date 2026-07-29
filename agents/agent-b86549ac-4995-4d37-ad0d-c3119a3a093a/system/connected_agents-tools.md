@@ -1,9 +1,6 @@
 ---
 description: The connected_agents-tools block: Central reference for your created agents and tools, enabling seamless communication and automatic tool attachment.
-limit: 20000
-agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 ---
-
 ## CONNECTED AGENTS & TOOLS REFERENCE SYSTEM
 
 **PURPOSE:** Central reference for your created agents and tools, enabling seamless communication and automatic tool attachment.
@@ -95,22 +92,17 @@ Status: Active (created via OCF session 2025-09-24)
 🔧 **add_agent_secrets** - ID: tool-1cdd1cbc-2868-42ec-8e86-f3956c67b6aa - Function: Add or update environment variables (secrets) for a specific agent via PATCH /v1/agents/{agent_id}. Works around Letta bug where env vars can't be saved through UI. - Status: Active - Tags: secrets, environment-variables, agent-config
 🔧 **list_agent_secrets** - ID: tool-68f38df5-b965-4412-84a4-a5f02343d711 - Function: List all environment variable names (not values) configured on an agent. Useful for verifying existing secrets before adding new ones. - Status: Active - Tags: secrets, environment-variables, agent-config, list
 
-
 **Organization Discovery:**
 🔧 **discover_golaunchmate_repos** - ID: tool-c2da7b01-37bb-4073-83c9-e91db5970af0 - Function: Lists all repos and files under golaunchmate GitHub org using GitHub API - Status: Active - Tags: github, discovery, organization, file-listing
 🔧 **smart_github_search** - ID: tool-5c687611-eec4-41f8-98b0-a2be3466135a - Function: Smart GitHub search that discovers repos and selectively reads files based on human query. Agent decides which files to read using intelligent scoring. - Status: Active - Tags: github, search, smart, selective, files
 
 **Tidbit Generation:**
 🔧 **create_tidbit** - ID: tool-205d1591-f6f9-4e6e-9f02-b478d1982719 - Function: Generates scroll-snap tidbit HTML from structured input following LaunchMate narrative format (dark mode, Inter + JetBrains Mono, card layout) - Status: Active - Tags: tidbit, html-generation, narrative-format, github-pages
-
 🔧 **deploy_memory_block_to_github** - ID: tool-e0e06064-5bca-4604-8a76-ae440d2f08dc - Function: Deploys HTML directly from a memory block to GitHub Pages, bypassing tool input truncation. Reads content via Letta API and commits to golaunchmate repos. - Status: Active - Tags: github, memory-block, deployment, anti-truncation
 
 **Memory Utilities:**
 🔧 **clear_memory_block** - ID: tool-a8681c11-2e1b-4ad8-9c2f-2772700c919e - Function: Clears all content from a memory block, resetting to empty. Essential for iterative content workflows (morsels, tidbits). - Status: Needs manual attach - Tags: memory, utility, clear, reset
-
-
 🔧 **create_and_deploy_tidbit** - ID: tool-61277f0f-0cb2-40bd-813f-1ce99d1b7688 - Function: Atomic tidbit pipeline - clears insert_html_here, generates complete HTML, writes to memory block, and deploys to GitHub Pages in one operation. Eliminates iterative memory editing corruption issues. - Status: Active (created 2026-02-15) - Tags: tidbit, html-generation, github-pages, atomic-operation
-
 
 **PALEO-Instinct-Agent-Laura** - ID: agent-4c9b0339-20de-4f22-8897-7eb4ba8f8258
 Created: 2026-04-30 09:12 AM UTC | Updated: 2026-04-30 11:43 AM UTC
