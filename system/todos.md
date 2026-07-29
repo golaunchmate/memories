@@ -7,7 +7,20 @@ description: Active to-dos, current tasks, and things currently working on
 - Status: Pending
 - Why: Tool wrapper doesn't solve the problem — use `run_code_with_tools` directly
 
-**2. Drops Architecture — remaining steps**
+**2. Drops Architecture v2 -- remaining steps**
+- [x] Drop Agent created (agent-82720585, April 29 2026)
+- [x] Drops repo created on GitHub (golaunchmate/drops)
+- [x] Pipeline validated twice (May 26 & 27 -- reminder drop + briefing drop)
+- [x] #drops Discord channel created (1506865147501871275)
+- [x] Drop Agent MemFS set up (July 22, 2026)
+- [x] Architecture v2 finalized -- founder agent owns full lifecycle (July 29, 2026)
+- [x] `send_system_message` updated with conversation_id param (July 29, 2026)
+- [ ] Create drops repo with proper folder structure
+- [ ] Configure Transcript Agent to send data to Drop Agent
+- [ ] Test full v2 lifecycle with real dispatch
+- [ ] Explore Chatter/ChitChat -- meeting intelligence tool using Recall.ai
+- [ ] Evaluate Granola free tier -- are summaries sufficient for agent context?
+- See [[reference/launchmate/forward-momentum-tasks]] for full project details — remaining steps**
 - [x] Drop Agent created (agent-82720585, April 29 2026)
 - [x] Drops repo created on GitHub (golaunchmate/drops)
 - [x] Pipeline validated twice (May 26 & 27 — reminder drop + briefing drop)

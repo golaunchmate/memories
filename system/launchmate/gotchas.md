@@ -73,6 +73,18 @@ description: Critical gotchas and pitfalls to avoid - extracted from developer l
 - **Cursor must advance past filtered messages**: When filtering message content (e.g., skipping "no response needed" messages), compute `last_message_id` from ALL messages, not just the filtered set. Otherwise filtered messages get re-fetched every poll.
 - **Letta connector "failed to load agents"**: The native Activepieces Letta connector's agent dropdown calls `client.agents.list()` with no limit parameter and auto-paginates through all 509 agents, causing a timeout. Use HTTP Request step with the Letta API directly instead.
 
+### MemFS Priority and Proactive Updates
+- **Laura wants MemFS prioritized** over core memory blocks and archival memory (July 29, 2026). Always update MemFS files first. Core memory blocks and archival are secondary.
+- **Be proactive**: Update memory without asking permission. Laura explicitly said "no need to ask me for permission, just change your memory as you see its needed" (July 29, 2026).
+- **`run_code_with_tools` runs on Linux**, NOT on the Windows machine where memory files live. Cannot use it to write local MemFS files. Use the `memory()` tool or Bash/PowerShell for local file operations.
+- **`memory()` tool path**: Uses the correct agent path (`agent-b86549ac-...`) internally, even if `$MEMORY_DIR` env var shows `<REDACTED>`. The tool works correctly despite the env var display issue.
+- **Missing system files**: After compaction events, some system block files may be missing from disk while still existing server-side. Always verify file existence and restore missing files proactively.
+
+### Letta Schedule API Limitations
+- **Schedule API fires in DEFAULT conversation only** (confirmed July 29, 2026). Cannot target specific conversations for scheduled messages.
+- **`send_system_message` conversation_id parameter**: Added July 29, 2026, but NOT respected by the platform. The parameter exists in the tool but the API ignores it.
+- **Drops are NOT tidbits**: Each drop gets a unique format. Always schedule delivery, never deliver immediately.
+
 ### Sharing "Current" Work Status
 - **Before telling others what Laura is working on**: Search conversation history first with `conversation_search` Ã¢â‚¬â€ the "Current focus areas" in memory can be stale/outdated
 - Laura corrected the agent on July 22, 2026 when it shared outdated focus areas with Craig on Discord ("this is old!!")

@@ -20,6 +20,7 @@ description: Key LaunchMate conventions and patterns for quick reference
 
 ### Environment Variables (available in run_code_with_tools)
 - GITHUB_TOKEN, LETTA_API_KEY, LETTA_BASE_URL, DISCORD_WEBHOOK_URL
+- **Note**: `run_code_with_tools` executes on Linux, NOT on the local Windows machine. Cannot use it to write local MemFS files -- use the `memory()` tool or Bash/PowerShell instead.
 
 ### Letta API
 - Uses **cursor-based pagination** (`after`/`before` params), NOT offset-based
@@ -80,8 +81,19 @@ description: Key LaunchMate conventions and patterns for quick reference
 - **Drop Agent MemFS**: Set up (July 22, 2026) â€” `/init` successful, 4 MemFS files synced to GitHub
 
 ### Memory Management
+- **MemFS is the PRIMARY memory system** (as of July 29, 2026). Laura explicitly prioritized MemFS over core memory blocks and archival memory. Always update MemFS files first.
+- **Be proactive**: Update memory without asking permission. Laura said "no need to ask me for permission, just change your memory as you see its needed."
 - **system/** = always in context (durable knowledge, identity, conventions)
 - **reference/** = progressive disclosure (read on demand via [[path]] links)
-- **Archival memory** = long-term searchable (meeting notes, historical patterns, insights)
-- Never let memory blocks get compacted due to size limits â€” use `memory_update_size` or move to reference/
+- **Archival memory** = long-term searchable (meeting notes, historical patterns, insights) -- secondary to MemFS
+- Never let memory blocks get compacted due to size limits -- use `memory_update_size` or move to reference/
+- **Before sharing "current" work status**: Search conversation history first -- the "Current focus areas" in memory can be stale
+
+### Drops Architecture v2 (July 29, 2026)
+- **Founder agent owns FULL drop lifecycle**: create artifact, store to GitHub, schedule delivery via Letta API, personalized delivery message, Discord notification
+- **Drop Agent role**: Receives transcript insights, routes/packages, dispatches to DROPS conversation, fires Discord notification #1 (blue embed). Does NOT schedule delivery.
+- **Schedule API limitation**: Fires in DEFAULT conversation only. Cannot target specific conversations (confirmed platform limitation, July 29, 2026).
+- **`send_system_message`**: Has optional `conversation_id` parameter (added July 29, 2026), but NOT respected by the platform.
+- **Drops are NOT tidbits**: Each drop gets a unique format. Always schedule, never deliver immediately.
+- **Live URL pattern**: `https://golaunchmate.github.io/drops/{cohort}/{user}/{drop-type}-{YYYY-MM-DD}.html` â€” use `memory_update_size` or move to reference/
 - **Before sharing "current" work status**: Search conversation history first â€” the "Current focus areas" in memory can be stale
