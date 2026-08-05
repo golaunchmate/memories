@@ -10,10 +10,6 @@ param(
     [switch]$SyncMemFS
 )
 
-# Force dark background (like cmd.exe) instead of default PowerShell blue
-$Host.UI.RawUI.BackgroundColor = 'Black'
-Clear-Host
-
 $scriptDir = Split-Path $MyInvocation.MyCommand.Path -Parent
 $syncScriptPath = Join-Path $scriptDir "sync-agent-memory.ps1"
 

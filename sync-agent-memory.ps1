@@ -24,12 +24,6 @@ param(
     [string]$MemFSBasePath = "$env:USERPROFILE\.letta\agents"
 )
 
-# Force dark background (like cmd.exe) instead of default PowerShell blue
-if (-not $DotSourceMode) {
-    $Host.UI.RawUI.BackgroundColor = 'Black'
-    Clear-Host
-}
-
 # Known agents for -AllAgents mode
 $KnownAgents = @(
     @{ Id = "agent-b86549ac-4995-4d37-ad0d-c3119a3a093a"; Name = "Laura Wetherhold" },
