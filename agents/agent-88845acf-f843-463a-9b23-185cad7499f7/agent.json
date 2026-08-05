@@ -1,40 +1,40 @@
 {
-  "agent_id": "agent-88845acf-f843-463a-9b23-185cad7499f7",
-  "agent_name": "Transcript Agent",
-  "synced_at": "2026-07-22T19:02:14Z",
-  "block_count": 6,
-  "archival_passage_count": 102,
-  "memfs_file_count": 14,
-  "blocks": [
-    {
-      "label": "drop_agent_routing",
-      "limit": 15000,
-      "used": 1924
-    },
-    {
-      "label": "founder_context",
-      "limit": 30000,
-      "used": 22479
-    },
-    {
-      "label": "human",
-      "limit": 5000,
-      "used": 69
-    },
-    {
-      "label": "launchpad_program",
-      "limit": 10000,
-      "used": 685
-    },
-    {
-      "label": "mentor_profiles",
-      "limit": 15000,
-      "used": 3282
-    },
-    {
-      "label": "persona",
-      "limit": 5000,
-      "used": 3431
-    }
-  ]
+    "agent_id":  "agent-88845acf-f843-463a-9b23-185cad7499f7",
+    "memfs_file_count":  0,
+    "archival_passage_count":  1,
+    "agent_name":  "Transcript Agent",
+    "blocks":  [
+                   {
+                       "label":  "drop_agent_routing",
+                       "used":  1924,
+                       "limit":  15000
+                   },
+                   {
+                       "label":  "founder_context",
+                       "used":  22628,
+                       "limit":  30000
+                   },
+                   {
+                       "label":  "human",
+                       "used":  69,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "launchpad_program",
+                       "used":  685,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "mentor_profiles",
+                       "used":  3292,
+                       "limit":  15000
+                   },
+                   {
+                       "label":  "persona",
+                       "used":  3463,
+                       "limit":  5000
+                   }
+               ],
+    "block_count":  6,
+    "synced_at":  "2026-08-05T22:36:22Z"
 }
