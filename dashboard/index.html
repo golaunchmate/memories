@@ -568,7 +568,7 @@
 
     <script>
         // === CONFIG ===
-        const DASHBOARD_VERSION = 'v2.4'; // Change to bust cache
+        const DASHBOARD_VERSION = 'v2.5'; // Change to bust cache
         const REPO_OWNER = 'golaunchmate';
         const REPO_NAME = 'memories';
         const API_BASE = 'https://api.github.com/repos/golaunchmate/memories';
@@ -962,35 +962,47 @@
             const items = document.querySelectorAll('.tree-item[data-path]');
             if (!items.length) return;
 
-            const now = new Date();
-            const batch = 5;
+            try {
+                // Single API call: fetch last 30 commits (1 call instead of 50+)
+                const resp = await fetch(`${API_BASE}/commits?per_page=30`);
+                if (!resp.ok) return;
+                const commits = await resp.json();
+                if (!Array.isArray(commits)) return;
 
-            for (let i = 0; i < items.length; i += batch) {
-                const slice = Array.from(items).slice(i, i + batch);
-                await Promise.all(slice.map(async (el) => {
-                    const path = el.getAttribute('data-path');
-                    if (!path) return;
-                    try {
-                        const updated = await fetchLastUpdated(path);
-                        if (updated && updated.iso) {
-                            const diff = (now - new Date(updated.iso)) / 3600000; // hours
-                            if (diff < 24) {
-                                // Add green dot if not already present
-                                if (!el.querySelector('.new-dot')) {
-                                    const dot = document.createElement('span');
-                                    dot.className = 'new-dot';
-                                    dot.title = `Updated ${updated.relative}`;
-                                    const sizeEl = el.querySelector('.tree-size');
-                                    if (sizeEl) {
-                                        el.insertBefore(dot, sizeEl);
-                                    } else {
-                                        el.appendChild(dot);
-                                    }
-                                }
-                            }
+                const now = new Date();
+                const cutoff = new Date(now.getTime() - 24 * 3600000); // 24h ago
+
+                // Build a set of file paths modified in the last 24h
+                const recentFiles = new Set();
+                for (const commit of commits) {
+                    const date = new Date(commit.commit.committer.date);
+                    if (date < cutoff) break; // commits are newest-first, stop at 24h cutoff
+                    if (commit.files) {
+                        for (const f of commit.files) {
+                            recentFiles.add(f.filename);
                         }
-                    } catch (e) {}
-                }));
+                    }
+                }
+
+                if (recentFiles.size === 0) return;
+
+                // Add green dots to matching sidebar items
+                items.forEach(el => {
+                    const path = el.getAttribute('data-path');
+                    if (path && recentFiles.has(path) && !el.querySelector('.new-dot')) {
+                        const dot = document.createElement('span');
+                        dot.className = 'new-dot';
+                        dot.title = 'Updated in the last 24 hours';
+                        const sizeEl = el.querySelector('.tree-size');
+                        if (sizeEl) {
+                            el.insertBefore(dot, sizeEl);
+                        } else {
+                            el.appendChild(dot);
+                        }
+                    }
+                });
+            } catch (e) {
+                console.error('Failed to check recent updates:', e);
             }
         }
 
