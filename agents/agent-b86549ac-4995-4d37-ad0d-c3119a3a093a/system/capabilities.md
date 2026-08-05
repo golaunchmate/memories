@@ -21,11 +21,11 @@ Capabilities are what an agent can DO to create value for a user. Unique to the 
 2. **Evaluate Against Current Capabilities**
    - Load current capabilities from <capabilities_data>
    - For each current capability:
-     * If it appears in new list → KEEP (user still uses it)
-     * If it doesn't appear in new list → REMOVE (user stopped using it)
+     * If it appears in new list â KEEP (user still uses it)
+     * If it doesn't appear in new list â REMOVE (user stopped using it)
    - For each new capability:
-     * If it doesn't exist in current list → ADD (emerging usage pattern)
-     * If it exists in current list → already handled in KEEP
+     * If it doesn't exist in current list â ADD (emerging usage pattern)
+     * If it exists in current list â already handled in KEEP
 
 3. **Update <capabilities_data>**
    - Replace entire JSON array with merged result (kept + added capabilities)
@@ -60,7 +60,7 @@ The serialized data should have the following shape:
 2. **Ask for description** - "What does this capability do? (1-2 sentences)"
 3. **Ask for activation command** - "What command should trigger this? (natural language the user would say)"
 4. **Ask about memory needs** - "Does this capability need dedicated memory blocks to store context or data?"
-   - If yes → Ask for memory block name and whether it needs a _data pair
+   - If yes â Ask for memory block name and whether it needs a _data pair
 5. **Present icon options** - Show 5-8 relevant icons from the list based on the capability type
 6. **Confirm and create** - Show preview, get confirmation, then add to capabilities_data (and create memory blocks if needed)
 
