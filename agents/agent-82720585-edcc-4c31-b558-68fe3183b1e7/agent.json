@@ -1,11 +1,25 @@
 {
-    "block_count":  0,
-    "synced_at":  "2026-08-05T18:44:06Z",
-    "archival_passage_count":  0,
-    "blocks":  [
-
-               ],
-    "agent_name":  "Drop Agent",
+    "agent_id":  "agent-82720585-edcc-4c31-b558-68fe3183b1e7",
     "memfs_file_count":  0,
-    "agent_id":  "agent-82720585-edcc-4c31-b558-68fe3183b1e7"
+    "archival_passage_count":  1,
+    "agent_name":  "Drop Agent",
+    "blocks":  [
+                   {
+                       "label":  "system/agent_registry",
+                       "used":  3285,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/human",
+                       "used":  1314,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/persona",
+                       "used":  2044,
+                       "limit":  5000
+                   }
+               ],
+    "block_count":  3,
+    "synced_at":  "2026-08-05T22:36:05Z"
 }
