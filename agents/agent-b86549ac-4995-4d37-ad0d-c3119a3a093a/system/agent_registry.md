@@ -45,13 +45,13 @@ Quick reference for agent IDs by common name.
 - **Nick Bernal**: agent-64463d56-3a8d-476b-a5c6-da41f36f2ec5
 
 ### V1 Launch Track Founders (confirmed from ZIP Active Teams page)
-- **Sandy Basaka**: agent-2528505e-8d17-4abf-9611-13fa12c93c2d → UniExchange
+- **Sandy Basaka**: agent-2528505e-8d17-4abf-9611-13fa12c93c2d â UniExchange
 - **Lisa Lamb**: agent-b6b08d7a-5a70-4130-bea6-e83a0b1e007a
 - **Sky Soltero**: agent-f3295a70-614a-4676-92a9-27a7e937a38b
 - **Jourdan Ziff**: agent-991e4097-7780-4292-96d1-dd1c7d5eb24a
-- **Wayne Mcclellan**: agent-7fba8e49-1ebe-47bb-9250-91a0288422d8 → Protocol Grip Trainer
-- **Rachel Dakin**: agent-0d801826-76b4-4d4b-b0b9-f9d29640476b → Asaichi
-- **Sammie Bradley**: agent-1d16bee6-a661-48e1-b303-efbbbfdbf76f → Foot Kinetics
+- **Wayne Mcclellan**: agent-7fba8e49-1ebe-47bb-9250-91a0288422d8 â Protocol Grip Trainer
+- **Rachel Dakin**: agent-0d801826-76b4-4d4b-b0b9-f9d29640476b â Asaichi
+- **Sammie Bradley**: agent-1d16bee6-a661-48e1-b303-efbbbfdbf76f â Foot Kinetics
 - **Sandy Basaka**: agent-2528505e-8d17-4abf-9611-13fa12c93c2d
 - **Joshua Shuttleworth**: agent-87b7316f-d67b-4806-aef8-2ed4f0f0e0b6
 
