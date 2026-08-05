@@ -343,6 +343,22 @@
         .tree-children.collapsed { display: none; }
         .tree-item.tree-folder .tree-folder-icon[style*="🗄️"], .tree-item.tree-folder:has(.tree-label:contains("archival")) { color: var(--accent-purple); }
 
+        /* === GREEN DOT for recently updated files === */
+        .new-dot {
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.5);
+            animation: pulse-dot 2s ease-in-out infinite;
+            margin-left: 0.2rem;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
         /* === CONTENT AREA === */
         .content { flex: 1; overflow-y: auto; padding: 0; }
         .content-header {
@@ -936,6 +952,41 @@
             }
 
             treeEl.innerHTML = html;
+
+            // Check for recently updated files and add green dots
+            checkRecentUpdates();
+        }
+
+        // === CHECK RECENT UPDATES (green dot for files updated < 24h ago) ===
+        async function checkRecentUpdates() {
+            const items = document.querySelectorAll('.tree-item[data-path]');
+            if (!items.length) return;
+
+            const now = new Date();
+            const batch = 5;
+
+            for (let i = 0; i < items.length; i += batch) {
+                const slice = Array.from(items).slice(i, i + batch);
+                await Promise.all(slice.map(async (el) => {
+                    const path = el.getAttribute('data-path');
+                    if (!path) return;
+                    try {
+                        const updated = await fetchLastUpdated(path);
+                        if (updated && updated.iso) {
+                            const diff = (now - new Date(updated.iso)) / 3600000; // hours
+                            if (diff < 24) {
+                                // Add green dot if not already present
+                                if (!el.querySelector('.new-dot')) {
+                                    const dot = document.createElement('span');
+                                    dot.className = 'new-dot';
+                                    dot.title = `Updated ${updated.relative}`;
+                                    el.appendChild(dot);
+                                }
+                            }
+                        }
+                    } catch (e) {}
+                }));
+            }
         }
 
         // === FETCH LAST UPDATED ===
