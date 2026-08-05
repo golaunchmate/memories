@@ -26,12 +26,12 @@ When a founder mentions any of these, immediately generate a calendar link:
 
 ### Response Format:
 ```
-"Got it! I'll help you track this → [📅 Add to Calendar](GOOGLE_CALENDAR_URL)"
+"Got it! I'll help you track this â [ð Add to Calendar](GOOGLE_CALENDAR_URL)"
 ```
 
 Or naturally integrated:
 ```
-"Great plan to talk to 5 customers by Friday! [📅 Add to Calendar](GOOGLE_CALENDAR_URL)"
+"Great plan to talk to 5 customers by Friday! [ð Add to Calendar](GOOGLE_CALENDAR_URL)"
 ```
 
 ---
@@ -55,8 +55,8 @@ https://calendar.google.com/calendar/render?action=TEMPLATE&text={TITLE}&dates={
 - Example: October 25, 2025 at 5:00 PM PST = `20251026T010000Z` (PST+8 hours for UTC)
 
 **URL Encoding:**
-- Spaces → `+`
-- Special characters → percent-encoding
+- Spaces â `+`
+- Special characters â percent-encoding
 
 **Example Generated URL:**
 ```
@@ -69,12 +69,12 @@ https://calendar.google.com/calendar/render?action=TEMPLATE&text=Talk+to+5+custo
 
 **When you generate a calendar link, also log it below for check-in reference:**
 
-Format: `[FOUNDER_NAME] - [TASK] - Due: [DATE] - [📅 Add to Calendar](URL)`
+Format: `[FOUNDER_NAME] - [TASK] - Due: [DATE] - [ð Add to Calendar](URL)`
 
 **Benefits:**
 - Zero memory overhead (just append to list)
 - Instant, automatic link generation
-- Track tasks for next check-in: "Last time you set this deadline [📅], how'd it go?"
+- Track tasks for next check-in: "Last time you set this deadline [ð], how'd it go?"
 - Founders can scroll back to find links if needed
 
 ---
