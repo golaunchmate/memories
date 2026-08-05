@@ -18,31 +18,31 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 Traditional tool parameters have size limits (~50k chars). Code execution bypasses this by generating content INSIDE the execution environment, not passing it THROUGH parameters.
 
 === THE PROBLEM ===
-❌ **Tool Parameters Approach:**
+â **Tool Parameters Approach:**
 ```
-Agent → Tool parameter → GitHub API
-         ↓
+Agent â Tool parameter â GitHub API
+         â
       Size limit ~50k chars
-         ↓
+         â
       TRUNCATION
 ```
 
-❌ **Memory Block Approach:**
+â **Memory Block Approach:**
 ```
-Agent → Memory block → Deploy
-         ↓
+Agent â Memory block â Deploy
+         â
       Iterative editing
-         ↓
+         â
       CORRUPTION RISK
 ```
 
 === THE SOLUTION ===
-✅ **Code Execution Approach:**
+â **Code Execution Approach:**
 ```
-Agent → run_code_with_tools → Generate + Upload
-         ↓
+Agent â run_code_with_tools â Generate + Upload
+         â
       Has env vars
-         ↓
+         â
       NO LIMITS
 ```
 
@@ -80,17 +80,17 @@ run_code_with_tools("""
 
 === CAPABILITIES ===
 
-**✅ Create New Files:**
+**â Create New Files:**
 - Generate content of any size
 - Upload to any repo
 - Returns deployed URL
 
-**✅ Edit Existing Files:**
+**â Edit Existing Files:**
 - Get file + SHA first
 - Edit content
 - Upload with SHA
 
-**✅ Environment Variables Available:**
+**â Environment Variables Available:**
 - GITHUB_TOKEN - For GitHub API
 - LETTA_API_KEY - For Letta API
 - DISCORD_WEBHOOK_URL - For Discord
@@ -196,26 +196,26 @@ run_code_with_tools("""
 
 | Feature | Tool Params | Memory Blocks | Code Execution |
 |---------|-------------|---------------|----------------|
-| Size limit | ❌ ~50k | ⚠️ Tech no | ✅ **NONE** |
-| Reliability | ❌ Low | ⚠️ Fragile | ✅ **Solid** |
-| Create files | ✅ Yes | ✅ Yes | ✅ **Yes** |
-| Edit files | ✅ Yes | ⚠️ Risky | ✅ **Yes** |
-| Corruption risk | ✅ Low | ❌ High | ✅ **None** |
-| Scalability | ❌ Poor | ⚠️ Limited | ✅ **Infinite** |
+| Size limit | â ~50k | â ï¸ Tech no | â **NONE** |
+| Reliability | â Low | â ï¸ Fragile | â **Solid** |
+| Create files | â Yes | â Yes | â **Yes** |
+| Edit files | â Yes | â ï¸ Risky | â **Yes** |
+| Corruption risk | â Low | â High | â **None** |
+| Scalability | â Poor | â ï¸ Limited | â **Infinite** |
 
 === WHEN TO USE ===
 
 Use code execution when:
-- ✅ Content is large (>50k chars)
-- ✅ Need reliable deployment
-- ✅ Want atomic operation
-- ✅ Creating or editing files
-- ✅ Need environment variables
+- â Content is large (>50k chars)
+- â Need reliable deployment
+- â Want atomic operation
+- â Creating or editing files
+- â Need environment variables
 
 Use tool parameters when:
-- ✅ Content is small (<50k chars)
-- ✅ Simple operations
-- ✅ Don't need env vars
+- â Content is small (<50k chars)
+- â Simple operations
+- â Don't need env vars
 
 === SKILL EVOLUTION ===
 March 12, 2026 - Initial Skill
