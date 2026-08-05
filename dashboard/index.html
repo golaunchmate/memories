@@ -105,69 +105,6 @@
         .memfs-item.active { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); }
         .memfs-item .tree-icon { color: var(--accent-green); }
 
-        /* === SECTION HEADERS (memfs + legacy) === */
-        .section-header {
-            padding: 0.6rem 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        .section-header .section-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        .section-header .section-badge {
-            display: inline-block;
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-            font-size: 0.6rem;
-            font-weight: 500;
-            text-transform: none;
-            letter-spacing: 0;
-        }
-        .section-header .section-stats {
-            display: flex;
-            gap: 0.4rem;
-            margin-left: auto;
-        }
-        .section-header .section-stat {
-            background: var(--bg-glass);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 0.15rem 0.5rem;
-            font-size: 0.65rem;
-            text-align: center;
-        }
-        .section-header .section-stat-value {
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-        .section-header .section-stat-label {
-            font-size: 0.55rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        /* MemFS section header (green) */
-        .section-header.memfs .section-title { color: var(--accent-green); }
-        .section-header.memfs .section-badge {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            color: var(--accent-green);
-        }
-        .section-header.memfs .section-stat-value { color: var(--accent-green); }
-        /* Legacy section header (amber) */
-        .section-header.legacy .section-title { color: var(--accent-amber); }
-        .section-header.legacy .section-badge {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            color: var(--accent-amber);
-        }
-        .section-header.legacy .section-stat-value { color: var(--accent-amber); }
-
         /* === AIC AGENT WARNING BANNER === */
         .aic-warning-banner {
             background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(244, 63, 94, 0.08));
@@ -570,14 +507,28 @@
         <div class="main">
             <!-- SIDEBAR -->
             <aside class="sidebar">
-                <div class="sidebar-header" style="padding-bottom:0.5rem;">
-                    <div class="sidebar-title" style="margin-bottom:0;">Select an agent to browse memory</div>
+                <div class="sidebar-header">
+                    <div class="sidebar-title">Memory Blocks <span style="font-size:0.6rem; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:4px; padding:0.1rem 0.35rem; color:var(--accent-amber); text-transform:none; letter-spacing:0; font-weight:500;">legacy</span></div>
+                    <div class="stats-row">
+                        <div class="stat-pill">
+                            <div class="stat-pill-value" id="statBlocks">—</div>
+                            <div class="stat-pill-label">Blocks</div>
+                        </div>
+                        <div class="stat-pill">
+                            <div class="stat-pill-value" id="statSize">—</div>
+                            <div class="stat-pill-label">Total Size</div>
+                        </div>
+                        <div class="stat-pill">
+                            <div class="stat-pill-value" id="statMemFS" style="color:var(--accent-green)">—</div>
+                            <div class="stat-pill-label">MemFS</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="file-tree" id="fileTree">
                     <div class="welcome" style="padding: 1rem;">
                         <div class="welcome-icon" style="font-size: 1.5rem;">👈</div>
                         <div style="font-size: 0.8rem; color: var(--text-muted);">Select an agent to browse memory</div>
-                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.6</div>
+                        <div style="font-size: 0.6rem; color: var(--text-muted); opacity: 0.5; margin-top: 0.5rem;" id="dashVersion">v2.4</div>
                     </div>
                 </div>
             </aside>
@@ -617,7 +568,7 @@
 
     <script>
         // === CONFIG ===
-        const DASHBOARD_VERSION = 'v2.6'; // Change to bust cache
+        const DASHBOARD_VERSION = 'v2.5'; // Change to bust cache
         const REPO_OWNER = 'golaunchmate';
         const REPO_NAME = 'memories';
         const API_BASE = 'https://api.github.com/repos/golaunchmate/memories';
@@ -878,8 +829,11 @@
 
                 allBlocks = [...allLegacyBlocks, ...memfsBlocks];
 
-                // Stats are now computed and rendered inside renderFileTree section headers
-                // (no more sidebar-header stat pills)
+                // Update stats
+                const totalSize = allBlocks.reduce((sum, b) => sum + b.size, 0);
+                document.getElementById('statBlocks').textContent = allLegacyBlocks.length;
+                document.getElementById('statSize').textContent = formatSize(totalSize);
+                document.getElementById('statMemFS').textContent = memfsBlocks.length;
 
                 // Fetch agent.json for last-synced timestamp
                 let syncedAt = null;
@@ -916,21 +870,10 @@
 
             // MemFS section (shown first — current memory system)
             if (memfsBlocks && memfsBlocks.length > 0) {
-                const memfsTotalSize = memfsBlocks.reduce((sum, b) => sum + b.size, 0);
                 html += '<div class="memfs-section" style="border-top:none; padding-top:0; margin-top:0;">';
-                html += `<div class="section-header memfs">
-                    <span class="section-title">Memory Files</span>
-                    <span class="section-badge">memfs</span>
-                    <div class="section-stats">
-                        <div class="section-stat">
-                            <div class="section-stat-value">${memfsBlocks.length}</div>
-                            <div class="section-stat-label">Files</div>
-                        </div>
-                        <div class="section-stat">
-                            <div class="section-stat-value">${formatSize(memfsTotalSize)}</div>
-                            <div class="section-stat-label">Total Size</div>
-                        </div>
-                    </div>
+                html += `<div class="memfs-header">
+                    <span>🌱 MemFS Files</span>
+                    <span class="memfs-badge">${memfsBlocks.length} files</span>
                 </div>`;
                 // Local sync warning
                 html += `<div class="legacy-warning" style="margin:0 0.5rem 0.5rem;">
@@ -971,28 +914,11 @@
                 html += '</div>';
             }
 
-            // Legacy section header + warning banner (shown after MemFS — deprecated system)
-            const legacyTotalSize = blocks.reduce((sum, b) => sum + b.size, 0);
-            html += `<div style="margin-top:0.75rem; border-top:1px solid var(--border); padding-top:0.75rem;">`;
-            html += `<div class="section-header legacy">
-                <span class="section-title">Memory Blocks</span>
-                <span class="section-badge">legacy</span>
-                <div class="section-stats">
-                    <div class="section-stat">
-                        <div class="section-stat-value">${blocks.length}</div>
-                        <div class="section-stat-label">Blocks</div>
-                    </div>
-                    <div class="section-stat">
-                        <div class="section-stat-value">${formatSize(legacyTotalSize)}</div>
-                        <div class="section-stat-label">Total Size</div>
-                    </div>
-                </div>
-            </div>`;
-            html += `<div class="legacy-warning" style="margin:0 0.5rem 0.5rem;">
+            // Legacy warning banner (shown after MemFS — deprecated system)
+            html += `<div class="legacy-warning" style="margin-top:0.75rem; border-top:1px solid var(--border); padding-top:0.75rem;">
                 <span class="warn-icon">⚠️</span>
                 <span class="warn-text"><strong>Legacy Memory Blocks</strong> — Core memory blocks are Letta's legacy memory system. <strong>MemFS</strong> (above) is the current git-backed filesystem for agent memory.</span>
             </div>`;
-            html += `</div>`;
 
             // Group legacy blocks by first-level directory
             const grouped = {};
