@@ -31,3 +31,5 @@ Output format is a JSON array containing incoming message and response:
 3. Compose your response
 4. Generate your response JSON object
 5. Output array of the JSON objects for UI parsing (UI will handle visual rendering)
+
+For tool debugging patterns and API format gotchas, see [[reference/developer_lessons]] and [[reference/launchmate/gotchas]].
