@@ -19,6 +19,8 @@ param(
 
     [switch]$AllAgents,
 
+    [switch]$DotSourceMode,
+
     [string]$MemFSBasePath = "$env:USERPROFILE\.letta\agents"
 )
 
@@ -30,15 +32,15 @@ $KnownAgents = @(
     @{ Id = "agent-88845acf-f843-463a-9b23-185cad7499f7"; Name = "Transcript Agent" }
 )
 
-# Check for API key
+# Check for API key (skip in DotSourceMode — caller should have these set)
 $apiKey = $env:LETTA_API_KEY
-if (-not $apiKey) {
+if (-not $apiKey -and -not $DotSourceMode) {
     Write-Error "LETTA_API_KEY environment variable not set"
     exit 1
 }
 
 $githubToken = $env:GITHUB_TOKEN
-if (-not $githubToken) {
+if (-not $githubToken -and -not $DotSourceMode) {
     Write-Error "GITHUB_TOKEN environment variable not set"
     exit 1
 }
@@ -250,6 +252,10 @@ function Sync-Agent {
 }
 
 # === MAIN ===
+if ($DotSourceMode) {
+    # Just load the function, don't run anything
+    return
+}
 if ($AllAgents) {
     Write-Host "Syncing all $($KnownAgents.Count) agents..." -ForegroundColor Magenta
     foreach ($agent in $KnownAgents) {

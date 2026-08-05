@@ -4,13 +4,25 @@
 # This script syncs ALL known agents using the API-based approach.
 # No git push, no auth prompts — all done via Letta API + GitHub API.
 # Each agent only updates its own folder in the memories repo.
+# Runs everything in ONE window with consistent coloring.
 
 param(
     [switch]$SyncMemFS
 )
 
 $scriptDir = Split-Path $MyInvocation.MyCommand.Path -Parent
-$syncScript = Join-Path $scriptDir "sync-agent-memory.ps1"
+$syncScriptPath = Join-Path $scriptDir "sync-agent-memory.ps1"
+
+# Dot-source the sync script to load the Sync-Agent function (skips main block)
+. $syncScriptPath -DotSourceMode
+
+# Set up GitHub headers (needed by Sync-Agent function)
+$githubToken = $env:GITHUB_TOKEN
+$ghHeaders = @{
+    "Authorization" = "Bearer $githubToken"
+    "Accept" = "application/vnd.github.v3+json"
+}
+$apiKey = $env:LETTA_API_KEY
 
 # All known agents — each only touches its own agents/{agentId}/ folder
 $agents = @(
@@ -26,11 +38,7 @@ Write-Host "  Syncing All $($agents.Count) Agents" -ForegroundColor Magenta
 Write-Host "========================================" -ForegroundColor Magenta
 
 foreach ($agent in $agents) {
-    $params = @("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", $syncScript, "-AgentId", $agent.Id, "-AgentName", $agent.Name)
-    if ($SyncMemFS) { $params += "-SyncMemFS" }
-
-    Write-Host ""
-    powershell.exe @params
+    Sync-Agent -AgentId $agent.Id -AgentName $agent.Name -DoMemFS $SyncMemFS
 }
 
 Write-Host ""
