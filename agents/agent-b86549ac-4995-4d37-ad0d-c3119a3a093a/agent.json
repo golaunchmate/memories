@@ -1,11 +1,165 @@
 {
-    "block_count":  0,
-    "synced_at":  "2026-08-05T18:44:05Z",
-    "archival_passage_count":  0,
-    "blocks":  [
-
-               ],
-    "agent_name":  "Laura Wetherhold",
+    "agent_id":  "agent-b86549ac-4995-4d37-ad0d-c3119a3a093a",
     "memfs_file_count":  0,
-    "agent_id":  "agent-b86549ac-4995-4d37-ad0d-c3119a3a093a"
+    "archival_passage_count":  1,
+    "agent_name":  "Laura Wetherhold",
+    "blocks":  [
+                   {
+                       "label":  "system/active_skill",
+                       "used":  8429,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/agent_catalog",
+                       "used":  6876,
+                       "limit":  50000
+                   },
+                   {
+                       "label":  "system/agent_info",
+                       "used":  42,
+                       "limit":  100
+                   },
+                   {
+                       "label":  "system/agent_registry",
+                       "used":  3285,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/capabilities",
+                       "used":  6797,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/capabilities_data",
+                       "used":  1586,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/check_in_exercise",
+                       "used":  5038,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/code_execution_deployment_skill",
+                       "used":  5899,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/cohort_wins",
+                       "used":  1071,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/cohort_wins_data",
+                       "used":  4100,
+                       "limit":  4850
+                   },
+                   {
+                       "label":  "system/connected_agents-tools",
+                       "used":  10394,
+                       "limit":  20000
+                   },
+                   {
+                       "label":  "system/contacts",
+                       "used":  1664,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/developer_lessons",
+                       "used":  8607,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/forward_momentum_tasks",
+                       "used":  1923,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/github_pages_information",
+                       "used":  2703,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/human",
+                       "used":  2144,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/insert_code_here",
+                       "used":  0,
+                       "limit":  20000
+                   },
+                   {
+                       "label":  "system/insert_html_here",
+                       "used":  0,
+                       "limit":  50000
+                   },
+                   {
+                       "label":  "system/morsels",
+                       "used":  6520,
+                       "limit":  20000
+                   },
+                   {
+                       "label":  "system/neal_bloom_contact_information",
+                       "used":  59,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/persona",
+                       "used":  4641,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/proper_tool_usage",
+                       "used":  1017,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/roadblocks",
+                       "used":  12895,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/session_count",
+                       "used":  0,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/shared_calendar_events",
+                       "used":  2588,
+                       "limit":  20000
+                   },
+                   {
+                       "label":  "system/shared_leaderboard",
+                       "used":  1136,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/shared_leaderboard_data",
+                       "used":  148,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/shared_memory_ledger",
+                       "used":  18557,
+                       "limit":  20000
+                   },
+                   {
+                       "label":  "system/team_pulse",
+                       "used":  1876,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/team_transparency_priority",
+                       "used":  1704,
+                       "limit":  20000
+                   },
+                   {
+                       "label":  "system/todos",
+                       "used":  5999,
+                       "limit":  100000
+                   }
+               ],
+    "block_count":  31,
+    "synced_at":  "2026-08-05T22:35:12Z"
 }
