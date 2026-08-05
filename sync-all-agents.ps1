@@ -1,16 +1,39 @@
-﻿# Sync both agents' MemFS to GitHub
-$syncScript = "C:\Users\marga\OneDrive\Documents\GitHub\golaunchmate\memories\sync-agent-memory.ps1"
+# Sync All Agents' Memory to GitHub via API
+# Usage: .\sync-all-agents.ps1 [-SyncMemFS]
+#
+# This script syncs ALL known agents using the API-based approach.
+# No git push, no auth prompts — all done via Letta API + GitHub API.
+# Each agent only updates its own folder in the memories repo.
 
-# Sync AIC Agent
-powershell -NoProfile -ExecutionPolicy Bypass -File $syncScript -AgentId "agent-300f6e26-ce14-4baa-b116-a333f335de43" -AgentName "AIC Agent" -SyncMemFS
+param(
+    [switch]$SyncMemFS
+)
 
-# Sync LaunchMate Agent (existing)
-$memoryDir = "C:\Users\marga\.letta\agents\agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601\memory"
-cd $memoryDir
-$status = git status --porcelain
-if ($status) {
-    git add .
-    git commit -m "Update memory $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
+$scriptDir = Split-Path $MyInvocation.MyCommand.Path -Parent
+$syncScript = Join-Path $scriptDir "sync-agent-memory.ps1"
+
+# All known agents — each only touches its own agents/{agentId}/ folder
+$agents = @(
+    @{ Id = "agent-b86549ac-4995-4d37-ad0d-c3119a3a093a"; Name = "Laura Wetherhold" },
+    @{ Id = "agent-82720585-edcc-4c31-b558-68fe3183b1e7"; Name = "Drop Agent" },
+    @{ Id = "agent-300f6e26-ce14-4baa-b116-a333f335de43"; Name = "AIC Agent" },
+    @{ Id = "agent-88845acf-f843-463a-9b23-185cad7499f7"; Name = "Transcript Agent" }
+)
+
+Write-Host ""
+Write-Host "========================================" -ForegroundColor Magenta
+Write-Host "  Syncing All $($agents.Count) Agents" -ForegroundColor Magenta
+Write-Host "========================================" -ForegroundColor Magenta
+
+foreach ($agent in $agents) {
+    $params = @("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", $syncScript, "-AgentId", $agent.Id, "-AgentName", $agent.Name)
+    if ($SyncMemFS) { $params += "-SyncMemFS" }
+
+    Write-Host ""
+    powershell.exe @params
 }
-git push origin main 2>$null
-git push github main 2>$null
+
+Write-Host ""
+Write-Host "========================================" -ForegroundColor Green
+Write-Host "  All agents synced!" -ForegroundColor Green
+Write-Host "========================================" -ForegroundColor Green

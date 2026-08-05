@@ -1,4 +1,9 @@
-﻿# Sync Letta Agent Memory to GitHub
+# DEPRECATED: Use sync-all-agents.ps1 instead — it uses the API approach (no auth prompts)
+# This script used git push which triggers Windows account selection prompts.
+#
+# Replacement: .\sync-all-agents.ps1 [-SyncMemFS]
+#
+# Sync Letta Agent Memory to GitHub
 # Run this script to push memory changes to GitHub
 
 $memoryDir = $env:MEMORY_DIR
