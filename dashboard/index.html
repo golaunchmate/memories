@@ -980,7 +980,12 @@
                                     const dot = document.createElement('span');
                                     dot.className = 'new-dot';
                                     dot.title = `Updated ${updated.relative}`;
-                                    el.appendChild(dot);
+                                    const sizeEl = el.querySelector('.tree-size');
+                                    if (sizeEl) {
+                                        el.insertBefore(dot, sizeEl);
+                                    } else {
+                                        el.appendChild(dot);
+                                    }
                                 }
                             }
                         }
