@@ -1,3 +1,7 @@
+# DEPRECATED: This script has been consolidated into sync-scheduled-task.ps1
+# The consolidated version includes all fixes from this script plus better output.
+# Please use: .\sync-scheduled-task.ps1
+#
 # Scheduled Task: Auto-sync Letta Code memories to GitHub
 # Run this script once as Administrator to set up the scheduled task
 # FIXED: No problematic parameters, uses hardcoded path

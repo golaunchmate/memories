@@ -1,31 +1,57 @@
 # Scheduled Task: Auto-sync Letta Code memories to GitHub
-# Run this script once to set up the scheduled task
+# Run this script once as Administrator to set up the scheduled task.
+#
+# This is the CONSOLIDATED version that replaces:
+#   - sync-scheduled-task.ps1 (original, used unreliable $env:MEMORY_DIR)
+#   - sync-scheduled-task-fixed.ps1 (fix attempt with hardcoded path)
+#   - sync-scheduled-task-simple.ps1 (another fix attempt, nearly identical)
+#
+# This script sets up a Windows Scheduled Task that runs every 4 hours to sync
+# agent memory blocks to the golaunchmate/memories GitHub repo via API.
 
 $taskName = "LettaCode-MemorySync"
-$memoryDir = $env:MEMORY_DIR
+
+# Use the Letta Code agent's memory directory
+$memoryDir = "C:\Users\marga\.letta\agents\agent-8f31ed67-bc7d-40e7-abde-5a8bc4f7e601\memory"
+
+# Verify the directory exists
+if (-not (Test-Path $memoryDir)) {
+    Write-Error "Memory directory not found: $memoryDir"
+    Write-Host "Please update the script with your correct memory path."
+    exit 1
+}
+
+Write-Host "Setting up scheduled task for memory sync..."
+Write-Host "Memory directory: $memoryDir"
 
 # Check if task already exists
 $existingTask = Get-ScheduledTask -TaskName $taskName -ErrorAction SilentlyContinue
 if ($existingTask) {
-    Write-Host "Task '$taskName' already exists. Updating..."
+    Write-Host "Task '$taskName' already exists. Removing old version..." -ForegroundColor Yellow
     Unregister-ScheduledTask -TaskName $taskName -Confirm:$false
 }
 
-# Create the action (run the sync script)
+# Create the action (run the sync-to-github script)
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$memoryDir\sync-to-github.ps1`"" -WorkingDirectory $memoryDir
 
-# Create the trigger (every 4 hours)
-$trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 4)
+# Create the trigger (every 4 hours, starting now, repeating for 10 years)
+$trigger = New-ScheduledTaskTrigger -Once -At (Get-Date) -RepetitionInterval (New-TimeSpan -Hours 4) -RepetitionDuration (New-TimeSpan -Days 3650)
 
-# Create the settings
-$settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -DontStopOnIdleApplication -RunOnlyIfNetworkAvailable
+# Create settings (no problematic idle parameters)
+$settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -RunOnlyIfNetworkAvailable
 
 # Register the task
-Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Description "Auto-sync Letta Code agent memories to GitHub" -RunLevel Highest
+Register-ScheduledTask -TaskName $taskName -Action $action -Trigger $trigger -Settings $settings -Description "Auto-sync Letta Code agent memories to GitHub every 4 hours" -RunLevel Highest
 
-Write-Host "Scheduled task '$taskName' created successfully!"
-Write-Host "It will run every 4 hours to sync memories to GitHub."
 Write-Host ""
-Write-Host "To manually trigger: Start-ScheduledTask -TaskName '$taskName'"
-Write-Host "To view task: Get-ScheduledTask -TaskName '$taskName'"
-Write-Host "To remove: Unregister-ScheduledTask -TaskName '$taskName'"
+Write-Host "========================================" -ForegroundColor Green
+Write-Host "  SUCCESS!" -ForegroundColor Green
+Write-Host "========================================" -ForegroundColor Green
+Write-Host ""
+Write-Host "Scheduled task '$taskName' created successfully!" -ForegroundColor Green
+Write-Host "It will run every 4 hours to sync memories to GitHub." -ForegroundColor Green
+Write-Host ""
+Write-Host "Useful commands:"
+Write-Host "  Start-ScheduledTask -TaskName '$taskName'    # Run now"
+Write-Host "  Get-ScheduledTask -TaskName '$taskName'       # View task"
+Write-Host "  Unregister-ScheduledTask -TaskName '$taskName' # Remove"
