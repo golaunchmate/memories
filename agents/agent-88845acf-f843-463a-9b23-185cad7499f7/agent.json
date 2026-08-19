@@ -10,9 +10,9 @@
                        "limit":  15000
                    },
                    {
-                       "label":  "founder_context",
-                       "used":  22628,
-                       "limit":  30000
+                       "label":  "launchpad_program",
+                       "used":  685,
+                       "limit":  10000
                    },
                    {
                        "label":  "human",
@@ -20,21 +20,21 @@
                        "limit":  5000
                    },
                    {
-                       "label":  "launchpad_program",
-                       "used":  685,
-                       "limit":  10000
+                       "label":  "persona",
+                       "used":  3431,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "founder_context",
+                       "used":  22480,
+                       "limit":  30000
                    },
                    {
                        "label":  "mentor_profiles",
-                       "used":  3292,
+                       "used":  3282,
                        "limit":  15000
-                   },
-                   {
-                       "label":  "persona",
-                       "used":  3463,
-                       "limit":  5000
                    }
                ],
     "block_count":  6,
-    "synced_at":  "2026-08-14T02:36:10Z"
+    "synced_at":  "2026-08-19T10:57:28Z"
 }
