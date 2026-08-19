@@ -5,98 +5,28 @@
     "agent_name":  "Laura Wetherhold",
     "blocks":  [
                    {
-                       "label":  "system/active_skill",
-                       "used":  8429,
-                       "limit":  10000
-                   },
-                   {
-                       "label":  "system/agent_catalog",
-                       "used":  6876,
-                       "limit":  50000
-                   },
-                   {
-                       "label":  "system/agent_info",
-                       "used":  42,
-                       "limit":  100
-                   },
-                   {
-                       "label":  "system/agent_registry",
-                       "used":  3285,
-                       "limit":  100000
-                   },
-                   {
-                       "label":  "system/capabilities",
-                       "used":  6797,
-                       "limit":  10000
-                   },
-                   {
-                       "label":  "system/capabilities_data",
-                       "used":  1586,
-                       "limit":  10000
-                   },
-                   {
-                       "label":  "system/check_in_exercise",
-                       "used":  5038,
-                       "limit":  5000
-                   },
-                   {
-                       "label":  "system/code_execution_deployment_skill",
-                       "used":  5899,
-                       "limit":  100000
-                   },
-                   {
-                       "label":  "system/cohort_wins",
-                       "used":  1071,
-                       "limit":  5000
-                   },
-                   {
-                       "label":  "system/cohort_wins_data",
-                       "used":  4100,
-                       "limit":  4850
-                   },
-                   {
-                       "label":  "system/connected_agents-tools",
-                       "used":  10394,
+                       "label":  "system/shared_memory_ledger",
+                       "used":  18557,
                        "limit":  20000
-                   },
-                   {
-                       "label":  "system/contacts",
-                       "used":  1664,
-                       "limit":  5000
                    },
                    {
                        "label":  "system/developer_lessons",
-                       "used":  8607,
+                       "used":  8563,
                        "limit":  100000
                    },
                    {
-                       "label":  "system/forward_momentum_tasks",
-                       "used":  1923,
+                       "label":  "system/shared_leaderboard_data",
+                       "used":  116,
                        "limit":  5000
                    },
                    {
-                       "label":  "system/github_pages_information",
-                       "used":  2703,
-                       "limit":  10000
-                   },
-                   {
-                       "label":  "system/human",
-                       "used":  2144,
-                       "limit":  5000
-                   },
-                   {
-                       "label":  "system/insert_code_here",
-                       "used":  0,
+                       "label":  "system/team_transparency_priority",
+                       "used":  1692,
                        "limit":  20000
                    },
                    {
-                       "label":  "system/insert_html_here",
-                       "used":  0,
-                       "limit":  50000
-                   },
-                   {
-                       "label":  "system/morsels",
-                       "used":  6520,
+                       "label":  "system/connected_agents-tools",
+                       "used":  10334,
                        "limit":  20000
                    },
                    {
@@ -105,19 +35,14 @@
                        "limit":  5000
                    },
                    {
-                       "label":  "system/persona",
-                       "used":  4641,
-                       "limit":  5000
+                       "label":  "system/cohort_wins_data",
+                       "used":  4094,
+                       "limit":  4850
                    },
                    {
-                       "label":  "system/proper_tool_usage",
-                       "used":  1017,
+                       "label":  "system/human",
+                       "used":  2130,
                        "limit":  5000
-                   },
-                   {
-                       "label":  "system/roadblocks",
-                       "used":  12895,
-                       "limit":  10000
                    },
                    {
                        "label":  "system/session_count",
@@ -125,41 +50,116 @@
                        "limit":  5000
                    },
                    {
+                       "label":  "system/check_in_exercise",
+                       "used":  4898,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/agent_catalog",
+                       "used":  6780,
+                       "limit":  50000
+                   },
+                   {
+                       "label":  "system/forward_momentum_tasks",
+                       "used":  1917,
+                       "limit":  5000
+                   },
+                   {
                        "label":  "system/shared_calendar_events",
-                       "used":  2588,
+                       "used":  2574,
                        "limit":  20000
                    },
                    {
+                       "label":  "system/github_pages_information",
+                       "used":  2703,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/code_execution_deployment_skill",
+                       "used":  5803,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/contacts",
+                       "used":  1664,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/persona",
+                       "used":  4637,
+                       "limit":  5000
+                   },
+                   {
                        "label":  "system/shared_leaderboard",
-                       "used":  1136,
+                       "used":  1072,
                        "limit":  5000
                    },
                    {
-                       "label":  "system/shared_leaderboard_data",
-                       "used":  148,
-                       "limit":  5000
+                       "label":  "system/agent_info",
+                       "used":  42,
+                       "limit":  100
                    },
                    {
-                       "label":  "system/shared_memory_ledger",
-                       "used":  18557,
+                       "label":  "system/agent_registry",
+                       "used":  3277,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/todos",
+                       "used":  5953,
+                       "limit":  100000
+                   },
+                   {
+                       "label":  "system/insert_html_here",
+                       "used":  0,
+                       "limit":  50000
+                   },
+                   {
+                       "label":  "system/capabilities_data",
+                       "used":  1586,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/capabilities",
+                       "used":  6787,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/active_skill",
+                       "used":  8396,
+                       "limit":  10000
+                   },
+                   {
+                       "label":  "system/morsels",
+                       "used":  6510,
                        "limit":  20000
                    },
                    {
                        "label":  "system/team_pulse",
-                       "used":  1876,
+                       "used":  1874,
                        "limit":  5000
                    },
                    {
-                       "label":  "system/team_transparency_priority",
-                       "used":  1704,
+                       "label":  "system/insert_code_here",
+                       "used":  0,
                        "limit":  20000
                    },
                    {
-                       "label":  "system/todos",
-                       "used":  5999,
-                       "limit":  100000
+                       "label":  "system/proper_tool_usage",
+                       "used":  1017,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/cohort_wins",
+                       "used":  1061,
+                       "limit":  5000
+                   },
+                   {
+                       "label":  "system/roadblocks",
+                       "used":  12841,
+                       "limit":  10000
                    }
                ],
     "block_count":  31,
-    "synced_at":  "2026-08-14T02:35:09Z"
+    "synced_at":  "2026-08-19T10:56:31Z"
 }
