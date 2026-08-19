@@ -34,19 +34,19 @@ agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 - Session History: Friday sessions with 4 teams (recorded for LaunchMate)
 - Extraction Focus: "Feeling known" moments, trait signals (Bias to Action, Learning Velocity, Resilience)
 - Routing Role: Reviews all founder-specific insights before distribution (human-in-loop) [CONFIRMED]
-- Jan 23 Deadline: Pre-trained agents ready for first In-Flight â CONFIRMED (critical path)
+- Jan 23 Deadline: Pre-trained agents ready for first In-Flight ✅ CONFIRMED (critical path)
 - Jan 30 Deadline: LaunchMate ready for Boot Camp (onboarding, tagging, milestone tracking)
 - Jan 14: Cameron back (pre-training interviews can begin)
 - Key Insight: "LaunchMate becomes the gatekeeper" - milestone tracking is critical path
-- Jan 23 Deadline: Pre-trained agents ready for first In-Flight â CONFIRMED (critical path)
+- Jan 23 Deadline: Pre-trained agents ready for first In-Flight ✅ CONFIRMED (critical path)
 - Jan 30 Deadline: LaunchMate ready for Boot Camp (onboarding, tagging, milestone tracking)
 - Jan 14: Cameron back (pre-training interviews can begin)
 - Key Insight: "LaunchMate becomes the gatekeeper" - milestone tracking is critical path
 
 ### Architecture Vision (Karpathy Insight):
-- Don't address AI as "you" â ask "who would be right to weigh in"
+- Don't address AI as "you" — ask "who would be right to weigh in"
 - Board of Directors model: Specialty agents with different perspectives
-- Transcript Agent processes meetings â distributes to Mentor + Founder agents
+- Transcript Agent processes meetings → distributes to Mentor + Founder agents
 
 **In-Flight Teams (4 teams, Dec 2025):**
 1. Daniel Self & Gavin Bartow - Second Course
@@ -60,7 +60,7 @@ agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 - Old Agent ID: agent-23fe3eca-e949-48a0-b59e-5e832602047f (deprecated)
 - Role: Pre-training, onboarding infrastructure
 - Current Focus: [To be updated]
-- Demo Suggestion: Kavindi (Foodieâevents pivot is concrete)
+- Demo Suggestion: Kavindi (Foodie→events pivot is concrete)
 
 
 ### Laura Wetherhold (LaunchMate Dev Team)
