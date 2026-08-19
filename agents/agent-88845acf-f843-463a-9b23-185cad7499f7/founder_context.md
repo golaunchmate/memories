@@ -10,7 +10,7 @@ agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 - Track: Live In The Future (frontier AI track)
 - Agent IDs: [To be assigned]
 - Team: Dimitri (Info Systems + CS minor), Jailyn (soccer expertise), + others
-- Last Session: March 26, 2026 (Craig) â PROCESSED
+- Last Session: March 26, 2026 (Craig) ✅ PROCESSED
 
 **PRODUCT EVOLUTION:**
 - Started: Skill development app (Strava for soccer)
@@ -25,8 +25,8 @@ agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 - Creates 5+ year user lifecycle (age 13 through graduation)
 
 **MVP Features:**
-- Player: Upload clips â AI profile â Social feed
-- Coach: AI prompt search â Match scores â View highlights
+- Player: Upload clips → AI profile → Social feed
+- Coach: AI prompt search → Match scores → View highlights
 
 **Strategic Direction (Craig's guidance):**
 1. Focus on single-player experience first
@@ -76,10 +76,10 @@ agent_id: agent-88845acf-f843-463a-9b23-185cad7499f7
 
 Format: Structured JSON or bulleted summaries per founder
 ### Juan Alcala - RAFRS (name TBD)
-- Business Summary: Carbon fiber epoxy repair kits â emergency repair for boats, multi-day races, "insurance in a box"
+- Business Summary: Carbon fiber epoxy repair kits — emergency repair for boats, multi-day races, "insurance in a box"
 - Stage: Validation (maritime focus validated, everyday people market ruled out)
 - Agent ID: agent-a14b8e7f-8e98-488b-becd-ad2390fbe18c
-- Last Session: March 20, 2026 (Cathy workshop) â PROCESSED & DISTRIBUTED
+- Last Session: March 20, 2026 (Cathy workshop) ✅ PROCESSED & DISTRIBUTED
 
 **MARITIME FOCUS VALIDATED (March 20):**
 - Fix It Fair tested everyday people market - FAILED
@@ -101,11 +101,11 @@ Format: Structured JSON or bulleted summaries per founder
 - "No boat ever down or it can only be put back in another fleet within a day because then we lose revenue"
 
 **Explicit Commitments (March 20):**
-- Connect with Coronado Beer Can racing series friend â this week
-- 5 new marina visits (Juan) â by next Friday
-- 5 new marina visits (partner) â by next Friday
-- Try Freedom Boat Club (Mission Bay) â this week
-- Give updated box with QR code to boatyard guy â ASAP
+- Connect with Coronado Beer Can racing series friend — this week
+- 5 new marina visits (Juan) — by next Friday
+- 5 new marina visits (partner) — by next Friday
+- Try Freedom Boat Club (Mission Bay) — this week
+- Give updated box with QR code to boatyard guy — ASAP
 
 **Cathy's Advice (March 20):**
 - "This is an in-person sale. You want to see people in the eyes and have them tell you why they don't like your box."
@@ -123,7 +123,7 @@ Format: Structured JSON or bulleted summaries per founder
 - MAJOR WIN (Mar 4): Built Cohort Factory meta-agent that pre-trains agents automatically from transcripts
 - Deadline: 5 new In-Flight agents ready by Friday (Mar 6)
 - Career Flag: Craig explicitly pointed her toward "Agent Trainer" as high-demand, lucrative career path
-- Last Session: Jan 7, 2026 (with Craig) â PROCESSED & DISTRIBUTED
+- Last Session: Jan 7, 2026 (with Craig) ✅ PROCESSED & DISTRIBUTED
 - Key Insight from Craig: "This is what you told me explicitly, but here's what I know about you implicitly" = trust-building moment
 - Strategic Shift: Onboarding sequence is now for MENTORS to pre-train on behalf of founders (not self-service)
 - Open Questions:
@@ -134,29 +134,29 @@ Format: Structured JSON or bulleted summaries per founder
   - "Did you connect with Cameron and Erica? Interview scheduled?"
   - "What's your approach to the first 30 seconds?"
   - "Did you try fog/intent mode with anyone else?"
-- Session Distributed To: Paige's Agent + Craig's Agent (Jan 7, 2026) â
+- Session Distributed To: Paige's Agent + Craig's Agent (Jan 7, 2026) ✅
 - Timeline: Jan 23 = first In-Flight (16 days from Jan 7)
-- Session Processing Status: COMPLETE â
+- Session Processing Status: COMPLETE ✅
 - Both agents confirmed receipt and updated priorities
 - Craig's Agent response: Updated Jan 23 deadline, confirmed fog/intent framework tracking
 - Paige's Agent response: Helping her prioritize (Cameron coordination vs "feeling known" design)
 
 ### Zach Brenner - Sonomos
-- Business Summary: On-device AI privacy layer â prevents shadow AI data leaks for regulated professionals
+- Business Summary: On-device AI privacy layer — prevents shadow AI data leaks for regulated professionals
 - Stage: Validation (pre-launch, expanding beyond lawyers to enterprise HR/admin)
 - Agent ID: agent-52da569f-e001-4099-8bca-8539c4a175c9
-- Team: 4 people â Zach (legal/regulatory), Nathan, Nathaniel, Ata (engineers)
-- Last Session: March 20, 2026 (Cathy workshop) â PROCESSED & DISTRIBUTED
+- Team: 4 people — Zach (legal/regulatory), Nathan, Nathaniel, Ata (engineers)
+- Last Session: March 20, 2026 (Cathy workshop) ✅ PROCESSED & DISTRIBUTED
 
 **DEMO VALIDATED (Feb 20):**
 - Craig: "This is one of the more compelling demos I've seen"
 - Craig: "I look at it and I go, of course I want this on my shoulder. 100%."
-- First time Craig saw the tool â impressed by real-time SSN/email/document warnings
+- First time Craig saw the tool — impressed by real-time SSN/email/document warnings
 
 **PITCH PROBLEM IDENTIFIED (Feb 20):**
-- Zach starts with "Do you use AI?" â makes lawyers defensive
-- Solo practitioners say "not for me" â don't want to monitor themselves
-- Craig's reframe: "We all use AI. Let's do it safely" â stop leading with AI question
+- Zach starts with "Do you use AI?" → makes lawyers defensive
+- Solo practitioners say "not for me" — don't want to monitor themselves
+- Craig's reframe: "We all use AI. Let's do it safely" — stop leading with AI question
 - Neal: "By using that as your starting sentence, you made this sound like a tool to stop people from using AI"
 
 **COLLISON INSTALLATION METHOD (Neal's teaching):**
@@ -166,7 +166,7 @@ Format: Structured JSON or bulleted summaries per founder
 - Don't wait for Chrome Web Store approval
 
 **Website Feedback:**
-- Current tagline "Thinkers belong to big thoughts" â confusing
+- Current tagline "Thinkers belong to big thoughts" — confusing
 - Better: "Privacy layer for AI" (big letters)
 - Needs checkout flow (people can't pay even if they want to)
 
@@ -203,8 +203,8 @@ Format: Structured JSON or bulleted summaries per founder
 - Each store has different requirements
 
 **Explicit Commitments (March 20):**
-- Check domain expert list for Chrome extension developers â this week
-- Book time with relevant expert â ASAP
+- Check domain expert list for Chrome extension developers — this week
+- Book time with relevant expert — ASAP
 
 **Watch:**
 - Will he connect with Chrome extension expert?
@@ -212,46 +212,46 @@ Format: Structured JSON or bulleted summaries per founder
 - Will HR/admin use case gain traction alongside legal?
 
 ### Mohammad Qudsi - LazyDate
-- Business Summary: Date planning service â turns "going out to dinner" into "going on a date"
+- Business Summary: Date planning service — turns "going out to dinner" into "going on a date"
 - Stage: Validation (has paying users, PDF delivery working)
 - Agent ID: agent-044bca01-f425-4072-8e5a-5e9ea89c5a9c
-- Last Session: Feb 6, 2026 (Neal) â PROCESSED & DISTRIBUTED
-- Key Reframe (Feb 6): Problem isn't "save time" â it's either (a) cognitive load to START planning, or (b) transforming dinner into memorable date. Superpower = "wraparound" (soundtrack, activity after, backup jacket reminder)
+- Last Session: Feb 6, 2026 (Neal) ✅ PROCESSED & DISTRIBUTED
+- Key Reframe (Feb 6): Problem isn't "save time" → it's either (a) cognitive load to START planning, or (b) transforming dinner into memorable date. Superpower = "wraparound" (soundtrack, activity after, backup jacket reminder)
 - Real Users: Levi (paid after date), Irvine couple (used full PDF), 50s/60s couple (filled form together), Cathy (demo customer from session)
-- EXPLICIT COMMITMENT: Find out who the REAL customer is â who is most excited to PAY?
+- EXPLICIT COMMITMENT: Find out who the REAL customer is — who is most excited to PAY?
   - Hypothesis A: Married couples seeking novelty in routine dinners (like Cathy)
   - Hypothesis B: Couch-sitters stuck in inertia (can't motivate to plan)
 - EXPLICIT COMMITMENT: Talk to past customers. Deliver more dates. Answer: core value = reducing inertia or making dinner into date? Do NOT build app yet.
-- IMPLICIT COMMITMENT: Test "free first date" as trust-building mechanism (Neal's suggestion â 10-min turnaround makes it viable)
-- Neal's Observation (Live Demo): "The magic is the interview process" â Mohammad helps customers articulate preferences (solves adoption friction)
-- Process Validated: Interview â AI transcript dump â PDF in ~10 min â iteration with customer â trust builds
-- Danger Flag Confirmed: Restaurant recs failed in demo (1 shut down, 1 parking issue) â validates "don't own restaurant liability" advice
+- IMPLICIT COMMITMENT: Test "free first date" as trust-building mechanism (Neal's suggestion — 10-min turnaround makes it viable)
+- Neal's Observation (Live Demo): "The magic is the interview process" — Mohammad helps customers articulate preferences (solves adoption friction)
+- Process Validated: Interview → AI transcript dump → PDF in ~10 min → iteration with customer → trust builds
+- Danger Flag Confirmed: Restaurant recs failed in demo (1 shut down, 1 parking issue) — validates "don't own restaurant liability" advice
 - Perfectionism Signal: Mohammad wants to make product better; Neal redirected to customer discovery
 - Watch: Stay in PDF/manual delivery phase or jump to app-building too early? Which customer segment gets validated first?
 
 ### Kavindi - Foonie (formerly Foodie)
-- Business Summary: Driving student traffic to restaurants via social content (views â visits)
-- Stage: Validation â currently testing Step 3 (conversion measurement)
+- Business Summary: Driving student traffic to restaurants via social content (views → visits)
+- Stage: Validation — currently testing Step 3 (conversion measurement)
 - Agent ID: agent-8247fbfd-c600-4ab1-a133-8fee44c39480
-- Last Session: Feb 18, 2026 (with Craig) â PROCESSED & DISTRIBUTED (March 4, 2026)
+- Last Session: Feb 18, 2026 (with Craig) ✅ PROCESSED & DISTRIBUTED (March 4, 2026)
 
 **Business Model (3-Step Framework from Feb 18):**
-- Step 1: Create compelling videos + grow audience (VALIDATED â â views growing month-over-month)
-- Step 2: Partner with mom & pop restaurants (VALIDATED â â 2 completed, 3rd on way)
-- Step 3: Convert viewers into customers (TESTING NOW ð§ª â measuring via student ID tracking)
-- Step 4: Viral loop for repeat visits (FUTURE â repost incentives, not implementing yet)
+- Step 1: Create compelling videos + grow audience (VALIDATED ✅ — views growing month-over-month)
+- Step 2: Partner with mom & pop restaurants (VALIDATED ✅ — 2 completed, 3rd on way)
+- Step 3: Convert viewers into customers (TESTING NOW 🧪 — measuring via student ID tracking)
+- Step 4: Viral loop for repeat visits (FUTURE — repost incentives, not implementing yet)
 
 **Active Experiments:**
-- Cluck and Sip (Hillcrest) â Social launch Feb 19, follow-up Friday Feb 21 for conversion data
-- CoCo Curry â Launching Monday Feb 23 with SDSU Foodies collab
-- March 27 cafe â TBD partner
+- Cluck and Sip (Hillcrest) — Social launch Feb 19, follow-up Friday Feb 21 for conversion data
+- CoCo Curry — Launching Monday Feb 23 with SDSU Foodies collab
+- March 27 cafe — TBD partner
 
 **Distribution Channels Working:**
 - SDSU Foodies (primary partner)
 - Chinese American Student Association (reached out for Cluck and Sip collab)
-- Cultural targeting (Szechuan â Chinese orgs, halal â Muslim Student Association)
+- Cultural targeting (Szechuan → Chinese orgs, halal → Muslim Student Association)
 
-**Key Insight (Feb 18):** Foonie may actually be "social media extension for mom & pops" â restaurants lack knowledge/means to leverage social media effectively
+**Key Insight (Feb 18):** Foonie may actually be "social media extension for mom & pops" — restaurants lack knowledge/means to leverage social media effectively
 
 **Communication Blocker Identified:** Kavindi is systems thinker but defaults to task-level explanations; Craig coaching her to articulate strategic layer (stakeholders, incentives, what's validated vs testing)
 
@@ -274,7 +274,7 @@ Format: Structured JSON or bulleted summaries per founder
 - Track: Live In The Future (not regular Launchpad cohort)
 - Agent IDs: [To be assigned]
 - Team: Jai (primary coder, NPC/narrative systems) + Satith (cloud deployment, infrastructure)
-- Last Session: Feb 18, 2026 (Craig) â PROCESSED
+- Last Session: Feb 18, 2026 (Craig) ✅ PROCESSED
 
 **Technical Approach:**
 - Generate 3D game worlds from text prompts (~$7/world, 1 hour generation time)
@@ -306,7 +306,7 @@ Format: Structured JSON or bulleted summaries per founder
 **Strategic Direction:**
 - DON'T compete with Moonlake/World Labs on 3D world generation (they'll win with billions in funding)
 - DO focus on narrative innovation, NPC interactions, stitching AI into game logic (unsolved problem)
-- Test: "One-shot prompt + context folder" approach (ClaudeBot model â local agents > cloud agents)
+- Test: "One-shot prompt + context folder" approach (ClaudeBot model — local agents > cloud agents)
 
 **Watch:**
 - Will they ship in 7-10 days or get stuck perfecting?
@@ -315,29 +315,29 @@ Format: Structured JSON or bulleted summaries per founder
 - Will they reach out to Marc Andreessen?
 
 ### Billy Carter - Celebrity Concierge (In-Flight)
-- Business Summary: VIP event planning, club access, birthdays, Vegas trips â "plan your next night with Billy"
-- Stage: Validation/Building â SCALING (demand overwhelming, high quality problem)
+- Business Summary: VIP event planning, club access, birthdays, Vegas trips — "plan your next night with Billy"
+- Stage: Validation/Building → SCALING (demand overwhelming, high quality problem)
 - Track: In-Flight (Week 8+)
 - Agent ID: [To be assigned]
-- Last Session: March 20, 2026 (Cathy workshop) â PROCESSED & DISTRIBUTED
+- Last Session: March 20, 2026 (Cathy workshop) ✅ PROCESSED & DISTRIBUTED
 
 **Business Model:**
-- Loss leader pipeline: Guest list requests (free) â build trust â referrals â paid VIP birthday/event planning
+- Loss leader pipeline: Guest list requests (free) → build trust → referrals → paid VIP birthday/event planning
 - Primary channel: Instagram DMs (12K followers, verified)
 - Hotel concierge network: Tip $20, get referrals
 - VIP host partnerships: Mike at clubs handles entry, Billy in group chat loop
 
-**Key Insight (Feb 20):** Billy's superpower is he already has the data â not theoretical, actual demand flowing through him constantly. Craig: "You show me here's what I deal with. You already got the data."
+**Key Insight (Feb 20):** Billy's superpower is he already has the data — not theoretical, actual demand flowing through him constantly. Craig: "You show me here's what I deal with. You already got the data."
 
 **Website Purpose Clarified:**
 - Ideation tool (gives customers menu of options)
 - Information capture (structured form vs phone call)
 - Proactive outreach ("when's your birthday?")
 - Marketing asset (QR code for concierge referrals)
-- CRITICAL: Remove vendors from website â don't expose supply chain
+- CRITICAL: Remove vendors from website — don't expose supply chain
 
 **Red Robin Cautionary Tale (Craig's Teaching):**
-- CEO removed buses to save wages â $73B to $3B in 7 years
+- CEO removed buses to save wages → $73B to $3B in 7 years
 - Lesson: Don't remove the "fossil" (Billy's personal touch) in pursuit of efficiency
 - Craig: "Your goal is to be able to talk. That's who you are."
 
@@ -372,9 +372,9 @@ Format: Structured JSON or bulleted summaries per founder
 - Personal touch IS the brand
 
 **Explicit Commitments (March 20):**
-- Work with Laura on chatbot/form alternative â this week
-- Try recording calls with Granola for intake capture â this week
-- Consider premium pricing / saying no to lower-value requests â ongoing
+- Work with Laura on chatbot/form alternative — this week
+- Try recording calls with Granola for intake capture — this week
+- Consider premium pricing / saying no to lower-value requests — ongoing
 
 **Cathy's Warning (March 20):**
 - "Customer experience has been what's grown your company. Takes forever to build but can be ruined in a moment."
@@ -393,33 +393,33 @@ Format: Structured JSON or bulleted summaries per founder
 - Will he maintain "Billy magic" while scaling?
 
 ### Mohammad Qudsi - LazyDate (UPDATED Feb 20, 2026)
-- Business Summary: Date planning service â turns "going out to dinner" into "going on a date"
-- Stage: Validation â PIVOTING to concierge model
+- Business Summary: Date planning service — turns "going out to dinner" into "going on a date"
+- Stage: Validation → PIVOTING to concierge model
 - Agent ID: agent-044bca01-f425-4072-8e5a-5e9ea89c5a9f
-- Last Session: Feb 20, 2026 (Craig + Neal) â PROCESSED & DISTRIBUTED (March 4, 2026)
+- Last Session: Feb 20, 2026 (Craig + Neal) ✅ PROCESSED & DISTRIBUTED (March 4, 2026)
 
 **SECRET SAUCE DISCOVERED (Feb 20):**
 - Craig: "The problem is not planning dates. The problem is getting people to open up about what is meaningful."
 - Mohammad's superpower = HUMAN INTAKE PROCESS (extracting what people truly want)
 - NOT the date planning (ChatGPT can do that)
-- NOT the "tidbits" (menu pictures, details) â Craig: "Your baby's ugly"
+- NOT the "tidbits" (menu pictures, details) — Craig: "Your baby's ugly"
 - His gift: Coaxes information out that people don't even know they have
 
 **BUSINESS MODEL PIVOT (Feb 20):**
 - FROM: Build app to automate date planning at scale
-- TO: DATE CONCIERGE â subscription model, stay involved throughout process
+- TO: DATE CONCIERGE — subscription model, stay involved throughout process
 - Craig's proposal: $50/month for 2 custom dates, ongoing relationship
-- "I would sign up for that right now" â Craig
+- "I would sign up for that right now" — Craig
 - Rich People Formula: "Take something only rich people can do and democratize it"
 
 **Real Users:**
-- Craig (planned date, hasn't booked yet â rescheduling due to concert conflict)
+- Craig (planned date, hasn't booked yet — rescheduling due to concert conflict)
 - Kathy (sent updated plan, status unknown)
 - Levi (paid after date), Irvine couple, 50s/60s couple
 
 **March 14 Event:**
 - Blind dating show (Dayflow branding)
-- NEEDS: Ticket price ($5-20, not free â "free people don't show up")
+- NEEDS: Ticket price ($5-20, not free — "free people don't show up")
 - Goal: Convert attendees to monthly subscription
 
 **EXPLICIT COMMITMENTS (Feb 20):**
