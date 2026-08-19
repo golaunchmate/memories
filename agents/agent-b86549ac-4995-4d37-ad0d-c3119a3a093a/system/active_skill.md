@@ -39,7 +39,7 @@ TONE:
 STRUCTURE BY TYPE:
 
 **FOUNDER TIDBITS (5 slides):**
-1. Cover: Name + Company + Date + "scroll â"
+1. Cover: Name + Company + Date + "scroll ↓"
 2. "Where I Started" - Initial assumption/intention
 3. "What I Discovered" - Key realizations + BIG NUMBERS for impact
 4. "The Real Opportunity" - Reframed insight + business model
@@ -48,14 +48,14 @@ STRUCTURE BY TYPE:
 Closing quote format: "I thought I needed X. I actually needed Y."
 
 **TEAM/MULTI-WEEK TIDBITS (5-6 slides):**
-1. Cover: Title + subtitle explaining journey + "â scroll"
-2-4. Week sections with labels: "WEEK 1 Â· Jan 6-13"
+1. Cover: Title + subtitle explaining journey + "↓ scroll"
+2-4. Week sections with labels: "WEEK 1 · Jan 6-13"
    - Use named callout boxes: "The Realization", "The Problem", "The Discovery"
    - Include "Decision:" statements
-5-6. "The Arc" summary: Started with â Narrowed to â Hit â Building
+5-6. "The Arc" summary: Started with → Narrowed to → Hit → Building
 
 VISUAL TECHNIQUES:
-- â/â symbols for what works vs doesn't
+- ✓/✗ symbols for what works vs doesn't
 - Big numbers with labels: "500-1,200 people/month"
 - Named callout boxes for key moments
 - Bullet lists for business model/action items
@@ -123,7 +123,7 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0f0f0f; col
 - Cards have border: 1px solid #2a2a2a
 - Page numbers absolute bottom-right
 - Uses stat-row for big numbers
-- Arrow bullets (â) for lists
+- Arrow bullets (→) for lists
 
 **TEAM TIDBIT LAYOUT:**
 - Content flows down page, max-width: 800px
@@ -157,8 +157,8 @@ Callout Card:
 </div>
 
 Check/X Pattern:
-<p>â Thing that works</p>
-<p style="color: #ef4444;">â Thing that fails</p>
+<p>✓ Thing that works</p>
+<p style="color: #ef4444;">✗ Thing that fails</p>
 
 **REQUIRED META TAGS:**
 <meta name="tidbit-type" content="founder|team">
@@ -197,7 +197,7 @@ Use update_github_pages_html:
 === STEP 5: UPDATE MEMORY ===
 After publishing, update tidbit_publishing block:
 - Add to appropriate week section
-- Mark with â
+- Mark with ✓
 
 === FOUNDER-SPECIFIC GUIDANCE ===
 Launch readiness criteria:
@@ -206,7 +206,7 @@ Launch readiness criteria:
 - Execution is now primary focus
 
 For founder tidbits, highlight:
-- Market insight journey (broad â focused)
+- Market insight journey (broad → focused)
 - Validation evidence (real customer interactions)
 - Model clarity (how they'll make money)
 
@@ -223,11 +223,11 @@ For founder tidbits, highlight:
 === SKILL EVOLUTION ===
 Dec 19, 2025 - Initial System
 Craig wanted informal, narrative-driven pre-meeting updates (not status reports)
-Format: "I thought I'd do X â realized Y was in play â changed course â came up with Z"
+Format: "I thought I'd do X → realized Y was in play → changed course → came up with Z"
 First test: reached Craig's own agent to synthesize a weekly story
 Dec 19, 2025 - First Tone Correction
 Craig rejected first attempt: "the tone is all wrong. The storytelling should feel like an experienced engineer laying out the story of her thought process, not like you're reading a fable."
-Key shift: engineer explaining â not literary/flowery
+Key shift: engineer explaining → not literary/flowery
 Dec 21-31, 2025 - Team Rollout
 Published narratives for Craig, Paige, Michael, Laura, Kavindi
 Discovered agent routing issues (agents sometimes thought I was the founder)
