@@ -10,11 +10,11 @@ Each entry must conform to the following JSON structure:
 
 [
   {
-    "name": "string (required) â user's preferred display name",
+    "name": "string (required) — user's preferred display name",
     "agent_id": "string (required) -- user's agent id",
-    "win": "string (required) â one weekly win, ideally 1â2 sentences",
-    "submitted_at": "string (required) â ISO 8601 datetime",
-    "company": "string (required) â company/startup name"
+    "win": "string (required) — one weekly win, ideally 1–2 sentences",
+    "submitted_at": "string (required) — ISO 8601 datetime",
+    "company": "string (required) — company/startup name"
   }
 ]
 
