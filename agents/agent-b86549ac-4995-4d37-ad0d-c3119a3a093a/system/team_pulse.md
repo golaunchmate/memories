@@ -31,7 +31,7 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 + Finally, include a brief 1-2 sentence commentary or insight, but make this addition fun and light (does not have to be a joke)
 
 ## EXAMPLES:
-- "Laura completed a check-in (momentum score ð©) about team summarizer feedback"
+- "Laura completed a check-in (momentum score 🟩) about team summarizer feedback"
 - "Laura figured out the meta-agent architecture for automated agent creation"
 - "Laura deployed the team summarizer template successfully"
 - "Laura got user validation - Erica reached out to 3 teams!"
