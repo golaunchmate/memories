@@ -6,20 +6,20 @@
     "blocks":  [
                    {
                        "label":  "system/agent_registry",
-                       "used":  3285,
+                       "used":  3277,
                        "limit":  100000
                    },
                    {
                        "label":  "system/human",
-                       "used":  1314,
+                       "used":  1306,
                        "limit":  5000
                    },
                    {
                        "label":  "system/persona",
-                       "used":  2044,
+                       "used":  2000,
                        "limit":  5000
                    }
                ],
     "block_count":  3,
-    "synced_at":  "2026-08-14T02:35:54Z"
+    "synced_at":  "2026-08-19T10:57:13Z"
 }
