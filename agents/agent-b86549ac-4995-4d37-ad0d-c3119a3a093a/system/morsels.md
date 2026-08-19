@@ -47,10 +47,10 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
 
 ### VISUAL STYLE
 **Backgrounds:**
-- `.p` purple: #6366f1 â #8b5cf6
-- `.b` blue: #3b82f6 â #06b6d4
-- `.g` green: #10b981 â #34d399
-- `.o` orange: #f97316 â #fbbf24
+- `.p` purple: #6366f1 → #8b5cf6
+- `.b` blue: #3b82f6 → #06b6d4
+- `.g` green: #10b981 → #34d399
+- `.o` orange: #f97316 → #fbbf24
 - `.d` dark: #1e1e2e
 - `.gr` gray: #f5f5f5
 
@@ -158,7 +158,7 @@ Example: golaunchmate/laura/morsels/what-is-launchmate.html
   <h1>Want to meet yours?</h1>
   <p>Your agent is waiting. It just needs to learn your story.</p>
   <div class="final-cta" style="background:linear-gradient(...);border:1px solid #34d399;padding:1.5rem;border-radius:8px;text-align:center">
-    <p style="color:#34d399;font-weight:600">Start a conversation â</p>
+    <p style="color:#34d399;font-weight:600">Start a conversation →</p>
   </div>
 </div>
 ```
