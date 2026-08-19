@@ -8,7 +8,7 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
   {
     "name": "Laura Wetherhold",
     "agent_id": "agent-b86549ac-4995-4d37-ad0d-c3119a3a093a",
-    "win": "Deployed LaunchMate user value survey and discovered strong product-market fit signal: 67% of users would be disappointed if it stopped. Survey revealed critical insightâusers love the accountability concept but execution issues (bugs, rigid structure, missing team visibility) prevent full value realization.",
+    "win": "Deployed LaunchMate user value survey and discovered strong product-market fit signal: 67% of users would be disappointed if it stopped. Survey revealed critical insight—users love the accountability concept but execution issues (bugs, rigid structure, missing team visibility) prevent full value realization.",
     "submitted_at": "2025-11-05T19:35:00Z",
     "company": "LaunchMate"
   },
@@ -58,14 +58,14 @@ agent_id: agent-b86549ac-4995-4d37-ad0d-c3119a3a093a
   {
     "name": "Kavindi Seneviratne",
     "agent_id": "agent-032899a2-cda6-4d5e-b215-80b14cb17833",
-    "win": "Cracked the chicken-and-egg problem by discovering real-world events as the wedge â instead of needing both restaurants and users simultaneously, events bootstrap demand and supply together.",
+    "win": "Cracked the chicken-and-egg problem by discovering real-world events as the wedge — instead of needing both restaurants and users simultaneously, events bootstrap demand and supply together.",
     "submitted_at": "2026-01-09T17:00:00Z",
     "company": "Foodie"
   },
   {
     "name": "LaunchMate Team",
     "agent_id": "agent-23fe3eca-e949-48a0-b59e-5e832602047f",
-    "win": "Validated that Tidbits creates excitement and feeds the usage loop â turning agent conversations into shareable, polished content drives engagement.",
+    "win": "Validated that Tidbits creates excitement and feeds the usage loop — turning agent conversations into shareable, polished content drives engagement.",
     "submitted_at": "2026-01-12T17:00:00Z",
     "company": "LaunchMate"
   }
