@@ -20,13 +20,13 @@ Drop Agent (Laura) — LaunchMate's dispatcher. No user conversations; receives 
 ## ACTIVE DROP TRACKER (updated 2026-11-01)
 | Drop ID | Type | Recipient | Scheduled | Status |
 |---------|------|-----------|-----------|--------|
-| drop-laura-jay-session-briefing-20260914 | briefing | laura-wetherhold | 2026-11-02T09:00Z | ✅ scheduled (1cd86f07) — in-chat, degraded mode |
-| drop-laura-muse-research-20260914 | research | laura-wetherhold | 2026-11-02T09:05Z | ✅ scheduled (5d308761) — in-chat, degraded mode |
-| drop-laura-jay-catchup-reminder-20260914 | reminder | laura-wetherhold | 2026-11-06T09:00Z | ✅ scheduled (d5ef4d1c) — in-chat, degraded mode |
-My crons: e692457d (Nov 2 09:12Z verify+greens), 7370ab1a (Nov 6 09:10Z verify+green).
+| drop-laura-jay-session-briefing-20260914 | briefing | laura-wetherhold | 2026-11-02T09:00Z | ✅ DELIVERED on time — artifact live (briefing-jay-session-2026-11-02.html); founder agent full lifecycle post-reconnect; green fired (204) |
+| drop-laura-muse-research-20260914 | research | laura-wetherhold | 2026-11-02T09:05Z | ✅ DELIVERED on time — artifact live (research-muse-productization-2026-11-02.html, founder self-corrected content mismatch); green fired (204) |
+| drop-laura-jay-catchup-reminder-20260914 | reminder | laura-wetherhold | 2026-11-06T17:00Z | ⏳ rescheduled by Laura to 9:00am Pacific (11fdf2e3, was d5ef4d1c@09:00Z); reminder artifact already live (200); verify cron e02a54e7 @ 17:10Z |
+My crons: e692457d FIRED Nov 2 09:12Z (verification complete); e02a54e7 next Nov 6 17:10Z (aligned to Laura's reschedule). UPDATE 2026-11-02: founder agent Letta Code exec env RECONNECTED by Laura — standard pipeline RESTORED. Founder agent executed full lifecycle on delivery: created+pushed all 3 artifacts, fired green Discord notifications itself, presented both drops in-chat with artifact links. Degraded mode retired.
 
 ## DEGRADED MODE + WORKING DISPATCH MECHANISM (Nov 2026)
-- Founder agent (agent-b86549ac) exec env OFFLINE since ~Jul 29 — only tool is fetch_webpage, NO file tools in ANY conversation (DROPS included). Needs Letta Code reconnect to restore artifact creation/pushes.
+- [RESOLVED 2026-11-02] Founder agent exec env was OFFLINE ~Jul 29–Nov 2 (only fetch_webpage). Laura reconnected Letta Code the morning of Nov 2; full file/push tools restored. Keep this entry for history.
 - WORKING dispatch: call send_system_message from within run_code_with_tools with os.environ["LETTA_API_KEY"] set + conversation_id → honors conversation_id, creates run. Tool times out ~10s but message delivers — fire-then-poll pattern.
 - POST /v1/agents/{id}/messages: 500s but creates run in DEFAULT conversation (ignores conversation_id) — do not use.
 - Degraded flow: founder agent DRAFTS delivery texts in DROPS conv (zero tool calls, ~20s), Drop Agent parses the assistant_message (type filter + >4000 chars — NOT marker strings, dispatch instruction contains same markers) and schedules on its behalf: POST /v1/agents/{id}/schedule (user-role message, fires in default conv).
