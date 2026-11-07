@@ -11,15 +11,15 @@
                    },
                    {
                        "label":  "system/human",
-                       "used":  1559,
+                       "used":  1497,
                        "limit":  5000
                    },
                    {
                        "label":  "system/persona",
-                       "used":  3864,
+                       "used":  3603,
                        "limit":  5000
                    }
                ],
     "block_count":  3,
-    "synced_at":  "2026-11-05T09:57:36Z"
+    "synced_at":  "2026-11-06T20:22:35Z"
 }
